@@ -1,0 +1,119 @@
+import Link from "next/link";
+import { Droplets } from "lucide-react";
+
+const CONTENT_LINKS = [
+  { href: "/guide-don-du-sang", label: "Guide du don du sang" },
+  { href: "/groupes-sanguins", label: "Groupes sanguins" },
+  { href: "/mythes-et-realites", label: "Mythes et realites" },
+  { href: "/eligibilite", label: "Eligibilite" },
+  { href: "/conseils", label: "Conseils avant/apres" },
+];
+
+const BLOOD_TYPE_LINKS = [
+  { href: "/groupes-sanguins/o-negatif", label: "Groupe O-" },
+  { href: "/groupes-sanguins/o-positif", label: "Groupe O+" },
+  { href: "/groupes-sanguins/a-negatif", label: "Groupe A-" },
+  { href: "/groupes-sanguins/a-positif", label: "Groupe A+" },
+  { href: "/groupes-sanguins/b-negatif", label: "Groupe B-" },
+  { href: "/groupes-sanguins/b-positif", label: "Groupe B+" },
+  { href: "/groupes-sanguins/ab-negatif", label: "Groupe AB-" },
+  { href: "/groupes-sanguins/ab-positif", label: "Groupe AB+" },
+];
+
+export function Footer() {
+  return (
+    <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
+          <div>
+            <div className="mb-3 flex items-center gap-2 text-[var(--color-primary)]">
+              <Droplets className="h-6 w-6" />
+              <span className="text-lg font-extrabold">
+                life<span className="text-[var(--color-text)]">drop</span>
+              </span>
+            </div>
+            <p className="text-sm leading-relaxed text-[var(--color-text-muted)]">
+              Application gratuite de suivi du don du sang en France. Chaque don
+              compte, chaque vie aussi.
+            </p>
+          </div>
+
+          {/* Content links */}
+          <div>
+            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+              Informations
+            </h3>
+            <ul className="space-y-2">
+              {CONTENT_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Blood types */}
+          <div>
+            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+              Groupes sanguins
+            </h3>
+            <ul className="space-y-2">
+              {BLOOD_TYPE_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CTA */}
+          <div>
+            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+              L&apos;application
+            </h3>
+            <p className="mb-4 text-sm text-[var(--color-text-muted)]">
+              Suivez vos dons, verifiez votre eligibilite et mesurez votre
+              impact.
+            </p>
+            <Link
+              href="/app"
+              className="inline-block rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
+            >
+              Ouvrir LifeDrop
+            </Link>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-10 border-t border-[var(--color-border)] pt-6 text-center text-xs text-[var(--color-text-muted)]">
+          <p>
+            LifeDrop est un projet independant. Les informations fournies ne
+            remplacent pas un avis medical.
+          </p>
+          <p className="mt-1">
+            Pour donner votre sang, rendez-vous sur{" "}
+            <a
+              href="https://dondesang.efs.sante.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--color-primary)] underline"
+            >
+              dondesang.efs.sante.fr
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

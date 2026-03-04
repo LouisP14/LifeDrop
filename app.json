@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "LifeDrop",
+    "slug": "lifedrop",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#C0392B"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.lifedrop.app",
+      "infoPlist": {
+        "NSUserNotificationsUsageDescription": "LifeDrop vous rappelle quand vous pouvez donner à nouveau."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f0f0f"
+      },
+      "package": "com.lifedrop.app",
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "SCHEDULE_EXACT_ALARM"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "color": "#C0392B"
+        }
+      ],
+      "./plugins/custom-font-loader",
+      "expo-secure-store"
+    ]
+  }
+}

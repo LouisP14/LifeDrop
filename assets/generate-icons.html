@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>LifeDrop — Générateur d'icônes</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0f0f0f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 24px;
+      font-family: system-ui, sans-serif;
+      color: #f5f5f5;
+    }
+    h1 { font-size: 20px; color: #f87171; margin: 0; }
+    p  { font-size: 13px; color: #888; margin: 0; text-align: center; }
+    .preview { display: flex; gap: 32px; align-items: flex-end; flex-wrap: wrap; justify-content: center; }
+    .item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .label { font-size: 12px; color: #888; }
+    button {
+      padding: 12px 28px;
+      background: #f87171;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: opacity 0.15s;
+    }
+    button:hover { opacity: 0.85; }
+    canvas { display: none; }
+    .adaptive-bg {
+      background: #0f0f0f;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>LifeDrop — Icônes</h1>
+  <p>Goutte + cercle pointillé, sans texte.<br>Clique pour télécharger chaque icône en 1024×1024 PNG.</p>
+
+  <div class="preview">
+    <div class="item">
+      <canvas id="prev-icon" width="120" height="120" style="border-radius:24px;display:block"></canvas>
+      <span class="label">icon.png (iOS / général)</span>
+      <button onclick="download('icon')">Télécharger icon.png</button>
+    </div>
+    <div class="item">
+      <canvas id="prev-adaptive" width="120" height="120" style="border-radius:24px;display:block" class="adaptive-bg"></canvas>
+      <span class="label">adaptive-icon.png (Android foreground)</span>
+      <button onclick="download('adaptive')">Télécharger adaptive-icon.png</button>
+    </div>
+    <div class="item">
+      <canvas id="prev-favicon" width="64" height="64" style="border-radius:10px;display:block"></canvas>
+      <span class="label">favicon.png (web)</span>
+      <button onclick="download('favicon')">Télécharger favicon.png</button>
+    </div>
+  </div>
+
+  <!-- Canvas de travail 1024x1024 (caché) -->
+  <canvas id="work"></canvas>
+
+  <script>
+    // Path exact du dashboard/profil de l'appli
+    const DROP_PATH = 'M16 5 C16 5 10 13 10 17 C10 20.5 12.7 23 16 23 C19.3 23 22 20.5 22 17 C22 13 16 5 16 5Z';
+
+    // Dessine le logo exact de l'appli (viewBox 32x32), centré à (cx,cy), réduit au scale donné
+    function drawLogo(ctx, cx, cy, scale) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(scale, scale);
+      ctx.translate(-16, -16); // on recentre sur l'origine du logo original
+
+      // Cercle pointillé — valeurs exactes du composant LifeDropLogo
+      ctx.save();
+      ctx.strokeStyle = '#f87171';
+      ctx.lineWidth = 1.2;
+      ctx.globalAlpha = 0.5;
+      ctx.setLineDash([5, 3]);
+      ctx.beginPath();
+      ctx.arc(16, 16, 14, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      // Cercle intérieur sombre
+      ctx.fillStyle = '#1a1a1a';
+      ctx.beginPath();
+      ctx.arc(16, 16, 9, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Dégradé + goutte (exact appli)
+      const grad = ctx.createLinearGradient(16, 4, 16, 28);
+      grad.addColorStop(0, '#f87171');
+      grad.addColorStop(1, '#fb923c');
+      ctx.fillStyle = grad;
+      ctx.fill(new Path2D(DROP_PATH));
+
+      ctx.restore();
+    }
+
+    /* ── Icône principale ── */
+    function renderIcon(ctx, size) {
+      ctx.clearRect(0, 0, size, size);
+      const s = size / 32;
+
+      ctx.fillStyle = '#0f0f0f';
+      ctx.fillRect(0, 0, size, size);
+
+      ctx.save();
+      ctx.scale(s, s);
+
+      // Logo centré, agrandi à 70% (plus d'espace sans le texte)
+      drawLogo(ctx, 16, 16, 0.70);
+
+      ctx.restore();
+    }
+
+    /* ── Icône adaptive Android ── */
+    function renderAdaptive(ctx, size, withBg) {
+      ctx.clearRect(0, 0, size, size);
+      const s = size / 32;
+
+      ctx.fillStyle = '#0f0f0f';
+      ctx.fillRect(0, 0, size, size);
+
+      ctx.save();
+      ctx.scale(s, s);
+
+      // Logo centré dans la safe zone Android, à 65%
+      drawLogo(ctx, 16, 16, 0.65);
+
+      ctx.restore();
+    }
+
+    // Prévisualisations
+    renderIcon(document.getElementById('prev-icon').getContext('2d'), 120);
+    renderAdaptive(document.getElementById('prev-adaptive').getContext('2d'), 120, true);
+    renderIcon(document.getElementById('prev-favicon').getContext('2d'), 64);
+
+    function download(type) {
+      const work = document.getElementById('work');
+      work.width = 1024;
+      work.height = 1024;
+      const ctx = work.getContext('2d');
+
+      if (type === 'adaptive') {
+        renderAdaptive(ctx, 1024, false); // sans fond → PNG transparent
+        triggerDownload('adaptive-icon.png');
+      } else if (type === 'favicon') {
+        renderIcon(ctx, 1024);
+        triggerDownload('favicon.png');
+      } else {
+        renderIcon(ctx, 1024);
+        triggerDownload('icon.png');
+      }
+    }
+
+    function triggerDownload(filename) {
+      const work = document.getElementById('work');
+      const a = document.createElement('a');
+      a.download = filename;
+      a.href = work.toDataURL('image/png');
+      a.click();
+    }
+  </script>
+</body>
+</html>
