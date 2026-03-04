@@ -10,6 +10,7 @@ import {
   CheckCircle,
   ArrowRight,
   Sparkles,
+  Download,
 } from "lucide-react";
 import { NATIONAL_STATS } from "@shared/content/stats";
 import { JsonLd } from "@web/components/seo/JsonLd";
@@ -181,8 +182,8 @@ export default function HomePage() {
             href="/app"
             className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary)] px-8 py-3.5 text-base font-bold text-white transition-opacity hover:opacity-90"
           >
-            <Droplets className="h-5 w-5" />
-            Lancer LifeDrop
+            <Download className="h-5 w-5" />
+            Installer LifeDrop
           </Link>
         </div>
       </section>

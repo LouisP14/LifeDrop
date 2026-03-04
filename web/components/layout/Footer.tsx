@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Droplets } from "lucide-react";
+import { Logo } from "@web/components/ui/Logo";
 
 const CONTENT_LINKS = [
   { href: "/guide-don-du-sang", label: "Guide du don du sang" },
@@ -28,7 +28,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-3 flex items-center gap-2 text-[var(--color-primary)]">
-              <Droplets className="h-6 w-6" />
+              <Logo size={24} />
               <span className="text-lg font-extrabold">
                 life<span className="text-[var(--color-text)]">drop</span>
               </span>

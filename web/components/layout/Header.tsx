@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Droplets, Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
+import { Logo } from "@web/components/ui/Logo";
 
 const NAV_LINKS = [
   { href: "/guide-don-du-sang", label: "Guide" },
@@ -20,7 +21,7 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-[var(--color-primary)]">
-          <Droplets className="h-7 w-7" />
+          <Logo size={28} />
           <span className="text-xl font-extrabold tracking-tight">
             life<span className="text-[var(--color-text)]">drop</span>
           </span>
@@ -41,7 +42,8 @@ export function Header() {
             href="/app"
             className="ml-2 rounded-lg bg-[var(--color-primary)] px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90"
           >
-            Ouvrir l&apos;app
+            <Download className="h-4 w-4" />
+            Installer l&apos;app
           </Link>
         </nav>
 
@@ -73,7 +75,8 @@ export function Header() {
             onClick={() => setIsOpen(false)}
             className="mt-2 block rounded-lg bg-[var(--color-primary)] px-4 py-2.5 text-center text-sm font-bold text-white"
           >
-            Ouvrir l&apos;app
+            <Download className="h-4 w-4" />
+            Installer l&apos;app
           </Link>
         </nav>
       )}

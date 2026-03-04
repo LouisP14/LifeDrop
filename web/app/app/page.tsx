@@ -13,11 +13,17 @@ import {
   Clock,
   FlaskConical,
   CheckCircle,
+  Download,
+  Smartphone,
+  Share,
+  MoreVertical,
 } from "lucide-react";
 import { useAppStore } from "@web/lib/store";
 import { computeLivesSaved, computeStreak, computeEligibilityPerType } from "@shared/utils/donations";
 import { getLevelConfig, getLevelProgress } from "@shared/utils/levels";
 import { DONATION_TYPE_LABELS, DONATION_TYPE_COLORS } from "@shared/constants";
+import { useInstallPrompt } from "@web/lib/pwa";
+import { Logo } from "@web/components/ui/Logo";
 import type { DonationType } from "@shared/types";
 
 type AppTab = "dashboard" | "profile" | "education";
@@ -29,12 +35,8 @@ const TYPE_ICONS: Record<DonationType, React.ReactNode> = {
 };
 
 export default function AppPage() {
-  const [tab, setTab] = useState<AppTab>("dashboard");
   const [mounted, setMounted] = useState(false);
-
-  const profile = useAppStore((s) => s.profile);
-  const donations = useAppStore((s) => s.donations);
-  const isOnboardingCompleted = useAppStore((s) => s.isOnboardingCompleted);
+  const { isInstalled, isInstallable, install } = useInstallPrompt();
 
   useEffect(() => setMounted(true), []);
 
@@ -45,6 +47,126 @@ export default function AppPage() {
       </div>
     );
   }
+
+  // If running as installed PWA → show the full app
+  if (isInstalled) {
+    return <InstalledAppView />;
+  }
+
+  // If in browser → show install page
+  return <InstallView isInstallable={isInstallable} install={install} />;
+}
+
+/* ─────────────────────────────────────────────
+   Install page — shown when accessing /app from browser
+   ───────────────────────────────────────────── */
+function InstallView({
+  isInstallable,
+  install,
+}: {
+  isInstallable: boolean;
+  install: () => Promise<void>;
+}) {
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    setIsIOS(/iPad|iPhone|iPod/.test(ua) && !(window as unknown as { MSStream?: unknown }).MSStream);
+  }, []);
+
+  return (
+    <div className="mx-auto flex min-h-[70vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center">
+      <Logo size={80} />
+
+      <h1 className="mb-2 mt-6 text-3xl font-extrabold">
+        life<span className="text-[var(--color-primary)]">drop</span>
+      </h1>
+
+      <p className="mb-2 text-lg text-[var(--color-text-muted)]">
+        Chaque don compte. Chaque vie aussi.
+      </p>
+
+      <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/5 px-4 py-2 text-sm">
+        <Heart className="h-4 w-4 text-[var(--color-primary)]" />
+        <span className="text-[var(--color-text-muted)]">
+          <strong className="text-[var(--color-primary)]">3 vies</strong>{" "}
+          potentiellement sauvees par don
+        </span>
+      </div>
+
+      {/* Features list */}
+      <div className="mb-8 w-full space-y-3">
+        {[
+          { icon: <Droplets className="h-5 w-5 text-[var(--color-primary)]" />, text: "Suivez tous vos dons de sang" },
+          { icon: <CheckCircle className="h-5 w-5 text-[var(--color-green)]" />, text: "Verifiez votre eligibilite en temps reel" },
+          { icon: <Award className="h-5 w-5 text-[var(--color-accent)]" />, text: "Debloquez des badges et montez en niveau" },
+          { icon: <Flame className="h-5 w-5 text-orange-400" />, text: "Gardez votre streak de dons" },
+        ].map((feature) => (
+          <div
+            key={feature.text}
+            className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-left"
+          >
+            {feature.icon}
+            <span className="text-sm font-medium">{feature.text}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Install button */}
+      {isInstallable ? (
+        <button
+          onClick={install}
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] py-3.5 text-base font-bold text-white transition-opacity hover:opacity-90"
+        >
+          <Download className="h-5 w-5" />
+          Installer l&apos;application
+        </button>
+      ) : isIOS ? (
+        <div className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
+          <p className="mb-3 text-sm font-bold">Pour installer sur iPhone / iPad :</p>
+          <div className="space-y-2 text-left text-sm text-[var(--color-text-muted)]">
+            <p className="flex items-center gap-2">
+              <Share className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+              1. Appuyez sur le bouton <strong>Partager</strong>
+            </p>
+            <p className="flex items-center gap-2">
+              <Plus className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+              2. Selectionnez <strong>&quot;Sur l&apos;ecran d&apos;accueil&quot;</strong>
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
+          <p className="mb-3 text-sm font-bold">Pour installer l&apos;application :</p>
+          <div className="space-y-2 text-left text-sm text-[var(--color-text-muted)]">
+            <p className="flex items-center gap-2">
+              <MoreVertical className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+              1. Ouvrez le menu de votre navigateur
+            </p>
+            <p className="flex items-center gap-2">
+              <Smartphone className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+              2. Selectionnez <strong>&quot;Installer l&apos;application&quot;</strong>
+            </p>
+          </div>
+        </div>
+      )}
+
+      <p className="mt-4 text-xs text-[var(--color-text-muted)]">
+        100% gratuit &middot; Sans publicite &middot; Fonctionne hors-ligne
+      </p>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   Full app — shown when running as installed PWA
+   ───────────────────────────────────────────── */
+function InstalledAppView() {
+  const [tab, setTab] = useState<AppTab>("dashboard");
+
+  const profile = useAppStore((s) => s.profile);
+  const donations = useAppStore((s) => s.donations);
+  const isOnboardingCompleted = useAppStore((s) => s.isOnboardingCompleted);
 
   // Onboarding redirect
   if (!isOnboardingCompleted) {
@@ -227,8 +349,8 @@ function OnboardingView() {
 
   return (
     <div className="mx-auto flex max-w-lg flex-col items-center px-4 py-20 text-center">
-      <Droplets className="mb-6 h-16 w-16 text-[var(--color-primary)]" />
-      <h1 className="mb-2 text-3xl font-extrabold">
+      <Logo size={64} />
+      <h1 className="mb-2 mt-6 text-3xl font-extrabold">
         life<span className="text-[var(--color-primary)]">drop</span>
       </h1>
       <p className="mb-2 text-lg text-[var(--color-text-muted)]">
