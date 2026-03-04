@@ -16,7 +16,9 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@web/*": ["./*"],
-      "@shared/*": ["../shared/*"]
+      "@shared/*": ["../shared/*"],
+      "date-fns": ["./node_modules/date-fns"],
+      "date-fns/*": ["./node_modules/date-fns/*"]
     },
     "baseUrl": "."
   },
