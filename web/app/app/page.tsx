@@ -68,18 +68,27 @@ function InstallView({
   install: () => Promise<void>;
 }) {
   const [isIOS, setIsIOS] = useState(false);
+  const [autoTriggered, setAutoTriggered] = useState(false);
 
   useEffect(() => {
     const ua = navigator.userAgent;
     setIsIOS(/iPad|iPhone|iPod/.test(ua) && !(window as unknown as { MSStream?: unknown }).MSStream);
   }, []);
 
+  // Auto-trigger install prompt when available
+  useEffect(() => {
+    if (isInstallable && !autoTriggered) {
+      setAutoTriggered(true);
+      install();
+    }
+  }, [isInstallable, autoTriggered, install]);
+
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center">
       <Logo size={80} />
 
       <h1 className="mb-2 mt-6 text-3xl font-extrabold">
-        life<span className="text-[var(--color-primary)]">drop</span>
+        <span className="text-[var(--color-text)]">life</span><span className="text-[var(--color-primary)]">drop</span>
       </h1>
 
       <p className="mb-2 text-lg text-[var(--color-text-muted)]">
@@ -351,7 +360,7 @@ function OnboardingView() {
     <div className="mx-auto flex max-w-lg flex-col items-center px-4 py-20 text-center">
       <Logo size={64} />
       <h1 className="mb-2 mt-6 text-3xl font-extrabold">
-        life<span className="text-[var(--color-primary)]">drop</span>
+        <span className="text-[var(--color-text)]">life</span><span className="text-[var(--color-primary)]">drop</span>
       </h1>
       <p className="mb-2 text-lg text-[var(--color-text-muted)]">
         Chaque don compte. Chaque vie aussi.

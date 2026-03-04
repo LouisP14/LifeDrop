@@ -30,7 +30,7 @@ export function Footer() {
             <div className="mb-3 flex items-center gap-2 text-[var(--color-primary)]">
               <Logo size={24} />
               <span className="text-lg font-extrabold">
-                life<span className="text-[var(--color-text)]">drop</span>
+                <span className="text-[var(--color-text)]">life</span>drop
               </span>
             </div>
             <p className="text-sm leading-relaxed text-[var(--color-text-muted)]">
