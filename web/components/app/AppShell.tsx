@@ -13,6 +13,7 @@ import { ProfileTab } from "./profile/ProfileTab";
 import { EducationTab } from "./education/EducationTab";
 import { RegisterDonationModal } from "./donation/RegisterDonationModal";
 import { DonationSuccessModal } from "./donation/DonationSuccessModal";
+import { PWAInstallBanner } from "./PWAInstallBanner";
 import type { DonationType } from "@shared/types";
 
 type AppTab = "dashboard" | "profile" | "education";
@@ -138,6 +139,9 @@ export function AppShell() {
       <div className="md:hidden">
         <BottomTabBar activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
+
+      {/* PWA install banner — mobile only */}
+      <PWAInstallBanner />
 
       {modal === "registerDonation" && (
         <RegisterDonationModal
