@@ -27,7 +27,10 @@ export function ThemeToggle() {
       </div>
       <button
         onClick={toggle}
-        className="relative h-7 w-12 shrink-0 rounded-full transition-colors"
+        role="switch"
+        aria-checked={theme === "light"}
+        aria-label={theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre"}
+        className="relative h-7 w-12 shrink-0 rounded-full transition-colors focus:outline-2 focus:outline-(--color-primary)"
         style={{
           backgroundColor: theme === "light" ? "var(--color-primary)" : "var(--color-border)",
         }}

@@ -23,6 +23,9 @@ export function NotificationToggle() {
     <button
       onClick={handleToggle}
       disabled={loading || isDenied}
+      role="switch"
+      aria-checked={isSubscribed}
+      aria-label={isSubscribed ? "Desactiver les notifications" : "Activer les notifications"}
       className="flex w-full items-center gap-3 rounded-2xl border border-(--color-border) bg-(--color-surface) p-4 transition-all hover:border-(--color-primary)/30 disabled:opacity-50"
     >
       <div

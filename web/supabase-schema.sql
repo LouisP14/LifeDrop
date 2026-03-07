@@ -11,6 +11,7 @@ create table public.profiles (
   sex text not null default 'male',
   onboarding_completed boolean not null default false,
   notifications_enabled boolean not null default false,
+  referral_code text unique,
   team_code text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -36,15 +37,29 @@ create table public.user_badges (
   unique(user_id, badge_id)
 );
 
--- 4. Indexes for performance
+-- 4. Referrals table
+create table public.referrals (
+  id uuid default gen_random_uuid() primary key,
+  referrer_id uuid references public.profiles(id) on delete cascade not null,
+  referred_id uuid references public.profiles(id) on delete cascade not null,
+  referral_code text not null,
+  referred_first_donation boolean not null default false,
+  created_at timestamptz not null default now(),
+  unique(referred_id)
+);
+
+-- 6. Indexes for performance
 create index idx_donations_user_id on public.donations(user_id);
 create index idx_donations_date on public.donations(date desc);
 create index idx_user_badges_user_id on public.user_badges(user_id);
+create index idx_referrals_referrer on public.referrals(referrer_id);
+create index idx_referrals_code on public.referrals(referral_code);
 
 -- 5. Enable Row Level Security
 alter table public.profiles enable row level security;
 alter table public.donations enable row level security;
 alter table public.user_badges enable row level security;
+alter table public.referrals enable row level security;
 
 -- 6. RLS Policies — users can only access their own data
 
@@ -91,7 +106,20 @@ create policy "Users can upsert own badges"
   on public.user_badges for update
   using (auth.uid() = user_id);
 
--- 7. Auto-update updated_at on profiles
+create policy "Users can delete own badges"
+  on public.user_badges for delete
+  using (auth.uid() = user_id);
+
+-- Referrals
+create policy "Users can view own referrals"
+  on public.referrals for select
+  using (auth.uid() = referrer_id or auth.uid() = referred_id);
+
+create policy "Users can insert referrals"
+  on public.referrals for insert
+  with check (auth.uid() = referred_id);
+
+-- Auto-update updated_at on profiles
 create or replace function public.handle_updated_at()
 returns trigger as $$
 begin

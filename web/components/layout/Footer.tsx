@@ -97,6 +97,17 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-10 border-t border-(--color-border) pt-6 text-center text-xs text-(--color-text-muted)">
+          <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <Link href="/mentions-legales" className="hover:text-(--color-text) transition-colors">
+              Mentions legales
+            </Link>
+            <Link href="/cgu" className="hover:text-(--color-text) transition-colors">
+              CGU
+            </Link>
+            <Link href="/confidentialite" className="hover:text-(--color-text) transition-colors">
+              Politique de confidentialite
+            </Link>
+          </div>
           <p>
             LifeDrop est un projet independant. Les informations fournies ne
             remplacent pas un avis medical.

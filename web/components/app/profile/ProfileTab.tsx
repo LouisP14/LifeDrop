@@ -22,6 +22,7 @@ import {
   XCircle,
   LogOut,
   Lock,
+  Gift,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAppStore } from "@web/lib/store";
@@ -34,6 +35,7 @@ import { EditDonationModal } from "../donation/EditDonationModal";
 import { DonationHistoryModal } from "../donation/DonationHistoryModal";
 import { NotificationToggle } from "../NotificationToggle";
 import { ThemeToggle } from "../ThemeToggle";
+import { ReferralCard } from "./ReferralCard";
 import { BLOOD_TYPE_INFO, BADGES_CATALOG, DONATION_TYPE_LABELS, DONATION_TYPE_COLORS, LIVES_PER_DONATION_TYPE } from "@shared/constants";
 import type { Donation, DonationType } from "@shared/types";
 
@@ -49,6 +51,7 @@ const BADGE_CONFIG: Record<string, { icon: React.ReactNode; color: string; bg: s
   "cards-heart":    { icon: <Heart className="h-5 w-5" />,    color: "#EC4899", bg: "rgba(236,72,153,0.12)" },
   star:             { icon: <Star className="h-5 w-5" />,     color: "#38BDF8", bg: "rgba(56,189,248,0.12)" },
   calendar:         { icon: <CalendarCheck className="h-5 w-5" />, color: "#2DD4BF", bg: "rgba(45,212,191,0.12)" },
+  gift:             { icon: <Gift className="h-5 w-5" />,          color: "#C084FC", bg: "rgba(192,132,252,0.12)" },
 };
 
 const TYPE_ICONS: Record<DonationType, React.ReactNode> = {
@@ -313,8 +316,9 @@ export function ProfileTab() {
         </div>
       </div>
 
-      {/* Settings */}
+      {/* Referral + Settings */}
       <div className="mt-5 mb-5 space-y-2.5">
+        <ReferralCard />
         <ThemeToggle />
         <NotificationToggle />
       </div>

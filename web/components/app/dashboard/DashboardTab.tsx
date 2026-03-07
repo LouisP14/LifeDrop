@@ -19,6 +19,7 @@ import { DONATION_TYPE_LABELS, DONATION_TYPE_COLORS, DONATION_COOLDOWN_DAYS } fr
 import { Logo } from "@web/components/ui/Logo";
 import { CountdownRing } from "./CountdownRing";
 import { DonationProgressBar } from "./DonationProgressBar";
+import { ChallengeCard } from "./ChallengeCard";
 import type { DonationType } from "@shared/types";
 
 const TYPE_ICONS: Record<DonationType, React.ReactNode> = {
@@ -187,6 +188,11 @@ export function DashboardTab({
             </div>
           );
         })}
+      </div>
+
+      {/* Monthly challenge */}
+      <div className="mb-5">
+        <ChallengeCard />
       </div>
 
       {/* Level progress */}

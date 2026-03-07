@@ -169,7 +169,7 @@ export async function generateShareCard(data: ShareCardData): Promise<Blob> {
 
   ctx.font = "500 20px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
   ctx.fillStyle = "rgba(255,255,255,0.35)";
-  ctx.fillText("life-drop-gamma.vercel.app", W / 2, ctaY + 55);
+  ctx.fillText("lifedrop.fr", W / 2, ctaY + 55);
 
   // Convert to blob
   return new Promise<Blob>((resolve) => {

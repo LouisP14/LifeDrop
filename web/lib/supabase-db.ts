@@ -19,6 +19,7 @@ export async function fetchProfile(userId: string): Promise<UserProfile | null> 
     sex: data.sex as BiologicalSex,
     onboardingCompleted: data.onboarding_completed,
     notificationsEnabled: data.notifications_enabled,
+    referralCode: data.referral_code ?? undefined,
     teamCode: data.team_code ?? undefined,
     createdAt: data.created_at,
   };

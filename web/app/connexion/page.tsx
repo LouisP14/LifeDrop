@@ -1,18 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { Droplets, Mail, Lock, Eye, EyeOff, ArrowRight, UserPlus, LogIn } from "lucide-react";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Droplets, Mail, Lock, Eye, EyeOff, ArrowRight, UserPlus, LogIn, Gift } from "lucide-react";
 import { Logo } from "@web/components/ui/Logo";
 import { useAuth } from "@web/hooks/useAuth";
 
 type Mode = "login" | "signup";
 
 export default function AuthPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <Droplets className="h-8 w-8 animate-pulse text-(--color-primary)" />
+      </div>
+    }>
+      <AuthPageContent />
+    </Suspense>
+  );
+}
+
+function AuthPageContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { signIn, signUp, isAuthenticated, loading: authLoading } = useAuth();
 
-  const [mode, setMode] = useState<Mode>("login");
+  const refCode = searchParams.get("ref");
+  const [mode, setMode] = useState<Mode>(refCode ? "signup" : "login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -74,6 +88,9 @@ export default function AuthPage() {
         router.push("/app");
       } else {
         await signUp(email, password);
+        if (refCode) {
+          localStorage.setItem("lifedrop-referral", refCode.toUpperCase());
+        }
         setSuccessMessage(
           "Compte cree ! Verifiez votre email pour confirmer votre inscription.",
         );
@@ -136,6 +153,16 @@ export default function AuthPage() {
             Inscription
           </button>
         </div>
+
+        {/* Referral banner */}
+        {refCode && mode === "signup" && (
+          <div className="mb-4 flex items-center gap-2 rounded-xl border border-(--color-accent)/30 bg-(--color-accent)/5 px-4 py-3">
+            <Gift className="h-4 w-4 text-(--color-accent)" />
+            <span className="text-sm text-(--color-accent)">
+              Tu as ete invite ! Cree ton compte pour rejoindre LifeDrop.
+            </span>
+          </div>
+        )}
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">

@@ -74,6 +74,14 @@ export const useAppStore = create<AppState & AppStoreExtra>()(
             const earned = computeEarnedBadgeIds(get().donations, profile);
             upsertUserBadges(uid, earned).catch(console.error);
           }
+          // Notify referral system on first donation
+          if (get().donations.length === 1) {
+            fetch("/api/referral/notify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ userId: uid }),
+            }).catch(console.error);
+          }
         }
       },
 
@@ -207,6 +215,18 @@ export const useAppStore = create<AppState & AppStoreExtra>()(
                 .filter((b) => b.isUnlocked)
                 .map((b) => b.id);
               await upsertUserBadges(userId, earnedIds);
+            }
+          }
+          // Apply referral code if stored
+          if (typeof window !== "undefined") {
+            const refCode = localStorage.getItem("lifedrop-referral");
+            if (refCode) {
+              localStorage.removeItem("lifedrop-referral");
+              fetch("/api/referral", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ code: refCode, userId }),
+              }).catch(console.error);
             }
           }
         } catch (err) {

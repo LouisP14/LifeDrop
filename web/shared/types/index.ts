@@ -67,6 +67,7 @@ export interface UserProfile {
   name?: string;
   onboardingCompleted: boolean;
   notificationsEnabled: boolean;
+  referralCode?: string;
   teamCode?: string;
   createdAt: string;
 }

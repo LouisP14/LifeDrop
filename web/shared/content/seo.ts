@@ -5,7 +5,7 @@
 
 export const SEO_CONFIG = {
   siteName: "LifeDrop",
-  siteUrl: "https://lifedrop.vercel.app",
+  siteUrl: "https://lifedrop.fr",
   defaultTitle: "LifeDrop - Suivi de don du sang | Sauvez des vies",
   defaultDescription:
     "Application gratuite de suivi du don du sang en France. Verifiez votre eligibilite, decouvrez la compatibilite de votre groupe sanguin, et suivez votre impact.",

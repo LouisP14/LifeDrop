@@ -78,8 +78,11 @@ export default function RootLayout({
             __html: `if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.__pwaPrompt=e})`,
           }}
         />
+        <a href="#main-content" className="skip-to-content">
+          Aller au contenu principal
+        </a>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

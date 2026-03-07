@@ -20,19 +20,22 @@ export function BottomTabBar({
   onTabChange: (tab: AppTab) => void;
 }) {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-(--color-border) bg-(--color-bg)/95 backdrop-blur-md">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-(--color-border) bg-(--color-bg)/95 backdrop-blur-md" aria-label="Navigation principale" role="tablist">
       <div className="mx-auto flex max-w-lg">
         {TABS.map((t) => (
           <button
             key={t.key}
             onClick={() => onTabChange(t.key)}
-            className="flex flex-1 flex-col items-center gap-0.5 py-3 text-xs transition-colors"
+            role="tab"
+            aria-selected={activeTab === t.key}
+            aria-label={t.label}
+            className="flex flex-1 flex-col items-center gap-0.5 py-3 text-xs transition-colors focus:outline-2 focus:outline-(--color-primary) focus:-outline-offset-2"
             style={{
               color: activeTab === t.key ? "var(--color-primary)" : "var(--color-text-muted)",
             }}
           >
             {t.icon}
-            {t.label}
+            <span aria-hidden="true">{t.label}</span>
           </button>
         ))}
       </div>

@@ -33,7 +33,7 @@ export default function GuideDonDuSangPage() {
     author: { "@type": "Organization", name: "LifeDrop" },
     publisher: { "@type": "Organization", name: "LifeDrop" },
     inLanguage: "fr",
-    mainEntityOfPage: { "@type": "WebPage", "@id": "https://lifedrop.vercel.app/guide-don-du-sang" },
+    mainEntityOfPage: { "@type": "WebPage", "@id": "https://lifedrop.fr/guide-don-du-sang" },
   };
 
   return (

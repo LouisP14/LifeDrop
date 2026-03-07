@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
 
   // Setup web-push
   webpush.setVapidDetails(
-    "mailto:contact@lifedrop.app",
+    "mailto:contact@lifedrop.fr",
     process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
     process.env.VAPID_PRIVATE_KEY!,
   );
@@ -160,7 +160,7 @@ export async function GET(req: NextRequest) {
           try {
             const isJourJ = daysUntilEligible === 0;
             await resend.emails.send({
-              from: "LifeDrop <notifications@lifedrop.app>",
+              from: "LifeDrop <notifications@lifedrop.fr>",
               to: email,
               subject: notification.title,
               html: generateEmailHTML({
@@ -223,7 +223,7 @@ function generateEmailHTML(data: {
         Bonjour ${data.name},<br><br>
         ${data.body}
       </p>
-      <a href="https://life-drop-gamma.vercel.app/app"
+      <a href="https://lifedrop.fr/app"
          style="display:inline-block;background:${accentColor};color:#fff;font-weight:700;font-size:15px;padding:14px 32px;border-radius:12px;text-decoration:none">
         ${data.isJourJ ? "Enregistrer mon don" : "Voir mon tableau de bord"}
       </a>
