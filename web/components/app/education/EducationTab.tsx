@@ -24,7 +24,7 @@ export function EducationTab() {
   const [subTab, setSubTab] = useState<SubTab>("facts");
 
   return (
-    <div className="px-4 pt-6 animate-[fadeInUp_400ms_ease-out]">
+    <div className="px-4 pt-6 md:px-8 md:pt-8 animate-[fadeInUp_400ms_ease-out]">
       <h2 className="mb-1 text-2xl font-extrabold">Informations</h2>
       <p className="mb-5 text-sm text-[var(--color-text-muted)]">
         Tout savoir sur le don du sang
@@ -42,7 +42,7 @@ export function EducationTab() {
       </div>
 
       {/* Sub-tabs */}
-      <div className="mb-5 flex gap-1 rounded-xl bg-[var(--color-surface)] p-1">
+      <div className="mb-5 flex gap-1 rounded-xl bg-[var(--color-surface)] p-1 md:max-w-md">
         {SUB_TABS.map((t) => (
           <button
             key={t.key}

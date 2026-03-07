@@ -61,7 +61,10 @@ export function ProfileTab() {
   const { signOut } = useAuth();
   const router = useRouter();
 
+  const resetApp = useAppStore((s) => s.resetApp);
+
   const handleSignOut = async () => {
+    resetApp();
     await signOut();
     router.push("/");
   };
@@ -75,9 +78,9 @@ export function ProfileTab() {
   const sortedDonations = [...donations].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 5);
 
   return (
-    <div className="px-4 pt-6 animate-[fadeInUp_400ms_ease-out]">
+    <div className="px-4 pt-6 md:px-8 md:pt-8 animate-[fadeInUp_400ms_ease-out]">
       {/* Avatar + Name */}
-      <div className="mb-6 flex flex-col items-center text-center">
+      <div className="mb-6 flex flex-col items-center text-center md:flex-row md:items-center md:gap-5 md:text-left">
         <div
           className="mb-3 flex h-20 w-20 items-center justify-center rounded-full text-2xl font-extrabold"
           style={{ backgroundColor: "rgba(248,113,113,0.15)", color: "var(--color-primary)" }}
@@ -94,13 +97,14 @@ export function ProfileTab() {
         </button>
       </div>
 
-      {/* Level */}
-      <div className="mb-6">
-        <DonationProgressBar levelConfig={levelConfig} progress={progress} nextLevel={nextLevel} />
-      </div>
+      {/* Level + Stats — side by side on desktop */}
+      <div className="md:grid md:grid-cols-2 md:gap-6 mb-6">
+        <div>
+          <DonationProgressBar levelConfig={levelConfig} progress={progress} nextLevel={nextLevel} />
+        </div>
 
       {/* Stats */}
-      <div className="mb-6 grid grid-cols-3 gap-2">
+      <div className="mt-6 md:mt-0 grid grid-cols-3 gap-2">
         {[
           { value: livesSaved, label: "vies sauvees", icon: <Heart className="h-4 w-4 text-(--color-primary)" /> },
           { value: count, label: `don${count !== 1 ? "s" : ""}`, icon: <Droplets className="h-4 w-4 text-(--color-primary)" /> },
@@ -112,6 +116,7 @@ export function ProfileTab() {
             <div className="text-[10px] text-(--color-text-muted)">{stat.label}</div>
           </div>
         ))}
+      </div>
       </div>
 
       {/* Blood type info */}
@@ -154,7 +159,7 @@ export function ProfileTab() {
           Badges ({unlockedBadges.length}/{BADGES_CATALOG.length})
         </h3>
         {unlockedBadges.length > 0 ? (
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
             {unlockedBadges.map((badge) => (
               <div
                 key={badge.id}
@@ -214,7 +219,7 @@ export function ProfileTab() {
       {/* Sign out */}
       <button
         onClick={handleSignOut}
-        className="mb-6 flex w-full items-center justify-center gap-2 rounded-xl border border-(--color-border) py-3 text-sm font-medium text-(--color-text-muted) transition-colors hover:border-red-500 hover:text-red-400"
+        className="mb-6 flex w-full md:max-w-xs md:mx-auto items-center justify-center gap-2 rounded-xl border border-(--color-border) py-3 text-sm font-medium text-(--color-text-muted) transition-colors hover:border-red-500 hover:text-red-400"
       >
         <LogOut className="h-4 w-4" />
         Se deconnecter
