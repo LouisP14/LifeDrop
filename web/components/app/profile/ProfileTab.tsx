@@ -203,16 +203,25 @@ export function ProfileTab() {
               {unlockedBadges.length}/{BADGES_CATALOG.length}
             </span>
           </h3>
-          {unlockedBadges.length > 0 ? (
-            <div className="grid grid-cols-4 gap-2.5">
-              {unlockedBadges.map((badge) => (
+          <div className="grid grid-cols-4 gap-2.5">
+            {badges.map((badge) => {
+              const unlocked = badge.isUnlocked;
+              return (
                 <div
                   key={badge.id}
-                  className="flex flex-col items-center gap-1.5 rounded-2xl border border-(--color-border) bg-(--color-surface) p-3 text-center transition-all hover:border-(--color-primary)/30 hover:shadow-sm"
+                  className="flex flex-col items-center gap-1.5 rounded-2xl border p-3 text-center transition-all"
+                  style={{
+                    borderColor: unlocked ? "var(--color-primary)" : "var(--color-border)",
+                    backgroundColor: unlocked ? "rgba(248,113,113,0.05)" : "var(--color-surface)",
+                    opacity: unlocked ? 1 : 0.4,
+                  }}
                 >
                   <div
                     className="flex h-10 w-10 items-center justify-center rounded-xl"
-                    style={{ backgroundColor: "rgba(248,113,113,0.1)", color: "var(--color-primary)" }}
+                    style={{
+                      backgroundColor: unlocked ? "rgba(248,113,113,0.1)" : "var(--color-text-muted)",
+                      color: unlocked ? "var(--color-primary)" : "var(--color-bg)",
+                    }}
                   >
                     {BADGE_ICONS[badge.icon] ?? <Award className="h-5 w-5" />}
                   </div>
@@ -220,18 +229,9 @@ export function ProfileTab() {
                     {badge.label}
                   </span>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-8 text-center">
-              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-(--color-text-muted)/5">
-                <Award className="h-7 w-7 text-(--color-text-muted)/30" />
-              </div>
-              <p className="text-sm text-(--color-text-muted)">
-                Tes badges apparaitront ici apres ton premier don.
-              </p>
-            </div>
-          )}
+              );
+            })}
+          </div>
         </div>
 
         {/* Donation history */}
