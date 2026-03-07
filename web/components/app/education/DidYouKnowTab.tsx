@@ -20,46 +20,62 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   "user-check": <UserCheck className="h-5 w-5" />,
 };
 
+function Card({ card }: { card: (typeof DID_YOU_KNOW)[number] }) {
+  return (
+    <div className="rounded-xl border border-(--color-border) bg-(--color-surface) p-5">
+      <div className="mb-3 flex items-center gap-2">
+        <span style={{ color: card.color }}>
+          {ICON_MAP[card.icon] ?? <Droplets className="h-5 w-5" />}
+        </span>
+        <span className="text-[10px] font-bold uppercase tracking-wider text-(--color-text-muted)">
+          {card.category}
+        </span>
+      </div>
+      <h3 className="mb-2 text-sm font-bold">{card.title}</h3>
+      <p className="text-xs leading-relaxed text-(--color-text-muted)">
+        {card.content}
+      </p>
+    </div>
+  );
+}
+
 export function DidYouKnowTab() {
   const [active, setActive] = useState(0);
 
   return (
     <div>
-      {/* Carousel */}
-      <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 scrollbar-none">
-        {DID_YOU_KNOW.map((card, i) => (
-          <div
-            key={card.id}
-            className="w-[85%] shrink-0 snap-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
-            onMouseEnter={() => setActive(i)}
-          >
-            <div className="mb-3 flex items-center gap-2">
-              <span style={{ color: card.color }}>
-                {ICON_MAP[card.icon] ?? <Droplets className="h-5 w-5" />}
-              </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
-                {card.category}
-              </span>
+      {/* Mobile: horizontal carousel */}
+      <div className="md:hidden">
+        <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 scrollbar-none">
+          {DID_YOU_KNOW.map((card, i) => (
+            <div
+              key={card.id}
+              className="w-[85%] shrink-0 snap-center"
+              onTouchStart={() => setActive(i)}
+            >
+              <Card card={card} />
             </div>
-            <h3 className="mb-2 text-sm font-bold">{card.title}</h3>
-            <p className="text-xs leading-relaxed text-[var(--color-text-muted)]">
-              {card.content}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
+        {/* Dots */}
+        <div className="flex justify-center gap-1.5 pt-2">
+          {DID_YOU_KNOW.map((_, i) => (
+            <div
+              key={i}
+              className="h-1.5 rounded-full transition-all"
+              style={{
+                width: i === active ? 16 : 6,
+                backgroundColor: i === active ? "var(--color-primary)" : "var(--color-border)",
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Dots */}
-      <div className="flex justify-center gap-1.5 pt-2">
-        {DID_YOU_KNOW.map((_, i) => (
-          <div
-            key={i}
-            className="h-1.5 rounded-full transition-all"
-            style={{
-              width: i === active ? 16 : 6,
-              backgroundColor: i === active ? "var(--color-primary)" : "var(--color-border)",
-            }}
-          />
+      {/* Desktop: grid layout */}
+      <div className="hidden md:grid md:grid-cols-2 gap-4">
+        {DID_YOU_KNOW.map((card) => (
+          <Card key={card.id} card={card} />
         ))}
       </div>
     </div>
