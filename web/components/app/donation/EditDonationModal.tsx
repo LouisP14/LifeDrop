@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 import {
   Droplet, Microscope, GlassWater, MapPin, Trash2,
 } from "lucide-react";
@@ -29,34 +30,13 @@ export function EditDonationModal({
   const deleteDonation = useAppStore((s) => s.deleteDonation);
 
   const [selectedType, setSelectedType] = useState<DonationType>(donation.type);
-  const [donationDate, setDonationDate] = useState(
-    format(new Date(donation.date), "yyyy-MM-dd"),
-  );
-  const [dateError, setDateError] = useState("");
   const [location, setLocation] = useState(donation.location ?? "");
   const [confirmDelete, setConfirmDelete] = useState(false);
 
-  const validateDate = (dateStr: string): string | null => {
-    const date = new Date(dateStr);
-    const today = new Date();
-    today.setHours(23, 59, 59, 999);
-    if (date > today) return "La date ne peut pas etre dans le futur.";
-    const oneYearAgo = new Date();
-    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-    if (date < oneYearAgo) return "La date ne peut pas depasser 1 an.";
-    return null;
-  };
-
   const handleSave = () => {
-    const error = validateDate(donationDate);
-    if (error) {
-      setDateError(error);
-      return;
-    }
     updateDonation({
       ...donation,
       type: selectedType,
-      date: new Date(donationDate).toISOString(),
       location: location.trim() || undefined,
     });
     onClose();
@@ -76,22 +56,10 @@ export function EditDonationModal({
       <div className="px-6 pb-4 pt-2">
         <h3 className="mb-4 text-lg font-extrabold">Modifier le don</h3>
 
-        {/* Date picker */}
-        <div className="mb-4">
-          <label className="mb-1 flex items-center gap-1 text-xs text-(--color-text-muted)">
-            Date du don
-          </label>
-          <input
-            type="date"
-            value={donationDate}
-            max={format(new Date(), "yyyy-MM-dd")}
-            onChange={(e) => { setDonationDate(e.target.value); setDateError(""); }}
-            className="w-full rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-3 text-sm text-(--color-text) outline-none focus:border-(--color-primary)"
-          />
-          {dateError && (
-            <p className="mt-1 text-xs text-red-400">{dateError}</p>
-          )}
-        </div>
+        {/* Date (read-only) */}
+        <p className="mb-4 text-xs text-(--color-text-muted)">
+          Don du {format(new Date(donation.date), "d MMMM yyyy", { locale: fr })}
+        </p>
 
         {/* Type selector */}
         <div className="mb-4 space-y-2">

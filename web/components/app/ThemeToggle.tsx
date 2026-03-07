@@ -27,15 +27,15 @@ export function ThemeToggle() {
       </div>
       <button
         onClick={toggle}
-        className="relative h-7 w-12 rounded-full transition-colors"
+        className="relative h-7 w-12 shrink-0 rounded-full transition-colors"
         style={{
           backgroundColor: theme === "light" ? "var(--color-primary)" : "var(--color-border)",
         }}
       >
         <span
-          className="absolute top-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform"
+          className="absolute left-0.5 top-0.5 h-6 w-6 rounded-full bg-white shadow-sm transition-all duration-200"
           style={{
-            transform: theme === "light" ? "translateX(22px)" : "translateX(2px)",
+            transform: theme === "light" ? "translateX(20px)" : "translateX(0)",
           }}
         />
       </button>
