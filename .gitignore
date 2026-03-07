@@ -47,8 +47,7 @@ android/build/
 # iOS
 ios/Pods/
 
-# PWA generated
-web/public/sw.js
+# PWA generated (auto-generated files, NOT sw.js which we maintain manually)
 web/public/workbox-*.js
 web/public/swe-worker-*.js
 .vercel
