@@ -57,7 +57,16 @@ export function computeEarnedBadgeIds(
   if (livesSaved >= 10) earned.push("lives_10");
   if (livesSaved >= 30) earned.push("lives_30");
   if (livesSaved >= 60) earned.push("lives_60");
-  if (profile.bloodType === "O-") earned.push("universal_donor");
+
+  // Veteran: first donation was more than 1 year ago
+  if (donations.length > 0) {
+    const oldest = donations.reduce((min, d) =>
+      new Date(d.date) < new Date(min.date) ? d : min,
+    );
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    if (new Date(oldest.date) <= oneYearAgo) earned.push("veteran");
+  }
 
   return earned;
 }

@@ -11,7 +11,7 @@ import {
   Trophy,
   Diamond,
   Star,
-  Globe,
+  CalendarCheck,
   Shuffle,
   Zap,
   Clock,
@@ -21,6 +21,7 @@ import {
   CheckCircle,
   XCircle,
   LogOut,
+  Lock,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAppStore } from "@web/lib/store";
@@ -36,18 +37,18 @@ import { ThemeToggle } from "../ThemeToggle";
 import { BLOOD_TYPE_INFO, BADGES_CATALOG, DONATION_TYPE_LABELS, DONATION_TYPE_COLORS, LIVES_PER_DONATION_TYPE } from "@shared/constants";
 import type { Donation, DonationType } from "@shared/types";
 
-const BADGE_ICONS: Record<string, React.ReactNode> = {
-  water: <Droplets className="h-5 w-5" />,
-  medal: <Award className="h-5 w-5" />,
-  trophy: <Trophy className="h-5 w-5" />,
-  "diamond-stone": <Diamond className="h-5 w-5" />,
-  "shuffle-variant": <Shuffle className="h-5 w-5" />,
-  fire: <Flame className="h-5 w-5" />,
-  "lightning-bolt": <Zap className="h-5 w-5" />,
-  heart: <Heart className="h-5 w-5" />,
-  "cards-heart": <Heart className="h-5 w-5" />,
-  star: <Star className="h-5 w-5" />,
-  earth: <Globe className="h-5 w-5" />,
+const BADGE_CONFIG: Record<string, { icon: React.ReactNode; color: string; bg: string }> = {
+  water:            { icon: <Droplets className="h-5 w-5" />, color: "#f87171", bg: "rgba(248,113,113,0.12)" },
+  medal:            { icon: <Award className="h-5 w-5" />,    color: "#CD7F32", bg: "rgba(205,127,50,0.12)" },
+  trophy:           { icon: <Trophy className="h-5 w-5" />,   color: "#FFD700", bg: "rgba(255,215,0,0.12)" },
+  "diamond-stone":  { icon: <Diamond className="h-5 w-5" />,  color: "#A78BFA", bg: "rgba(167,139,250,0.12)" },
+  "shuffle-variant":{ icon: <Shuffle className="h-5 w-5" />,  color: "#34D399", bg: "rgba(52,211,153,0.12)" },
+  fire:             { icon: <Flame className="h-5 w-5" />,    color: "#FB923C", bg: "rgba(251,146,60,0.12)" },
+  "lightning-bolt": { icon: <Zap className="h-5 w-5" />,      color: "#FBBF24", bg: "rgba(251,191,36,0.12)" },
+  heart:            { icon: <Heart className="h-5 w-5" />,    color: "#F472B6", bg: "rgba(244,114,182,0.12)" },
+  "cards-heart":    { icon: <Heart className="h-5 w-5" />,    color: "#EC4899", bg: "rgba(236,72,153,0.12)" },
+  star:             { icon: <Star className="h-5 w-5" />,     color: "#38BDF8", bg: "rgba(56,189,248,0.12)" },
+  calendar:         { icon: <CalendarCheck className="h-5 w-5" />, color: "#2DD4BF", bg: "rgba(45,212,191,0.12)" },
 };
 
 const TYPE_ICONS: Record<DonationType, React.ReactNode> = {
@@ -206,26 +207,37 @@ export function ProfileTab() {
           <div className="grid grid-cols-4 gap-2.5">
             {badges.map((badge) => {
               const unlocked = badge.isUnlocked;
+              const config = BADGE_CONFIG[badge.icon];
+              const color = config?.color ?? "#f87171";
+              const bg = config?.bg ?? "rgba(248,113,113,0.12)";
               return (
                 <div
                   key={badge.id}
-                  className="flex flex-col items-center gap-1.5 rounded-2xl border p-3 text-center transition-all"
+                  className="group relative flex flex-col items-center gap-1.5 rounded-2xl border p-3 text-center transition-all"
                   style={{
-                    borderColor: unlocked ? "var(--color-primary)" : "var(--color-border)",
-                    backgroundColor: unlocked ? "rgba(248,113,113,0.05)" : "var(--color-surface)",
-                    opacity: unlocked ? 1 : 0.4,
+                    borderColor: unlocked ? `${color}40` : "var(--color-border)",
+                    backgroundColor: unlocked ? `${color}08` : "var(--color-surface)",
                   }}
+                  title={badge.description}
                 >
                   <div
-                    className="flex h-10 w-10 items-center justify-center rounded-xl"
+                    className="relative flex h-11 w-11 items-center justify-center rounded-xl transition-all"
                     style={{
-                      backgroundColor: unlocked ? "rgba(248,113,113,0.1)" : "var(--color-text-muted)",
-                      color: unlocked ? "var(--color-primary)" : "var(--color-bg)",
+                      backgroundColor: unlocked ? bg : "var(--color-border)",
+                      color: unlocked ? color : "var(--color-text-muted)",
                     }}
                   >
-                    {BADGE_ICONS[badge.icon] ?? <Award className="h-5 w-5" />}
+                    {config?.icon ?? <Award className="h-5 w-5" />}
+                    {!unlocked && (
+                      <div className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-(--color-bg) border border-(--color-border)">
+                        <Lock className="h-2.5 w-2.5 text-(--color-text-muted)" />
+                      </div>
+                    )}
                   </div>
-                  <span className="text-[10px] font-semibold leading-tight text-(--color-text-muted)">
+                  <span
+                    className="text-[10px] font-semibold leading-tight"
+                    style={{ color: unlocked ? color : "var(--color-text-muted)" }}
+                  >
                     {badge.label}
                   </span>
                 </div>

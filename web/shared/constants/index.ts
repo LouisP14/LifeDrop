@@ -65,7 +65,7 @@ export const BADGES_CATALOG: Badge[] = [
   { id: "lives_10", label: "10 Vies", description: "Tu as potentiellement sauve 10 vies.", icon: "heart", isUnlocked: false },
   { id: "lives_30", label: "30 Vies", description: "Tu as potentiellement sauve 30 vies.", icon: "cards-heart", isUnlocked: false },
   { id: "lives_60", label: "60 Vies", description: "60 vies potentiellement sauvees -- legende.", icon: "star", isUnlocked: false },
-  { id: "universal_donor", label: "Donneur Universel", description: "Tu es O- : ton sang aide tout le monde.", icon: "earth", isUnlocked: false },
+  { id: "veteran", label: "Veteran", description: "Tu donnes depuis plus d'un an. Merci pour ta fidelite !", icon: "calendar", isUnlocked: false },
 ];
 
 // --- Informations par groupe sanguin ---
