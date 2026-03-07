@@ -1,10 +1,12 @@
 {
+  "id": "/app",
   "name": "LifeDrop - Suivi de don du sang",
   "short_name": "LifeDrop",
   "description": "Suivez vos dons de sang et votre impact. Application gratuite pour les donneurs en France.",
   "start_url": "/app",
   "scope": "/",
   "display": "standalone",
+  "prefer_related_applications": false,
   "orientation": "portrait",
   "theme_color": "#f87171",
   "background_color": "#0f0f0f",

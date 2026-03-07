@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: SEO_CONFIG.defaultTitle,
     description: SEO_CONFIG.defaultDescription,
   },
-  manifest: "/manifest.json",
+  // manifest added manually in <head> to avoid crossOrigin="undefined" bug
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -62,6 +62,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
+        <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" hrefLang="fr" href={SEO_CONFIG.siteUrl} />
         <link rel="alternate" hrefLang="x-default" href={SEO_CONFIG.siteUrl} />
         <script
@@ -72,6 +73,11 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.__pwaPrompt=e})`,
+          }}
+        />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

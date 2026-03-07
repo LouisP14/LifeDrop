@@ -7,25 +7,25 @@ import {
 } from "@shared/constants";
 import type {
   AppState,
-  Badge,
   Donation,
-  Team,
   UserProfile,
 } from "@shared/types";
-import { computeEarnedBadgeIds, getLevelConfig, mergeBadges } from "@shared/utils/levels";
+import { computeEarnedBadgeIds, mergeBadges } from "@shared/utils/levels";
+import {
+  fetchProfile,
+  upsertProfile,
+  fetchDonations,
+  insertDonation,
+  fetchUserBadges,
+  upsertUserBadges,
+} from "./supabase-db";
 
-const defaultProfile: UserProfile = {
-  id: typeof crypto !== "undefined" && crypto.randomUUID
-    ? crypto.randomUUID()
-    : Math.random().toString(36),
-  bloodType: "unknown",
-  sex: "male",
-  onboardingCompleted: false,
-  notificationsEnabled: false,
-  createdAt: new Date().toISOString(),
-};
+export interface AppStoreExtra {
+  syncWithSupabase: (userId: string) => Promise<void>;
+  supabaseUserId: string | null;
+}
 
-export const useAppStore = create<AppState>()(
+export const useAppStore = create<AppState & AppStoreExtra>()(
   persist(
     (set, get) => ({
       profile: null,
@@ -33,18 +33,26 @@ export const useAppStore = create<AppState>()(
       badges: [...BADGES_CATALOG],
       teams: [...PREDEFINED_TEAMS],
       isOnboardingCompleted: false,
+      supabaseUserId: null,
 
-      setProfile: (profile: UserProfile) =>
-        set({ profile }),
+      setProfile: (profile: UserProfile) => {
+        set({ profile });
+        const uid = get().supabaseUserId;
+        if (uid) upsertProfile(uid, profile).catch(console.error);
+      },
 
-      updateProfile: (partial: Partial<UserProfile>) =>
+      updateProfile: (partial: Partial<UserProfile>) => {
         set((state) => ({
           profile: state.profile
             ? { ...state.profile, ...partial }
             : null,
-        })),
+        }));
+        const uid = get().supabaseUserId;
+        const profile = get().profile;
+        if (uid && profile) upsertProfile(uid, profile).catch(console.error);
+      },
 
-      addDonation: (donation: Donation) =>
+      addDonation: (donation: Donation) => {
         set((state) => {
           const newDonations = [...state.donations, donation];
           const profile = state.profile;
@@ -54,7 +62,18 @@ export const useAppStore = create<AppState>()(
           const newBadges = mergeBadges(earnedIds, state.badges);
 
           return { donations: newDonations, badges: newBadges };
-        }),
+        });
+
+        const uid = get().supabaseUserId;
+        if (uid) {
+          insertDonation(uid, donation).catch(console.error);
+          const profile = get().profile;
+          if (profile) {
+            const earned = computeEarnedBadgeIds(get().donations, profile);
+            upsertUserBadges(uid, earned).catch(console.error);
+          }
+        }
+      },
 
       unlockBadge: (badgeId: string) =>
         set((state) => ({
@@ -65,10 +84,14 @@ export const useAppStore = create<AppState>()(
           ),
         })),
 
-      completeOnboarding: () =>
-        set({
-          isOnboardingCompleted: true,
-        }),
+      completeOnboarding: () => {
+        set({ isOnboardingCompleted: true });
+        const uid = get().supabaseUserId;
+        const profile = get().profile;
+        if (uid && profile) {
+          upsertProfile(uid, { ...profile, onboardingCompleted: true }).catch(console.error);
+        }
+      },
 
       resetApp: () =>
         set({
@@ -90,6 +113,11 @@ export const useAppStore = create<AppState>()(
             : null,
         }));
 
+        const uid = get().supabaseUserId;
+        if (uid) {
+          upsertProfile(uid, { teamCode: code.toUpperCase() }).catch(console.error);
+        }
+
         return team;
       },
 
@@ -99,10 +127,58 @@ export const useAppStore = create<AppState>()(
             ? { ...state.profile, teamCode: undefined }
             : null,
         })),
+
+      syncWithSupabase: async (userId: string) => {
+        set({ supabaseUserId: userId });
+
+        try {
+          const remoteProfile = await fetchProfile(userId);
+
+          if (remoteProfile) {
+            const remoteDonations = await fetchDonations(userId);
+            const remoteBadgeIds = await fetchUserBadges(userId);
+
+            const badges = BADGES_CATALOG.map((b) => ({
+              ...b,
+              isUnlocked: remoteBadgeIds.includes(b.id),
+              unlockedAt: remoteBadgeIds.includes(b.id)
+                ? new Date().toISOString()
+                : undefined,
+            }));
+
+            set({
+              profile: remoteProfile,
+              donations: remoteDonations,
+              badges,
+              isOnboardingCompleted: remoteProfile.onboardingCompleted,
+            });
+          } else {
+            const { profile, donations, badges } = get();
+            if (profile && profile.onboardingCompleted) {
+              await upsertProfile(userId, profile);
+              for (const d of donations) {
+                await insertDonation(userId, d).catch(() => {});
+              }
+              const earnedIds = badges
+                .filter((b) => b.isUnlocked)
+                .map((b) => b.id);
+              await upsertUserBadges(userId, earnedIds);
+            }
+          }
+        } catch (err) {
+          console.error("Sync with Supabase failed:", err);
+        }
+      },
     }),
     {
       name: "lifedrop-storage",
       storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        profile: state.profile,
+        donations: state.donations,
+        badges: state.badges,
+        isOnboardingCompleted: state.isOnboardingCompleted,
+      }),
     },
   ),
 );

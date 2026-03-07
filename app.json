@@ -41,6 +41,12 @@
       ],
       "./plugins/custom-font-loader",
       "expo-secure-store"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "278dbb5f-3296-4a98-8899-223283456781"
+      }
+    },
+    "owner": "louis_p14"
   }
 }

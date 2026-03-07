@@ -20,9 +20,18 @@ export function useInstallPrompt() {
       return;
     }
 
+    // Check if beforeinstallprompt already fired before this hook mounted
+    const savedEvent = (window as unknown as { __pwaPrompt?: BeforeInstallPromptEvent }).__pwaPrompt;
+    if (savedEvent) {
+      setDeferredPrompt(savedEvent);
+      setIsInstallable(true);
+    }
+
     const handler = (e: Event) => {
       e.preventDefault();
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
+      const evt = e as BeforeInstallPromptEvent;
+      (window as unknown as { __pwaPrompt?: BeforeInstallPromptEvent }).__pwaPrompt = evt;
+      setDeferredPrompt(evt);
       setIsInstallable(true);
     };
 

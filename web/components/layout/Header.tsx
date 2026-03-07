@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, LogIn, User } from "lucide-react";
 import { Logo } from "@web/components/ui/Logo";
-import { useInstallPrompt } from "@web/lib/pwa";
+import { useAuth } from "@web/hooks/useAuth";
 
 const NAV_LINKS = [
   { href: "/guide-don-du-sang", label: "Guide" },
@@ -17,17 +16,7 @@ const NAV_LINKS = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isInstallable, install } = useInstallPrompt();
-  const router = useRouter();
-
-  const handleInstallClick = async () => {
-    setIsOpen(false);
-    if (isInstallable) {
-      await install();
-    } else {
-      router.push("/app");
-    }
-  };
+  const { isAuthenticated, loading } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/95 backdrop-blur-md">
@@ -51,13 +40,24 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <button
-            onClick={handleInstallClick}
-            className="ml-2 inline-flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90"
-          >
-            <Download className="h-4 w-4" />
-            Installer l&apos;app
-          </button>
+          {!loading && (
+            <Link
+              href={isAuthenticated ? "/app" : "/connexion"}
+              className="ml-2 inline-flex items-center gap-2 rounded-lg bg-(--color-primary) px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90"
+            >
+              {isAuthenticated ? (
+                <>
+                  <User className="h-4 w-4" />
+                  Mon espace
+                </>
+              ) : (
+                <>
+                  <LogIn className="h-4 w-4" />
+                  Connexion
+                </>
+              )}
+            </Link>
+          )}
         </nav>
 
         {/* Mobile menu button */}
@@ -83,13 +83,25 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <button
-            onClick={handleInstallClick}
-            className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-[var(--color-primary)] px-4 py-2.5 text-sm font-bold text-white"
-          >
-            <Download className="h-4 w-4" />
-            Installer l&apos;app
-          </button>
+          {!loading && (
+            <Link
+              href={isAuthenticated ? "/app" : "/connexion"}
+              onClick={() => setIsOpen(false)}
+              className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-(--color-primary) px-4 py-2.5 text-sm font-bold text-white"
+            >
+              {isAuthenticated ? (
+                <>
+                  <User className="h-4 w-4" />
+                  Mon espace
+                </>
+              ) : (
+                <>
+                  <LogIn className="h-4 w-4" />
+                  Connexion
+                </>
+              )}
+            </Link>
+          )}
         </nav>
       )}
     </header>
