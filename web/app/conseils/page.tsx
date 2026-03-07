@@ -38,7 +38,7 @@ export default function ConseilsPage() {
       <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
         Conseils avant et apres un don du sang
       </h1>
-      <p className="mb-10 text-lg text-[var(--color-text-muted)]">
+      <p className="mb-10 text-lg text-(--color-text-muted)">
         Les 10 conseils essentiels pour bien preparer votre don et recuperer
         rapidement. Suivez ces recommandations pour une experience optimale.
       </p>
@@ -46,24 +46,24 @@ export default function ConseilsPage() {
       {/* Before */}
       <section className="mb-12">
         <h2 className="mb-2 text-2xl font-bold">Avant le don</h2>
-        <p className="mb-6 text-[var(--color-text-muted)]">
+        <p className="mb-6 text-(--color-text-muted)">
           Une bonne preparation garantit un don en toute serenite.
         </p>
         <div className="space-y-4">
           {TIPS_BEFORE.map((tip, i) => (
             <article
               key={tip.id}
-              className="flex gap-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+              className="flex gap-4 rounded-2xl border border-(--color-border) bg-(--color-surface) p-5"
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-sm font-bold text-[var(--color-primary)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--color-primary)/10 text-sm font-bold text-(--color-primary)">
                 {i + 1}
               </span>
               <div>
                 <h3 className="text-lg font-bold">{tip.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-[var(--color-text-muted)]">
+                <p className="mt-1 text-sm leading-relaxed text-(--color-text-muted)">
                   {tip.summary}
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">
+                <p className="mt-2 text-sm leading-relaxed text-(--color-text-muted)">
                   {tip.detail}
                 </p>
               </div>
@@ -75,24 +75,24 @@ export default function ConseilsPage() {
       {/* After */}
       <section className="mb-12">
         <h2 className="mb-2 text-2xl font-bold">Apres le don</h2>
-        <p className="mb-6 text-[var(--color-text-muted)]">
+        <p className="mb-6 text-(--color-text-muted)">
           Ces gestes simples favorisent une recuperation rapide et confortable.
         </p>
         <div className="space-y-4">
           {TIPS_AFTER.map((tip, i) => (
             <article
               key={tip.id}
-              className="flex gap-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+              className="flex gap-4 rounded-2xl border border-(--color-border) bg-(--color-surface) p-5"
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-blue)]/10 text-sm font-bold text-[var(--color-blue)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--color-blue)/10 text-sm font-bold text-(--color-blue)">
                 {i + 1}
               </span>
               <div>
                 <h3 className="text-lg font-bold">{tip.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-[var(--color-text-muted)]">
+                <p className="mt-1 text-sm leading-relaxed text-(--color-text-muted)">
                   {tip.summary}
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">
+                <p className="mt-2 text-sm leading-relaxed text-(--color-text-muted)">
                   {tip.detail}
                 </p>
               </div>
@@ -102,24 +102,24 @@ export default function ConseilsPage() {
       </section>
 
       {/* Internal links */}
-      <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+      <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
         <h2 className="mb-4 text-lg font-bold">Pour aller plus loin</h2>
         <div className="flex flex-wrap gap-3">
           <Link
             href="/guide-don-du-sang"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Guide complet <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <Link
             href="/eligibilite"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Verifier mon eligibilite <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <Link
             href="/mythes-et-realites"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Mythes et realites <ArrowRight className="h-3.5 w-3.5" />
           </Link>

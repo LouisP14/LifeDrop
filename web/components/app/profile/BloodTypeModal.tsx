@@ -37,7 +37,7 @@ export function BloodTypeModal({ onClose }: { onClose: () => void }) {
         </div>
         <button
           onClick={() => handleSelect("unknown")}
-          className="mt-2 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] py-3 text-sm text-[var(--color-text-muted)]"
+          className="mt-2 w-full rounded-xl border border-(--color-border) bg-(--color-surface) py-3 text-sm text-(--color-text-muted)"
         >
           Je ne sais pas
         </button>

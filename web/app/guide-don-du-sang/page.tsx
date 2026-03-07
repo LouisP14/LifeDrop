@@ -44,7 +44,7 @@ export default function GuideDonDuSangPage() {
       <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
         Guide complet du don du sang en France
       </h1>
-      <p className="mb-10 text-lg text-[var(--color-text-muted)]">
+      <p className="mb-10 text-lg text-(--color-text-muted)">
         Tout ce qu&apos;il faut savoir pour donner son sang : types de dons,
         conditions d&apos;eligibilite, deroulement et conseils pratiques.
       </p>
@@ -60,7 +60,7 @@ export default function GuideDonDuSangPage() {
             return (
               <div
                 key={key}
-                className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6"
+                className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6"
               >
                 <div
                   className="mb-3 inline-flex rounded-xl p-2.5"
@@ -69,10 +69,10 @@ export default function GuideDonDuSangPage() {
                   {icon}
                 </div>
                 <h3 className="mb-1 text-lg font-bold">{label.label}</h3>
-                <p className="text-sm text-[var(--color-text-muted)]">
+                <p className="text-sm text-(--color-text-muted)">
                   Delai entre deux dons : <strong>{cooldown} jours</strong>
                 </p>
-                <p className="text-sm text-[var(--color-text-muted)]">
+                <p className="text-sm text-(--color-text-muted)">
                   Vies sauvees : <strong style={{ color }}>{lives}</strong> par don
                 </p>
               </div>
@@ -86,33 +86,33 @@ export default function GuideDonDuSangPage() {
         <h2 className="mb-6 text-2xl font-bold">
           Conditions d&apos;eligibilite
         </h2>
-        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-          <ul className="space-y-3 text-[var(--color-text-muted)]">
+        <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
+          <ul className="space-y-3 text-(--color-text-muted)">
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
-              Avoir entre <strong className="text-[var(--color-text)]">18 et 70 ans</strong>
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
+              Avoir entre <strong className="text-(--color-text)">18 et 70 ans</strong>
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
-              Peser au minimum <strong className="text-[var(--color-text)]">50 kg</strong>
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
+              Peser au minimum <strong className="text-(--color-text)">50 kg</strong>
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
-              Etre en <strong className="text-[var(--color-text)]">bonne sante generale</strong>
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
+              Etre en <strong className="text-(--color-text)">bonne sante generale</strong>
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
-              Respecter le <strong className="text-[var(--color-text)]">delai legal</strong> depuis le dernier don
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
+              Respecter le <strong className="text-(--color-text)">delai legal</strong> depuis le dernier don
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
-              Presenter une <strong className="text-[var(--color-text)]">piece d&apos;identite</strong> valide
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
+              Presenter une <strong className="text-(--color-text)">piece d&apos;identite</strong> valide
             </li>
           </ul>
           <div className="mt-4">
             <Link
               href="/eligibilite"
-              className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)]"
+              className="inline-flex items-center gap-1 text-sm font-medium text-(--color-primary)"
             >
               Verifier mon eligibilite <ArrowRight className="h-3.5 w-3.5" />
             </Link>
@@ -127,14 +127,14 @@ export default function GuideDonDuSangPage() {
           {TIPS_BEFORE.map((tip, i) => (
             <div
               key={tip.id}
-              className="flex gap-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4"
+              className="flex gap-4 rounded-xl border border-(--color-border) bg-(--color-surface) p-4"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-sm font-bold text-[var(--color-primary)]">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-(--color-primary)/10 text-sm font-bold text-(--color-primary)">
                 {i + 1}
               </span>
               <div>
                 <h3 className="font-bold">{tip.title}</h3>
-                <p className="mt-1 text-sm text-[var(--color-text-muted)]">
+                <p className="mt-1 text-sm text-(--color-text-muted)">
                   {tip.detail}
                 </p>
               </div>
@@ -150,14 +150,14 @@ export default function GuideDonDuSangPage() {
           {TIPS_AFTER.map((tip, i) => (
             <div
               key={tip.id}
-              className="flex gap-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4"
+              className="flex gap-4 rounded-xl border border-(--color-border) bg-(--color-surface) p-4"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-blue)]/10 text-sm font-bold text-[var(--color-blue)]">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-(--color-blue)/10 text-sm font-bold text-(--color-blue)">
                 {i + 1}
               </span>
               <div>
                 <h3 className="font-bold">{tip.title}</h3>
-                <p className="mt-1 text-sm text-[var(--color-text-muted)]">
+                <p className="mt-1 text-sm text-(--color-text-muted)">
                   {tip.detail}
                 </p>
               </div>
@@ -173,7 +173,7 @@ export default function GuideDonDuSangPage() {
           {DID_YOU_KNOW.map((card) => (
             <div
               key={card.id}
-              className="rounded-xl border bg-[var(--color-surface)] p-5"
+              className="rounded-xl border bg-(--color-surface) p-5"
               style={{ borderColor: card.color + "30" }}
             >
               <span
@@ -183,7 +183,7 @@ export default function GuideDonDuSangPage() {
                 {card.category}
               </span>
               <h3 className="mb-2 font-bold">{card.title}</h3>
-              <p className="text-sm leading-relaxed text-[var(--color-text-muted)]">
+              <p className="text-sm leading-relaxed text-(--color-text-muted)">
                 {card.content}
               </p>
             </div>
@@ -192,24 +192,24 @@ export default function GuideDonDuSangPage() {
       </section>
 
       {/* Links */}
-      <section className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+      <section className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
         <h2 className="mb-4 text-lg font-bold">Pour aller plus loin</h2>
         <div className="flex flex-wrap gap-3">
           <Link
             href="/groupes-sanguins"
-            className="rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Compatibilite des groupes sanguins
           </Link>
           <Link
             href="/mythes-et-realites"
-            className="rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Mythes et realites
           </Link>
           <Link
             href="/conseils"
-            className="rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Conseils detailles
           </Link>

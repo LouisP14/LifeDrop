@@ -35,7 +35,7 @@ export default function AppPage() {
   if (!mounted || loading || !user || !synced) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Droplets className="h-8 w-8 animate-pulse text-[var(--color-primary)]" />
+        <Droplets className="h-8 w-8 animate-pulse text-(--color-primary)" />
       </div>
     );
   }

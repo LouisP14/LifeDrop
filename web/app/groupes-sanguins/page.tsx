@@ -38,7 +38,7 @@ export default function GroupesSanguinsPage() {
       <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
         Compatibilite des groupes sanguins
       </h1>
-      <p className="mb-10 text-lg text-[var(--color-text-muted)]">
+      <p className="mb-10 text-lg text-(--color-text-muted)">
         Decouvrez qui peut donner a qui. Le tableau ci-dessous montre la
         compatibilite entre les 8 groupes sanguins pour la transfusion.
       </p>
@@ -51,13 +51,13 @@ export default function GroupesSanguinsPage() {
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
-              <th className="border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-left text-xs font-bold uppercase text-[var(--color-text-muted)]">
+              <th className="border border-(--color-border) bg-(--color-surface) p-3 text-left text-xs font-bold uppercase text-(--color-text-muted)">
                 Donneur ↓ / Receveur →
               </th>
               {ALL_TYPES.map((type) => (
                 <th
                   key={type}
-                  className="border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-center font-bold"
+                  className="border border-(--color-border) bg-(--color-surface) p-3 text-center font-bold"
                 >
                   {type}
                 </th>
@@ -67,7 +67,7 @@ export default function GroupesSanguinsPage() {
           <tbody>
             {ALL_TYPES.map((donor) => (
               <tr key={donor}>
-                <td className="border border-[var(--color-border)] bg-[var(--color-surface)] p-3 font-bold text-[var(--color-primary)]">
+                <td className="border border-(--color-border) bg-(--color-surface) p-3 font-bold text-(--color-primary)">
                   {donor}
                 </td>
                 {ALL_TYPES.map((receiver) => {
@@ -76,12 +76,12 @@ export default function GroupesSanguinsPage() {
                   return (
                     <td
                       key={receiver}
-                      className="border border-[var(--color-border)] p-3 text-center"
+                      className="border border-(--color-border) p-3 text-center"
                     >
                       {canDonate ? (
-                        <CheckCircle className="mx-auto h-4 w-4 text-[var(--color-green)]" />
+                        <CheckCircle className="mx-auto h-4 w-4 text-(--color-green)" />
                       ) : (
-                        <XCircle className="mx-auto h-4 w-4 text-[var(--color-text-muted)]/30" />
+                        <XCircle className="mx-auto h-4 w-4 text-(--color-text-muted)/30" />
                       )}
                     </td>
                   );
@@ -90,7 +90,7 @@ export default function GroupesSanguinsPage() {
             ))}
           </tbody>
         </table>
-        <p className="mt-2 text-xs text-[var(--color-text-muted)]">
+        <p className="mt-2 text-xs text-(--color-text-muted)">
           &#10003; = compatible &nbsp;&nbsp; &#10007; = incompatible
         </p>
       </section>
@@ -103,23 +103,23 @@ export default function GroupesSanguinsPage() {
             <Link
               key={bt.slug}
               href={`/groupes-sanguins/${bt.slug}`}
-              className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors hover:border-[var(--color-primary)]/30"
+              className="group rounded-2xl border border-(--color-border) bg-(--color-surface) p-6 transition-colors hover:border-(--color-primary)/30"
             >
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-3xl font-extrabold text-[var(--color-primary)]">
+                <span className="text-3xl font-extrabold text-(--color-primary)">
                   {bt.label}
                 </span>
-                <ArrowRight className="h-5 w-5 text-[var(--color-text-muted)] opacity-0 transition-opacity group-hover:opacity-100" />
+                <ArrowRight className="h-5 w-5 text-(--color-text-muted) opacity-0 transition-opacity group-hover:opacity-100" />
               </div>
-              <p className="mb-3 text-sm text-[var(--color-text-muted)]">
+              <p className="mb-3 text-sm text-(--color-text-muted)">
                 {bt.description}
               </p>
-              <div className="flex gap-2 text-xs text-[var(--color-text-muted)]">
-                <span>Donne a : <strong className="text-[var(--color-text)]">{bt.canDonateTo.length}</strong> groupes</span>
+              <div className="flex gap-2 text-xs text-(--color-text-muted)">
+                <span>Donne a : <strong className="text-(--color-text)">{bt.canDonateTo.length}</strong> groupes</span>
                 <span>&middot;</span>
-                <span>Recoit de : <strong className="text-[var(--color-text)]">{bt.canReceiveFrom.length}</strong> groupes</span>
+                <span>Recoit de : <strong className="text-(--color-text)">{bt.canReceiveFrom.length}</strong> groupes</span>
               </div>
-              <p className="mt-2 text-xs text-[var(--color-text-muted)]">
+              <p className="mt-2 text-xs text-(--color-text-muted)">
                 {bt.frequency}
               </p>
             </Link>

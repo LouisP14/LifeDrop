@@ -30,19 +30,19 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
     <>
       <JsonLd data={schema} />
       <nav aria-label="Fil d'Ariane" className="mb-6">
-        <ol className="flex flex-wrap items-center gap-1 text-sm text-[var(--color-text-muted)]">
+        <ol className="flex flex-wrap items-center gap-1 text-sm text-(--color-text-muted)">
           {allItems.map((item, index) => (
             <li key={index} className="flex items-center gap-1">
               {index > 0 && <ChevronRight className="h-3.5 w-3.5" />}
               {item.href ? (
                 <Link
                   href={item.href}
-                  className="transition-colors hover:text-[var(--color-text)]"
+                  className="transition-colors hover:text-(--color-text)"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span className="text-[var(--color-text)]">{item.label}</span>
+                <span className="text-(--color-text)">{item.label}</span>
               )}
             </li>
           ))}

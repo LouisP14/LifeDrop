@@ -39,7 +39,7 @@ export default function MythesPage() {
       <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
         Mythes et realites sur le don du sang
       </h1>
-      <p className="mb-10 text-lg text-[var(--color-text-muted)]">
+      <p className="mb-10 text-lg text-(--color-text-muted)">
         Separons le vrai du faux. Voici les 7 idees recues les plus repandues
         sur le don du sang, avec les faits pour chacune.
       </p>
@@ -49,7 +49,7 @@ export default function MythesPage() {
         {MYTHS_AND_FACTS.map((m) => (
           <article
             key={m.id}
-            className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6"
+            className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6"
           >
             {/* Verdict badge */}
             <div className="mb-3 flex items-center gap-3">
@@ -75,8 +75,8 @@ export default function MythesPage() {
             <h2 className="mb-3 text-lg font-bold">{m.myth}</h2>
 
             {/* Reality - always visible for crawlers */}
-            <div className="border-t border-[var(--color-border)] pt-3">
-              <p className="leading-relaxed text-[var(--color-text-muted)]">
+            <div className="border-t border-(--color-border) pt-3">
+              <p className="leading-relaxed text-(--color-text-muted)">
                 {m.reality}
               </p>
             </div>
@@ -85,24 +85,24 @@ export default function MythesPage() {
       </div>
 
       {/* Internal links */}
-      <div className="mt-10 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+      <div className="mt-10 rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
         <h2 className="mb-4 text-lg font-bold">Articles lies</h2>
         <div className="flex flex-wrap gap-3">
           <Link
             href="/guide-don-du-sang"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Guide du don du sang <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <Link
             href="/eligibilite"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Verifier mon eligibilite <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <Link
             href="/groupes-sanguins"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Groupes sanguins <ArrowRight className="h-3.5 w-3.5" />
           </Link>

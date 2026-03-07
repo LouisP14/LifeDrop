@@ -32,7 +32,7 @@ export function EligibilityChecker() {
     : null;
 
   return (
-    <div className="rounded-2xl border border-[var(--color-primary)]/20 bg-[var(--color-surface)] p-6">
+    <div className="rounded-2xl border border-(--color-primary)/20 bg-(--color-surface) p-6">
       <h2 className="mb-4 text-lg font-bold">Calculer mon eligibilite</h2>
 
       <div className="mb-6 grid gap-4 sm:grid-cols-2">
@@ -40,7 +40,7 @@ export function EligibilityChecker() {
         <div>
           <label
             htmlFor="lastDonation"
-            className="mb-1.5 block text-sm font-medium text-[var(--color-text-muted)]"
+            className="mb-1.5 block text-sm font-medium text-(--color-text-muted)"
           >
             Date de votre dernier don
           </label>
@@ -50,7 +50,7 @@ export function EligibilityChecker() {
             value={lastDonationDate}
             onChange={(e) => setLastDonationDate(e.target.value)}
             max={new Date().toISOString().split("T")[0]}
-            className="w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-2.5 text-[var(--color-text)] outline-none focus:border-[var(--color-primary)]"
+            className="w-full rounded-lg border border-(--color-border) bg-(--color-bg) px-4 py-2.5 text-(--color-text) outline-none focus:border-(--color-primary)"
           />
         </div>
 
@@ -58,7 +58,7 @@ export function EligibilityChecker() {
         <div>
           <label
             htmlFor="donationType"
-            className="mb-1.5 block text-sm font-medium text-[var(--color-text-muted)]"
+            className="mb-1.5 block text-sm font-medium text-(--color-text-muted)"
           >
             Type de don effectue
           </label>
@@ -66,7 +66,7 @@ export function EligibilityChecker() {
             id="donationType"
             value={lastDonationType}
             onChange={(e) => setLastDonationType(e.target.value as DonationType)}
-            className="w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-2.5 text-[var(--color-text)] outline-none focus:border-[var(--color-primary)]"
+            className="w-full rounded-lg border border-(--color-border) bg-(--color-bg) px-4 py-2.5 text-(--color-text) outline-none focus:border-(--color-primary)"
           >
             {TYPES.map(({ key }) => (
               <option key={key} value={key}>
@@ -80,7 +80,7 @@ export function EligibilityChecker() {
       {/* Results */}
       {results && (
         <div className="space-y-3">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-(--color-text-muted)">
             Votre eligibilite par type de don
           </h3>
           {results.map((r) => (
@@ -99,12 +99,12 @@ export function EligibilityChecker() {
                 </span>
               </div>
               {r.canDonate ? (
-                <span className="flex items-center gap-1.5 text-sm font-bold text-[var(--color-green)]">
+                <span className="flex items-center gap-1.5 text-sm font-bold text-(--color-green)">
                   <CheckCircle className="h-4 w-4" />
                   Eligible
                 </span>
               ) : (
-                <span className="text-right text-sm text-[var(--color-text-muted)]">
+                <span className="text-right text-sm text-(--color-text-muted)">
                   <strong style={{ color: r.color }}>{r.daysRemaining}j</strong>{" "}
                   restants &middot;{" "}
                   {format(r.eligibleFrom, "d MMM yyyy", { locale: fr })}
@@ -116,7 +116,7 @@ export function EligibilityChecker() {
       )}
 
       {!results && (
-        <p className="text-center text-sm text-[var(--color-text-muted)]">
+        <p className="text-center text-sm text-(--color-text-muted)">
           Renseignez la date de votre dernier don pour voir votre eligibilite.
         </p>
       )}

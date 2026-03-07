@@ -33,7 +33,7 @@ export default function AuthPage() {
   if (authLoading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Droplets className="h-8 w-8 animate-pulse text-[var(--color-primary)]" />
+        <Droplets className="h-8 w-8 animate-pulse text-(--color-primary)" />
       </div>
     );
   }
@@ -41,7 +41,7 @@ export default function AuthPage() {
   if (redirecting) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Droplets className="h-8 w-8 animate-pulse text-[var(--color-primary)]" />
+        <Droplets className="h-8 w-8 animate-pulse text-(--color-primary)" />
       </div>
     );
   }
@@ -101,10 +101,10 @@ export default function AuthPage() {
             <Logo size={56} />
           </div>
           <h1 className="mb-1 text-2xl font-extrabold">
-            <span className="text-[var(--color-text)]">life</span>
-            <span className="text-[var(--color-primary)]">drop</span>
+            <span className="text-(--color-text)">life</span>
+            <span className="text-(--color-primary)">drop</span>
           </h1>
-          <p className="text-sm text-[var(--color-text-muted)]">
+          <p className="text-sm text-(--color-text-muted)">
             {mode === "login"
               ? "Connecte-toi pour acceder a ton espace"
               : "Cree ton compte pour commencer"}
@@ -112,7 +112,7 @@ export default function AuthPage() {
         </div>
 
         {/* Tabs */}
-        <div className="mb-6 flex rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-1">
+        <div className="mb-6 flex rounded-xl border border-(--color-border) bg-(--color-surface) p-1">
           <button
             onClick={() => { setMode("login"); setError(""); setSuccessMessage(""); }}
             className="flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-sm font-bold transition-all"
@@ -141,7 +141,7 @@ export default function AuthPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="mb-1 flex items-center gap-1 text-sm font-medium text-[var(--color-text-muted)]">
+            <label className="mb-1 flex items-center gap-1 text-sm font-medium text-(--color-text-muted)">
               <Mail className="h-3.5 w-3.5" /> Email
             </label>
             <input
@@ -150,13 +150,13 @@ export default function AuthPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="ton@email.com"
               autoComplete="email"
-              className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]/50 outline-none focus:border-[var(--color-primary)]"
+              className="w-full rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-3 text-sm text-(--color-text) placeholder:text-(--color-text-muted)/50 outline-none focus:border-(--color-primary)"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="mb-1 flex items-center gap-1 text-sm font-medium text-[var(--color-text-muted)]">
+            <label className="mb-1 flex items-center gap-1 text-sm font-medium text-(--color-text-muted)">
               <Lock className="h-3.5 w-3.5" /> Mot de passe
             </label>
             <div className="relative">
@@ -166,12 +166,12 @@ export default function AuthPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Min. 6 caracteres"
                 autoComplete={mode === "login" ? "current-password" : "new-password"}
-                className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 pr-12 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]/50 outline-none focus:border-[var(--color-primary)]"
+                className="w-full rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-3 pr-12 text-sm text-(--color-text) placeholder:text-(--color-text-muted)/50 outline-none focus:border-(--color-primary)"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-(--color-text-muted)"
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
@@ -181,7 +181,7 @@ export default function AuthPage() {
           {/* Confirm password (signup only) */}
           {mode === "signup" && (
             <div>
-              <label className="mb-1 flex items-center gap-1 text-sm font-medium text-[var(--color-text-muted)]">
+              <label className="mb-1 flex items-center gap-1 text-sm font-medium text-(--color-text-muted)">
                 <Lock className="h-3.5 w-3.5" /> Confirmer le mot de passe
               </label>
               <input
@@ -190,7 +190,7 @@ export default function AuthPage() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Retape ton mot de passe"
                 autoComplete="new-password"
-                className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]/50 outline-none focus:border-[var(--color-primary)]"
+                className="w-full rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-3 text-sm text-(--color-text) placeholder:text-(--color-text-muted)/50 outline-none focus:border-(--color-primary)"
               />
             </div>
           )}
@@ -204,7 +204,7 @@ export default function AuthPage() {
 
           {/* Success */}
           {successMessage && (
-            <div className="rounded-xl border border-[var(--color-green)]/30 bg-[var(--color-green)]/10 px-4 py-3 text-sm text-[var(--color-green)]">
+            <div className="rounded-xl border border-(--color-green)/30 bg-(--color-green)/10 px-4 py-3 text-sm text-(--color-green)">
               {successMessage}
             </div>
           )}
@@ -213,7 +213,7 @@ export default function AuthPage() {
           <button
             type="submit"
             disabled={loading}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-(--color-primary) py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
           >
             {loading ? (
               <Droplets className="h-5 w-5 animate-pulse" />
@@ -227,7 +227,7 @@ export default function AuthPage() {
         </form>
 
         {/* Footer */}
-        <p className="mt-6 text-center text-xs text-[var(--color-text-muted)]">
+        <p className="mt-6 text-center text-xs text-(--color-text-muted)">
           100% gratuit &middot; Tes donnees restent privees
         </p>
       </div>

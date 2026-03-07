@@ -59,7 +59,7 @@ export default function EligibilitePage() {
       <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
         Suis-je eligible au don du sang ?
       </h1>
-      <p className="mb-10 text-lg text-[var(--color-text-muted)]">
+      <p className="mb-10 text-lg text-(--color-text-muted)">
         Verifiez en quelques secondes si vous pouvez donner du sang, des
         plaquettes ou du plasma. Basé sur les criteres officiels en France.
       </p>
@@ -72,33 +72,33 @@ export default function EligibilitePage() {
         <h2 className="mb-6 text-2xl font-bold">
           Conditions generales du don du sang en France
         </h2>
-        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-          <ul className="space-y-3 text-[var(--color-text-muted)]">
+        <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
+          <ul className="space-y-3 text-(--color-text-muted)">
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
               <span>
-                <strong className="text-[var(--color-text)]">Age</strong> : entre
+                <strong className="text-(--color-text)">Age</strong> : entre
                 18 et 70 ans
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
               <span>
-                <strong className="text-[var(--color-text)]">Poids</strong> :
+                <strong className="text-(--color-text)">Poids</strong> :
                 minimum 50 kg
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
               <span>
-                <strong className="text-[var(--color-text)]">Sante</strong> :
+                <strong className="text-(--color-text)">Sante</strong> :
                 bonne sante generale, pas de maladie infectieuse en cours
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="mt-0.5 text-[var(--color-green)]">&#10003;</span>
+              <span className="mt-0.5 text-(--color-green)">&#10003;</span>
               <span>
-                <strong className="text-[var(--color-text)]">Tatouage/Piercing</strong> :
+                <strong className="text-(--color-text)">Tatouage/Piercing</strong> :
                 delai de 4 mois apres un tatouage ou piercing
               </span>
             </li>
@@ -115,10 +115,10 @@ export default function EligibilitePage() {
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
-                <th className="border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-left font-bold">
+                <th className="border border-(--color-border) bg-(--color-surface) p-3 text-left font-bold">
                   Type de don
                 </th>
-                <th className="border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-center font-bold">
+                <th className="border border-(--color-border) bg-(--color-surface) p-3 text-center font-bold">
                   Delai minimum
                 </th>
               </tr>
@@ -126,10 +126,10 @@ export default function EligibilitePage() {
             <tbody>
               {TYPES.map((type) => (
                 <tr key={type}>
-                  <td className="border border-[var(--color-border)] p-3 font-medium">
+                  <td className="border border-(--color-border) p-3 font-medium">
                     {DONATION_TYPE_LABELS[type].label}
                   </td>
-                  <td className="border border-[var(--color-border)] p-3 text-center font-bold text-[var(--color-primary)]">
+                  <td className="border border-(--color-border) p-3 text-center font-bold text-(--color-primary)">
                     {DONATION_COOLDOWN_DAYS[type]} jours
                   </td>
                 </tr>
@@ -140,24 +140,24 @@ export default function EligibilitePage() {
       </section>
 
       {/* Internal links */}
-      <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+      <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
         <h2 className="mb-4 text-lg font-bold">En savoir plus</h2>
         <div className="flex flex-wrap gap-3">
           <Link
             href="/guide-don-du-sang"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Guide complet <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <Link
             href="/mythes-et-realites"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Mythes et realites <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <Link
             href="/conseils"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
             Conseils avant/apres <ArrowRight className="h-3.5 w-3.5" />
           </Link>

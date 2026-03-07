@@ -42,7 +42,7 @@ export function LastDonationStep({ onNext }: { onNext: () => void }) {
       <ProgressDots total={4} current={2} />
 
       <h2 className="mb-1 mt-8 text-2xl font-extrabold">Ton dernier don</h2>
-      <p className="mb-6 text-sm text-[var(--color-text-muted)]">
+      <p className="mb-6 text-sm text-(--color-text-muted)">
         Quand as-tu donne pour la derniere fois ?
       </p>
 
@@ -65,7 +65,7 @@ export function LastDonationStep({ onNext }: { onNext: () => void }) {
 
       {showTypeSelector && (
         <div className="mb-6 animate-[fadeInUp_300ms_ease-out]">
-          <label className="mb-2 text-sm font-medium text-[var(--color-text-muted)]">
+          <label className="mb-2 text-sm font-medium text-(--color-text-muted)">
             Type de don
           </label>
           <div className="grid grid-cols-3 gap-2">
@@ -95,13 +95,13 @@ export function LastDonationStep({ onNext }: { onNext: () => void }) {
         <button
           onClick={handleContinue}
           disabled={selected === null}
-          className="w-full rounded-xl bg-[var(--color-primary)] py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
+          className="w-full rounded-xl bg-(--color-primary) py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
         >
           Continuer
         </button>
         <button
           onClick={onNext}
-          className="w-full py-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+          className="w-full py-2 text-sm text-(--color-text-muted) hover:text-(--color-text)"
         >
           Passer cette etape
         </button>

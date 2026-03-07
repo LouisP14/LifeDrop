@@ -22,18 +22,18 @@ const BLOOD_TYPE_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+    <footer className="border-t border-(--color-border) bg-(--color-surface)">
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <div className="mb-3 flex items-center gap-2 text-[var(--color-primary)]">
+            <div className="mb-3 flex items-center gap-2 text-(--color-primary)">
               <Logo size={24} />
               <span className="text-lg font-extrabold">
-                <span className="text-[var(--color-text)]">life</span>drop
+                <span className="text-(--color-text)">life</span>drop
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-[var(--color-text-muted)]">
+            <p className="text-sm leading-relaxed text-(--color-text-muted)">
               Application gratuite de suivi du don du sang en France. Chaque don
               compte, chaque vie aussi.
             </p>
@@ -41,7 +41,7 @@ export function Footer() {
 
           {/* Content links */}
           <div>
-            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-(--color-text-muted)">
               Informations
             </h3>
             <ul className="space-y-2">
@@ -49,7 +49,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]"
+                    className="text-sm text-(--color-text-muted) transition-colors hover:text-(--color-text)"
                   >
                     {link.label}
                   </Link>
@@ -60,7 +60,7 @@ export function Footer() {
 
           {/* Blood types */}
           <div>
-            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-(--color-text-muted)">
               Groupes sanguins
             </h3>
             <ul className="space-y-2">
@@ -68,7 +68,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]"
+                    className="text-sm text-(--color-text-muted) transition-colors hover:text-(--color-text)"
                   >
                     {link.label}
                   </Link>
@@ -79,16 +79,16 @@ export function Footer() {
 
           {/* CTA */}
           <div>
-            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-(--color-text-muted)">
               L&apos;application
             </h3>
-            <p className="mb-4 text-sm text-[var(--color-text-muted)]">
+            <p className="mb-4 text-sm text-(--color-text-muted)">
               Suivez vos dons, verifiez votre eligibilite et mesurez votre
               impact.
             </p>
             <Link
               href="/app"
-              className="inline-block rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
+              className="inline-block rounded-lg bg-(--color-primary) px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
             >
               Ouvrir LifeDrop
             </Link>
@@ -96,7 +96,7 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-10 border-t border-[var(--color-border)] pt-6 text-center text-xs text-[var(--color-text-muted)]">
+        <div className="mt-10 border-t border-(--color-border) pt-6 text-center text-xs text-(--color-text-muted)">
           <p>
             LifeDrop est un projet independant. Les informations fournies ne
             remplacent pas un avis medical.
@@ -107,7 +107,7 @@ export function Footer() {
               href="https://dondesang.efs.sante.fr"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-primary)] underline"
+              className="text-(--color-primary) underline"
             >
               dondesang.efs.sante.fr
             </a>

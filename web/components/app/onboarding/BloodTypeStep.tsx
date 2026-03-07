@@ -41,22 +41,22 @@ export function BloodTypeStep({ onNext }: { onNext: () => void }) {
       <ProgressDots total={4} current={1} />
 
       <h2 className="mb-1 mt-8 text-2xl font-extrabold">Parle-nous de toi</h2>
-      <p className="mb-6 text-sm text-[var(--color-text-muted)]">
+      <p className="mb-6 text-sm text-(--color-text-muted)">
         Ces informations nous aident a personnaliser ton experience.
       </p>
 
       {/* Name */}
-      <label className="mb-1 text-sm font-medium text-[var(--color-text-muted)]">Prenom</label>
+      <label className="mb-1 text-sm font-medium text-(--color-text-muted)">Prenom</label>
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Ex: Pauline, Mehdi..."
-        className="mb-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]/50 outline-none focus:border-[var(--color-primary)]"
+        className="mb-6 rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-3 text-(--color-text) placeholder:text-(--color-text-muted)/50 outline-none focus:border-(--color-primary)"
       />
 
       {/* Blood Type */}
-      <label className="mb-2 text-sm font-medium text-[var(--color-text-muted)]">Groupe sanguin</label>
+      <label className="mb-2 text-sm font-medium text-(--color-text-muted)">Groupe sanguin</label>
       <div className="mb-2 grid grid-cols-4 gap-2">
         {BLOOD_TYPES.map((bt) => (
           <button
@@ -86,7 +86,7 @@ export function BloodTypeStep({ onNext }: { onNext: () => void }) {
       </button>
 
       {/* Sex */}
-      <label className="mb-2 text-sm font-medium text-[var(--color-text-muted)]">Sexe biologique</label>
+      <label className="mb-2 text-sm font-medium text-(--color-text-muted)">Sexe biologique</label>
       <div className="mb-8 grid grid-cols-2 gap-3">
         {([
           { value: "male" as BiologicalSex, label: "Homme" },
@@ -110,7 +110,7 @@ export function BloodTypeStep({ onNext }: { onNext: () => void }) {
       <button
         onClick={handleContinue}
         disabled={!canContinue}
-        className="mt-auto rounded-xl bg-[var(--color-primary)] py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
+        className="mt-auto rounded-xl bg-(--color-primary) py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
       >
         Continuer
       </button>

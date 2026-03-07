@@ -19,8 +19,7 @@
       "@shared/*": ["./shared/*"],
       "date-fns": ["./node_modules/date-fns"],
       "date-fns/*": ["./node_modules/date-fns/*"]
-    },
-    "baseUrl": "."
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

@@ -59,15 +59,15 @@ export default async function BloodTypePage({
       />
 
       {/* Hero */}
-      <div className="mb-10 rounded-2xl border border-[var(--color-primary)]/20 bg-gradient-to-br from-[rgba(248,113,113,0.08)] to-transparent p-8 text-center">
-        <div className="mb-4 text-7xl font-extrabold text-[var(--color-primary)]">
+      <div className="mb-10 rounded-2xl border border-(--color-primary)/20 bg-gradient-to-br from-[rgba(248,113,113,0.08)] to-transparent p-8 text-center">
+        <div className="mb-4 text-7xl font-extrabold text-(--color-primary)">
           {bt.label}
         </div>
         <h1 className="mb-3 text-2xl font-extrabold md:text-3xl">{bt.title}</h1>
-        <p className="mx-auto max-w-xl text-[var(--color-text-muted)]">
+        <p className="mx-auto max-w-xl text-(--color-text-muted)">
           {bt.description}
         </p>
-        <p className="mt-3 text-sm text-[var(--color-text-muted)]">
+        <p className="mt-3 text-sm text-(--color-text-muted)">
           {bt.frequency}
         </p>
       </div>
@@ -75,8 +75,8 @@ export default async function BloodTypePage({
       {/* Compatibility */}
       <div className="mb-8 grid gap-4 sm:grid-cols-2">
         {/* Can receive from */}
-        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-          <div className="mb-4 flex items-center gap-2 text-[var(--color-text-muted)]">
+        <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
+          <div className="mb-4 flex items-center gap-2 text-(--color-text-muted)">
             <ArrowDownCircle className="h-5 w-5" />
             <h2 className="font-bold">Peut recevoir de</h2>
           </div>
@@ -84,7 +84,7 @@ export default async function BloodTypePage({
             {bt.canReceiveFrom.map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-2)] px-4 py-1.5 text-sm font-bold text-[var(--color-text-muted)]"
+                className="rounded-full border border-(--color-border) bg-(--color-surface-2) px-4 py-1.5 text-sm font-bold text-(--color-text-muted)"
               >
                 {t}
               </span>
@@ -93,16 +93,16 @@ export default async function BloodTypePage({
         </div>
 
         {/* Can donate to */}
-        <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-          <div className="mb-4 flex items-center gap-2 text-[var(--color-text)]">
-            <ArrowUpCircle className="h-5 w-5 text-[var(--color-primary)]" />
+        <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
+          <div className="mb-4 flex items-center gap-2 text-(--color-text)">
+            <ArrowUpCircle className="h-5 w-5 text-(--color-primary)" />
             <h2 className="font-bold">Peut donner a</h2>
           </div>
           <div className="flex flex-wrap gap-2">
             {bt.canDonateTo.map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 px-4 py-1.5 text-sm font-bold text-[var(--color-primary)]"
+                className="rounded-full border border-(--color-primary)/30 bg-(--color-primary)/10 px-4 py-1.5 text-sm font-bold text-(--color-primary)"
               >
                 {t}
               </span>
@@ -112,9 +112,9 @@ export default async function BloodTypePage({
       </div>
 
       {/* Tip */}
-      <div className="mb-10 flex gap-3 rounded-xl border border-[var(--color-blue)]/20 bg-[var(--color-blue)]/5 p-5">
-        <Info className="h-5 w-5 shrink-0 text-[var(--color-blue)]" />
-        <p className="text-sm leading-relaxed text-[var(--color-text-muted)]">
+      <div className="mb-10 flex gap-3 rounded-xl border border-(--color-blue)/20 bg-(--color-blue)/5 p-5">
+        <Info className="h-5 w-5 shrink-0 text-(--color-blue)" />
+        <p className="text-sm leading-relaxed text-(--color-text-muted)">
           {bt.tip}
         </p>
       </div>
@@ -127,14 +127,14 @@ export default async function BloodTypePage({
             <Link
               key={b.slug}
               href={`/groupes-sanguins/${b.slug}`}
-              className="rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-bold transition-colors hover:bg-[var(--color-surface)] hover:text-[var(--color-primary)]"
+              className="rounded-lg border border-(--color-border) px-4 py-2 text-sm font-bold transition-colors hover:bg-(--color-surface) hover:text-(--color-primary)"
             >
               {b.label}
             </Link>
           ))}
           <Link
             href="/groupes-sanguins"
-            className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-surface)]"
+            className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium text-(--color-text-muted) transition-colors hover:bg-(--color-surface)"
           >
             Voir le tableau complet <ArrowRight className="h-3.5 w-3.5" />
           </Link>

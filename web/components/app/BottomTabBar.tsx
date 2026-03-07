@@ -18,7 +18,7 @@ export function BottomTabBar({
   onTabChange: (tab: AppTab) => void;
 }) {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--color-border)] bg-[var(--color-bg)]/95 backdrop-blur-md">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-(--color-border) bg-(--color-bg)/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-lg">
         {TABS.map((t) => (
           <button

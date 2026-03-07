@@ -22,21 +22,21 @@ export function NotificationsStep() {
     <div className="flex min-h-screen flex-col items-center px-4 py-8 animate-[fadeInUp_400ms_ease-out]">
       <ProgressDots total={4} current={3} />
 
-      <div className="mt-12 flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-primary)]/10">
-        <Bell className="h-10 w-10 text-[var(--color-primary)]" />
+      <div className="mt-12 flex h-20 w-20 items-center justify-center rounded-full bg-(--color-primary)/10">
+        <Bell className="h-10 w-10 text-(--color-primary)" />
       </div>
 
       <h2 className="mb-2 mt-6 text-2xl font-extrabold text-center">
         Rester informe
       </h2>
-      <p className="mb-8 text-center text-sm text-[var(--color-text-muted)]">
+      <p className="mb-8 text-center text-sm text-(--color-text-muted)">
         Recois un rappel quand tu es a nouveau eligible pour donner.
       </p>
 
       {/* Toggle */}
       <button
         onClick={() => setEnabled(!enabled)}
-        className="mb-4 flex w-full items-center justify-between rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-4"
+        className="mb-4 flex w-full items-center justify-between rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-4"
       >
         <span className="text-sm font-medium">Activer les rappels</span>
         <div
@@ -51,9 +51,9 @@ export function NotificationsStep() {
       </button>
 
       {enabled && (
-        <div className="mb-4 w-full animate-[fadeInUp_200ms_ease-out] rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
-          <p className="text-xs text-[var(--color-text-muted)]">
-            <strong className="text-[var(--color-text)]">Apercu :</strong>{" "}
+        <div className="mb-4 w-full animate-[fadeInUp_200ms_ease-out] rounded-xl border border-(--color-border) bg-(--color-surface) p-4">
+          <p className="text-xs text-(--color-text-muted)">
+            <strong className="text-(--color-text)">Apercu :</strong>{" "}
             &quot;Tu es a nouveau eligible pour donner du sang ! Chaque don peut sauver 3 vies.&quot;
           </p>
         </div>
@@ -62,7 +62,7 @@ export function NotificationsStep() {
       <div className="mt-auto w-full">
         <button
           onClick={handleFinish}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-(--color-primary) py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95"
         >
           <Rocket className="h-5 w-5" />
           Commencer LifeDrop

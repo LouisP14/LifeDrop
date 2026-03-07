@@ -73,26 +73,26 @@ export function RegisterDonationModal({
         <h3 className="mb-4 text-lg font-extrabold">Enregistrer un don</h3>
 
         {/* Impact banner */}
-        <div className="mb-4 flex items-center gap-2 rounded-xl bg-[var(--color-primary)]/10 px-4 py-3">
-          <Heart className="h-5 w-5 text-[var(--color-primary)]" />
+        <div className="mb-4 flex items-center gap-2 rounded-xl bg-(--color-primary)/10 px-4 py-3">
+          <Heart className="h-5 w-5 text-(--color-primary)" />
           <span className="text-sm">
             Ton don peut sauver jusqu&apos;a{" "}
-            <strong className="text-[var(--color-primary)]">{livesCount} vie{livesCount > 1 ? "s" : ""}</strong>
+            <strong className="text-(--color-primary)">{livesCount} vie{livesCount > 1 ? "s" : ""}</strong>
           </span>
         </div>
 
         {/* Blocked warning */}
         {isBlocked && (
-          <div className="mb-4 flex items-center gap-2 rounded-xl border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 px-4 py-3">
-            <AlertTriangle className="h-4 w-4 text-[var(--color-accent)]" />
-            <span className="text-xs text-[var(--color-accent)]">
+          <div className="mb-4 flex items-center gap-2 rounded-xl border border-(--color-accent)/30 bg-(--color-accent)/5 px-4 py-3">
+            <AlertTriangle className="h-4 w-4 text-(--color-accent)" />
+            <span className="text-xs text-(--color-accent)">
               {eligibility.daysRemaining}j restants avant de pouvoir donner ce type
             </span>
           </div>
         )}
 
         {/* Date */}
-        <p className="mb-4 text-xs text-[var(--color-text-muted)]">
+        <p className="mb-4 text-xs text-(--color-text-muted)">
           {format(new Date(), "EEEE d MMMM yyyy", { locale: fr })}
         </p>
 
@@ -115,7 +115,7 @@ export function RegisterDonationModal({
                 <span style={{ color: colors.main }}>{TYPE_ICONS[type]}</span>
                 <div className="flex-1">
                   <p className="text-sm font-bold">{DONATION_TYPE_LABELS[type].label}</p>
-                  <p className="text-xs text-[var(--color-text-muted)]">
+                  <p className="text-xs text-(--color-text-muted)">
                     Delai : {DONATION_COOLDOWN_DAYS[type]} jours
                   </p>
                 </div>
@@ -133,7 +133,7 @@ export function RegisterDonationModal({
 
         {/* Location */}
         <div className="mb-4">
-          <label className="mb-1 flex items-center gap-1 text-xs text-[var(--color-text-muted)]">
+          <label className="mb-1 flex items-center gap-1 text-xs text-(--color-text-muted)">
             <MapPin className="h-3 w-3" /> Lieu (optionnel)
           </label>
           <input
@@ -141,12 +141,12 @@ export function RegisterDonationModal({
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Ex: EFS Paris"
-            className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]/50 outline-none focus:border-[var(--color-primary)]"
+            className="w-full rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-3 text-sm text-(--color-text) placeholder:text-(--color-text-muted)/50 outline-none focus:border-(--color-primary)"
           />
         </div>
 
         {/* Legal note */}
-        <p className="mb-6 text-[10px] text-[var(--color-text-muted)]">
+        <p className="mb-6 text-[10px] text-(--color-text-muted)">
           Les delais legaux entre deux dons sont fixes par l&apos;EFS. LifeDrop ne se substitue pas a un avis medical.
         </p>
 
@@ -154,7 +154,7 @@ export function RegisterDonationModal({
         <button
           onClick={handleSubmit}
           disabled={isBlocked}
-          className="w-full rounded-xl bg-[var(--color-primary)] py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
+          className="w-full rounded-xl bg-(--color-primary) py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
         >
           Valider ce don
         </button>
