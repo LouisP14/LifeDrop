@@ -82,6 +82,8 @@ export interface AppState {
   setProfile: (profile: UserProfile) => void;
   updateProfile: (partial: Partial<UserProfile>) => void;
   addDonation: (donation: Donation) => void;
+  updateDonation: (donation: Donation) => void;
+  deleteDonation: (donationId: string) => void;
   unlockBadge: (badgeId: string) => void;
   completeOnboarding: () => void;
   resetApp: () => void;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Heart, User, BookOpen, LogOut } from "lucide-react";
+import { Heart, User, BookOpen, Trophy, Building2, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAppStore } from "@web/lib/store";
 import { useAuth } from "@web/hooks/useAuth";
@@ -11,12 +11,14 @@ import { OnboardingWizard } from "./onboarding/OnboardingWizard";
 import { DashboardTab } from "./dashboard/DashboardTab";
 import { ProfileTab } from "./profile/ProfileTab";
 import { EducationTab } from "./education/EducationTab";
+import { LeaderboardTab } from "./leaderboard/LeaderboardTab";
+import { CentersTab } from "./centers/CentersTab";
 import { RegisterDonationModal } from "./donation/RegisterDonationModal";
 import { DonationSuccessModal } from "./donation/DonationSuccessModal";
 import { PWAInstallBanner } from "./PWAInstallBanner";
 import type { DonationType } from "@shared/types";
 
-type AppTab = "dashboard" | "profile" | "education";
+type AppTab = "dashboard" | "profile" | "education" | "leaderboard" | "centers";
 
 interface SuccessData {
   livesSaved: number;
@@ -26,7 +28,9 @@ interface SuccessData {
 
 const SIDEBAR_TABS: { key: AppTab; icon: React.ReactNode; label: string }[] = [
   { key: "dashboard", icon: <Heart className="h-5 w-5" />, label: "Accueil" },
+  { key: "leaderboard", icon: <Trophy className="h-5 w-5" />, label: "Classement" },
   { key: "profile", icon: <User className="h-5 w-5" />, label: "Profil" },
+  { key: "centers", icon: <Building2 className="h-5 w-5" />, label: "Centres" },
   { key: "education", icon: <BookOpen className="h-5 w-5" />, label: "Infos" },
 ];
 
@@ -130,7 +134,9 @@ export function AppShell() {
               onTabChange={setActiveTab}
             />
           )}
+          {activeTab === "leaderboard" && <LeaderboardTab />}
           {activeTab === "profile" && <ProfileTab />}
+          {activeTab === "centers" && <CentersTab />}
           {activeTab === "education" && <EducationTab />}
         </div>
       </div>

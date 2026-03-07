@@ -29,9 +29,12 @@ import { useDonationStats } from "@web/hooks/useDonationStats";
 import { DonationProgressBar } from "../dashboard/DonationProgressBar";
 import { BloodTypeModal } from "./BloodTypeModal";
 import { EditProfileModal } from "./EditProfileModal";
+import { EditDonationModal } from "../donation/EditDonationModal";
+import { DonationHistoryModal } from "../donation/DonationHistoryModal";
 import { NotificationToggle } from "../NotificationToggle";
+import { ThemeToggle } from "../ThemeToggle";
 import { BLOOD_TYPE_INFO, BADGES_CATALOG, DONATION_TYPE_LABELS, DONATION_TYPE_COLORS, LIVES_PER_DONATION_TYPE } from "@shared/constants";
-import type { DonationType } from "@shared/types";
+import type { Donation, DonationType } from "@shared/types";
 
 const BADGE_ICONS: Record<string, React.ReactNode> = {
   water: <Droplets className="h-5 w-5" />,
@@ -61,6 +64,8 @@ export function ProfileTab() {
   const { count, livesSaved, streak, levelConfig, nextLevel, progress } = useDonationStats();
   const [showBloodTypeModal, setShowBloodTypeModal] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
+  const [editingDonation, setEditingDonation] = useState<Donation | null>(null);
+  const [showAllDonations, setShowAllDonations] = useState(false);
   const { signOut } = useAuth();
   const router = useRouter();
 
@@ -242,9 +247,10 @@ export function ProfileTab() {
               {sortedDonations.map((d) => {
                 const colors = DONATION_TYPE_COLORS[d.type];
                 return (
-                  <div
+                  <button
                     key={d.id}
-                    className="flex items-center gap-3 rounded-2xl border p-3.5 transition-all hover:shadow-sm"
+                    onClick={() => setEditingDonation(d)}
+                    className="flex w-full items-center gap-3 rounded-2xl border p-3.5 text-left transition-all hover:shadow-sm hover:opacity-80 active:scale-[0.98]"
                     style={{ borderColor: colors.border, backgroundColor: colors.bg }}
                   >
                     <div
@@ -264,12 +270,23 @@ export function ProfileTab() {
                         )}
                       </p>
                     </div>
-                    <span className="text-sm font-bold" style={{ color: colors.main }}>
-                      {LIVES_PER_DONATION_TYPE[d.type]} {LIVES_PER_DONATION_TYPE[d.type] === 1 ? "vie" : "vies"}
-                    </span>
-                  </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-bold" style={{ color: colors.main }}>
+                        {LIVES_PER_DONATION_TYPE[d.type]} {LIVES_PER_DONATION_TYPE[d.type] === 1 ? "vie" : "vies"}
+                      </span>
+                      <Pencil className="h-3 w-3 text-(--color-text-muted)" />
+                    </div>
+                  </button>
                 );
               })}
+              {donations.length > 5 && (
+                <button
+                  onClick={() => setShowAllDonations(true)}
+                  className="w-full rounded-xl border border-(--color-border) py-2.5 text-sm font-medium text-(--color-primary) transition-all hover:bg-(--color-primary)/5"
+                >
+                  Voir tout ({donations.length} dons)
+                </button>
+              )}
             </div>
           ) : (
             <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-8 text-center">
@@ -284,8 +301,9 @@ export function ProfileTab() {
         </div>
       </div>
 
-      {/* Notifications */}
-      <div className="mt-5 mb-5">
+      {/* Settings */}
+      <div className="mt-5 mb-5 space-y-2.5">
+        <ThemeToggle />
         <NotificationToggle />
       </div>
 
@@ -303,6 +321,18 @@ export function ProfileTab() {
       )}
       {showEditProfile && (
         <EditProfileModal onClose={() => setShowEditProfile(false)} />
+      )}
+      {editingDonation && (
+        <EditDonationModal
+          donation={editingDonation}
+          onClose={() => setEditingDonation(null)}
+        />
+      )}
+      {showAllDonations && (
+        <DonationHistoryModal
+          onClose={() => setShowAllDonations(false)}
+          onEdit={(d) => { setShowAllDonations(false); setEditingDonation(d); }}
+        />
       )}
     </div>
   );

@@ -74,6 +74,31 @@ export async function insertDonation(userId: string, donation: Donation) {
   if (error) throw error;
 }
 
+export async function updateDonation(userId: string, donation: Donation) {
+  const { error } = await supabase
+    .from("donations")
+    .update({
+      date: donation.date,
+      type: donation.type,
+      location: donation.location,
+      notes: donation.notes,
+    })
+    .eq("id", donation.id)
+    .eq("user_id", userId);
+
+  if (error) throw error;
+}
+
+export async function deleteDonation(userId: string, donationId: string) {
+  const { error } = await supabase
+    .from("donations")
+    .delete()
+    .eq("id", donationId)
+    .eq("user_id", userId);
+
+  if (error) throw error;
+}
+
 // ─── Badges ─────────────────────────────────────────────
 
 export async function fetchUserBadges(userId: string): Promise<string[]> {

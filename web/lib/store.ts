@@ -16,6 +16,8 @@ import {
   upsertProfile,
   fetchDonations,
   insertDonation,
+  updateDonation as dbUpdateDonation,
+  deleteDonation as dbDeleteDonation,
   fetchUserBadges,
   upsertUserBadges,
 } from "./supabase-db";
@@ -67,6 +69,48 @@ export const useAppStore = create<AppState & AppStoreExtra>()(
         const uid = get().supabaseUserId;
         if (uid) {
           insertDonation(uid, donation).catch(console.error);
+          const profile = get().profile;
+          if (profile) {
+            const earned = computeEarnedBadgeIds(get().donations, profile);
+            upsertUserBadges(uid, earned).catch(console.error);
+          }
+        }
+      },
+
+      updateDonation: (donation: Donation) => {
+        set((state) => {
+          const newDonations = state.donations.map((d) =>
+            d.id === donation.id ? donation : d,
+          );
+          const profile = state.profile;
+          if (!profile) return { donations: newDonations };
+          const earnedIds = computeEarnedBadgeIds(newDonations, profile);
+          const newBadges = mergeBadges(earnedIds, state.badges);
+          return { donations: newDonations, badges: newBadges };
+        });
+        const uid = get().supabaseUserId;
+        if (uid) {
+          dbUpdateDonation(uid, donation).catch(console.error);
+          const profile = get().profile;
+          if (profile) {
+            const earned = computeEarnedBadgeIds(get().donations, profile);
+            upsertUserBadges(uid, earned).catch(console.error);
+          }
+        }
+      },
+
+      deleteDonation: (donationId: string) => {
+        set((state) => {
+          const newDonations = state.donations.filter((d) => d.id !== donationId);
+          const profile = state.profile;
+          if (!profile) return { donations: newDonations };
+          const earnedIds = computeEarnedBadgeIds(newDonations, profile);
+          const newBadges = mergeBadges(earnedIds, state.badges);
+          return { donations: newDonations, badges: newBadges };
+        });
+        const uid = get().supabaseUserId;
+        if (uid) {
+          dbDeleteDonation(uid, donationId).catch(console.error);
           const profile = get().profile;
           if (profile) {
             const earned = computeEarnedBadgeIds(get().donations, profile);

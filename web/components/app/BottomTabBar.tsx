@@ -1,13 +1,15 @@
 "use client";
 
-import { Heart, User, BookOpen } from "lucide-react";
+import { Heart, User, BookOpen, Trophy, Building2 } from "lucide-react";
 
-type AppTab = "dashboard" | "profile" | "education";
+type AppTab = "dashboard" | "profile" | "education" | "leaderboard" | "centers";
 
 const TABS: { key: AppTab; icon: React.ReactNode; label: string }[] = [
   { key: "dashboard", icon: <Heart className="h-5 w-5" />, label: "Accueil" },
+  { key: "leaderboard", icon: <Trophy className="h-4 w-4" />, label: "Top" },
+  { key: "centers", icon: <Building2 className="h-4 w-4" />, label: "Centres" },
   { key: "profile", icon: <User className="h-5 w-5" />, label: "Profil" },
-  { key: "education", icon: <BookOpen className="h-5 w-5" />, label: "Infos" },
+  { key: "education", icon: <BookOpen className="h-4 w-4" />, label: "Infos" },
 ];
 
 export function BottomTabBar({
