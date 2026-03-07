@@ -24,9 +24,9 @@ export default function AuthPage() {
   // Redirect if already logged in
   useEffect(() => {
     if (isAuthenticated) {
-      router.replace("/app");
+      window.location.href = "/app";
     }
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated]);
 
   if (isAuthenticated) {
     return (
@@ -60,7 +60,7 @@ export default function AuthPage() {
     try {
       if (mode === "login") {
         await signIn(email, password);
-        router.replace("/app");
+        window.location.href = "/app";
       } else {
         await signUp(email, password);
         setSuccessMessage(
