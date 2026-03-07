@@ -113,6 +113,24 @@ export async function fetchUserBadges(userId: string): Promise<string[]> {
 }
 
 export async function upsertUserBadges(userId: string, badgeIds: string[]) {
+  // Remove badges that are no longer earned
+  const { data: existing } = await supabase
+    .from("user_badges")
+    .select("badge_id")
+    .eq("user_id", userId);
+
+  const existingIds = (existing ?? []).map((b) => b.badge_id);
+  const toRemove = existingIds.filter((id) => !badgeIds.includes(id));
+
+  if (toRemove.length > 0) {
+    await supabase
+      .from("user_badges")
+      .delete()
+      .eq("user_id", userId)
+      .in("badge_id", toRemove);
+  }
+
+  // Upsert current badges
   if (badgeIds.length === 0) return;
 
   const rows = badgeIds.map((badgeId) => ({

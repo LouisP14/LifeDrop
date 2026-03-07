@@ -72,17 +72,13 @@ export function mergeBadges(
     const existing = existingMap.get(template.id);
     const isEarned = earnedIds.includes(template.id);
 
-    if (isEarned && existing?.isUnlocked) {
-      return existing;
+    if (isEarned) {
+      return existing?.isUnlocked
+        ? existing
+        : { ...template, isUnlocked: true, unlockedAt: new Date().toISOString() };
     }
-    if (isEarned && !existing?.isUnlocked) {
-      return {
-        ...template,
-        isUnlocked: true,
-        unlockedAt: new Date().toISOString(),
-      };
-    }
-    return existing ?? template;
+    // Badge no longer earned → revoke it
+    return { ...template, isUnlocked: false, unlockedAt: undefined };
   });
 }
 
