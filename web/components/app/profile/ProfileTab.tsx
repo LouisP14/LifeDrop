@@ -29,6 +29,7 @@ import { useDonationStats } from "@web/hooks/useDonationStats";
 import { DonationProgressBar } from "../dashboard/DonationProgressBar";
 import { BloodTypeModal } from "./BloodTypeModal";
 import { EditProfileModal } from "./EditProfileModal";
+import { NotificationToggle } from "../NotificationToggle";
 import { BLOOD_TYPE_INFO, BADGES_CATALOG, DONATION_TYPE_LABELS, DONATION_TYPE_COLORS, LIVES_PER_DONATION_TYPE } from "@shared/constants";
 import type { DonationType } from "@shared/types";
 
@@ -281,6 +282,11 @@ export function ProfileTab() {
             </div>
           )}
         </div>
+      </div>
+
+      {/* Notifications */}
+      <div className="mb-5">
+        <NotificationToggle />
       </div>
 
       {/* Sign out — mobile only */}

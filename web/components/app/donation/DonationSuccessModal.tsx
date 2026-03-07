@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Syringe, Award, Heart, Share2, Loader2 } from "lucide-react";
+import { Syringe, Award, Heart, Share2, Loader2, Bell } from "lucide-react";
 import { useAppStore } from "@web/lib/store";
+import { usePushNotifications } from "@web/hooks/usePushNotifications";
 import { BADGES_CATALOG, DONATION_TYPE_LABELS, LIVES_PER_DONATION_TYPE } from "@shared/constants";
 import { generateShareCard } from "@web/lib/generateShareCard";
 import type { DonationType } from "@shared/types";
@@ -25,6 +26,7 @@ export function DonationSuccessModal({
   const typeLabel = DONATION_TYPE_LABELS[data.donationType].label;
   const livesThisDon = LIVES_PER_DONATION_TYPE[data.donationType];
   const [sharing, setSharing] = useState(false);
+  const { isSupported: pushSupported, isSubscribed: pushSubscribed, subscribe: pushSubscribe } = usePushNotifications();
 
   const handleShare = async () => {
     setSharing(true);
@@ -114,10 +116,30 @@ export function DonationSuccessModal({
           </div>
         )}
 
+        {/* Push notification prompt */}
+        {pushSupported && !pushSubscribed && (
+          <button
+            onClick={pushSubscribe}
+            className="mb-6 flex w-full items-center gap-3 rounded-xl border border-(--color-accent)/30 bg-(--color-accent)/5 p-3.5 text-left transition-all hover:bg-(--color-accent)/10 active:scale-[0.98] animate-[fadeInUp_950ms_ease-out]"
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-(--color-accent)/15">
+              <Bell className="h-4 w-4 text-(--color-accent)" />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-bold">Recevoir un rappel</p>
+              <p className="text-[11px] text-(--color-text-muted)">
+                On te previent quand tu pourras redonner
+              </p>
+            </div>
+          </button>
+        )}
+
         {/* Reminder */}
         <div className="mb-8 flex items-center justify-center gap-2 text-xs text-(--color-text-muted) animate-[fadeInUp_1000ms_ease-out]">
           <Heart className="h-3.5 w-3.5 text-(--color-primary)" />
-          Nous te rappellerons quand tu pourras donner a nouveau.
+          {pushSubscribed
+            ? "Tu seras notifie quand tu pourras donner a nouveau."
+            : "Nous te rappellerons quand tu pourras donner a nouveau."}
         </div>
 
         {/* Share */}
