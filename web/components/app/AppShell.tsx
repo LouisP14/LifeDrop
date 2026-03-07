@@ -69,8 +69,11 @@ export function AppShell() {
     <div className="md:flex md:min-h-[calc(100vh-64px)]">
       {/* Sidebar — desktop only */}
       <aside className="hidden md:flex md:w-60 md:shrink-0 md:flex-col md:border-r md:border-(--color-border) md:bg-(--color-surface)/50">
-        {/* User card */}
-        <div className="border-b border-(--color-border) p-5">
+        {/* User card — click to go to profile */}
+        <button
+          onClick={() => setActiveTab("profile")}
+          className="border-b border-(--color-border) p-5 text-left transition-colors hover:bg-(--color-surface)"
+        >
           <div className="flex items-center gap-3">
             <div
               className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold"
@@ -85,7 +88,7 @@ export function AppShell() {
               </p>
             </div>
           </div>
-        </div>
+        </button>
 
         {/* Nav */}
         <nav className="flex flex-1 flex-col gap-1 p-3 pt-4">

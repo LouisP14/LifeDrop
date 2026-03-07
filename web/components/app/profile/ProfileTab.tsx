@@ -28,6 +28,7 @@ import { useAuth } from "@web/hooks/useAuth";
 import { useDonationStats } from "@web/hooks/useDonationStats";
 import { DonationProgressBar } from "../dashboard/DonationProgressBar";
 import { BloodTypeModal } from "./BloodTypeModal";
+import { EditProfileModal } from "./EditProfileModal";
 import { BLOOD_TYPE_INFO, BADGES_CATALOG, DONATION_TYPE_LABELS, DONATION_TYPE_COLORS, LIVES_PER_DONATION_TYPE } from "@shared/constants";
 import type { DonationType } from "@shared/types";
 
@@ -58,6 +59,7 @@ export function ProfileTab() {
   const resetApp = useAppStore((s) => s.resetApp);
   const { count, livesSaved, streak, levelConfig, nextLevel, progress } = useDonationStats();
   const [showBloodTypeModal, setShowBloodTypeModal] = useState(false);
+  const [showEditProfile, setShowEditProfile] = useState(false);
   const { signOut } = useAuth();
   const router = useRouter();
 
@@ -80,14 +82,21 @@ export function ProfileTab() {
       {/* Profile header card */}
       <div className="mb-6 rounded-2xl border border-(--color-border) bg-(--color-surface) p-5 md:p-6">
         <div className="flex flex-col items-center text-center md:flex-row md:items-center md:gap-6 md:text-left">
-          <div
-            className="mb-3 md:mb-0 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full text-xl md:text-2xl font-extrabold shrink-0"
+          <button
+            onClick={() => setShowEditProfile(true)}
+            className="mb-3 md:mb-0 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full text-xl md:text-2xl font-extrabold shrink-0 transition-opacity hover:opacity-80"
             style={{ backgroundColor: "rgba(248,113,113,0.15)", color: "var(--color-primary)" }}
           >
             {initials}
-          </div>
+          </button>
           <div className="flex-1 min-w-0">
-            <h2 className="text-xl font-extrabold">{profile?.name ?? "Donneur"}</h2>
+            <button
+              onClick={() => setShowEditProfile(true)}
+              className="text-xl font-extrabold hover:text-(--color-primary) transition-colors inline-flex items-center gap-2"
+            >
+              {profile?.name ?? "Donneur"}
+              <Pencil className="h-3.5 w-3.5 text-(--color-text-muted)" />
+            </button>
             <div className="mt-1.5 flex items-center justify-center md:justify-start gap-2">
               <button
                 onClick={() => setShowBloodTypeModal(true)}
@@ -262,6 +271,9 @@ export function ProfileTab() {
 
       {showBloodTypeModal && (
         <BloodTypeModal onClose={() => setShowBloodTypeModal(false)} />
+      )}
+      {showEditProfile && (
+        <EditProfileModal onClose={() => setShowEditProfile(false)} />
       )}
     </div>
   );
