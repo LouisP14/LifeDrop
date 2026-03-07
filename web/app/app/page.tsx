@@ -18,22 +18,24 @@ export default function AppPage() {
 
   // Redirect to /connexion if not authenticated
   useEffect(() => {
-    if (!loading && !user) {
+    if (mounted && !loading && !user) {
       router.replace("/connexion");
     }
-  }, [loading, user, router]);
+  }, [mounted, loading, user, router]);
 
   // Sync with Supabase when authenticated
   useEffect(() => {
     if (user && !synced) {
-      syncWithSupabase(user.id).then(() => setSynced(true));
+      syncWithSupabase(user.id)
+        .then(() => setSynced(true))
+        .catch(() => setSynced(true)); // Continue even if sync fails
     }
   }, [user, synced, syncWithSupabase]);
 
-  if (!mounted || loading || !user || (user && !synced)) {
+  if (!mounted || loading || !user || !synced) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Droplets className="h-8 w-8 animate-pulse text-(--color-primary)" />
+        <Droplets className="h-8 w-8 animate-pulse text-[var(--color-primary)]" />
       </div>
     );
   }

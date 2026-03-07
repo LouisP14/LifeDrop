@@ -10,7 +10,7 @@ type Mode = "login" | "signup";
 
 export default function AuthPage() {
   const router = useRouter();
-  const { signIn, signUp, isAuthenticated } = useAuth();
+  const { signIn, signUp, isAuthenticated, loading: authLoading } = useAuth();
 
   const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
@@ -20,18 +20,28 @@ export default function AuthPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [redirecting, setRedirecting] = useState(false);
 
   // Redirect if already logged in
   useEffect(() => {
-    if (isAuthenticated) {
-      window.location.href = "/app";
+    if (isAuthenticated && !redirecting) {
+      setRedirecting(true);
+      router.push("/app");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, redirecting, router]);
 
-  if (isAuthenticated) {
+  if (authLoading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Droplets className="h-8 w-8 animate-pulse text-(--color-primary)" />
+        <Droplets className="h-8 w-8 animate-pulse text-[var(--color-primary)]" />
+      </div>
+    );
+  }
+
+  if (redirecting) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <Droplets className="h-8 w-8 animate-pulse text-[var(--color-primary)]" />
       </div>
     );
   }
@@ -60,7 +70,8 @@ export default function AuthPage() {
     try {
       if (mode === "login") {
         await signIn(email, password);
-        window.location.href = "/app";
+        setRedirecting(true);
+        router.push("/app");
       } else {
         await signUp(email, password);
         setSuccessMessage(
