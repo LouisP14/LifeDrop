@@ -27,7 +27,7 @@ export const BLOOD_TYPE_PAGES: BloodTypePage[] = [
     metaDescription:
       "Tout savoir sur le groupe sanguin O négatif : compatibilité, don du sang, qui peut recevoir du sang O-. Guide complet du donneur universel.",
     description:
-      "Donneur universel -- ton sang peut etre transfuse a n'importe qui en urgence. Le groupe O- est le plus précieux pour les services d'urgence car il est compatible avec tous les groupes sanguins.",
+      "Donneur universel -- ton sang peut être transfusé a n'importe qui en urgence. Le groupe O- est le plus précieux pour les services d'urgence car il est compatible avec tous les groupes sanguins.",
     canReceiveFrom: ["O-"],
     canDonateTo: ["O-", "O+", "A-", "A+", "B-", "B+", "AB-", "AB+"],
     tip: "Ton groupe est universel -- il est particulièrement précieux pour les urgences. Les stocks de O- sont souvent en tension, chaque don compte énormément.",
@@ -41,7 +41,7 @@ export const BLOOD_TYPE_PAGES: BloodTypePage[] = [
     metaDescription:
       "Guide complet du groupe sanguin O positif : compatibilité, don du sang, receveurs compatibles. O+ est le groupe le plus répandu en France.",
     description:
-      "L'un des groupes les plus demandés et les plus répandus. Compatible avec la majorite des receveurs Rh positif.",
+      "L'un des groupes les plus demandés et les plus répandus. Compatible avec la majorité des receveurs Rh positif.",
     canReceiveFrom: ["O-", "O+"],
     canDonateTo: ["O+", "A+", "B+", "AB+"],
     tip: "O+ est le groupe le plus courant en France. Tes dons sont extrêmement utiles car la demandé est constante.",

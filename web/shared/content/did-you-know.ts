@@ -20,7 +20,7 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     category: "Don de sang",
     title: "Un don peut sauver 3 vies",
     content:
-      "Chaque don de sang peut sauver jusqu'a 3 personnes grace a la separation en composants : globules rouges, plaquettes et plasma.",
+      "Chaque don de sang peut sauver jusqu'à 3 personnes grâce à la separation en composants : globules rouges, plaquettes et plasma.",
     icon: "droplets",
     color: "#f87171",
   },
@@ -38,9 +38,9 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     id: "3",
     slug: "composition-du-sang",
     category: "Biologie",
-    title: "Le sang ne peut pas etre fabrique",
+    title: "Le sang ne peut pas être fabriqué",
     content:
-      "Le sang se compose a 55 % de plasma et a 45 % de cellules. Il ne peut pas etre fabrique artificiellement.",
+      "Le sang se compose à 55 % de plasma et à 45 % de cellules. Il ne peut pas être fabriqué artificiellement.",
     icon: "flask-conical",
     color: "#a78bfa",
   },
@@ -48,9 +48,9 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     id: "4",
     slug: "recuperation-apres-don",
     category: "Récupération",
-    title: "4 a 8 semaines pour régénérer les globules rouges",
+    title: "4 à 8 semaines pour régénérer les globules rouges",
     content:
-      "Après un don de sang total, ton organisme reconstitue les globules rouges en 4 a 8 semaines.",
+      "Après un don de sang total, ton organisme reconstitue les globules rouges en 4 à 8 semaines.",
     icon: "timer",
     color: "#34d399",
   },
@@ -60,7 +60,7 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     category: "Urgence",
     title: "O- : le groupe universel en urgence",
     content:
-      "Le groupe O- est donne en priorite en urgence car compatible avec tous. Les stocks sont souvent tendus.",
+      "Le groupe O- est donné en priorité en urgence car compatible avec tous. Les stocks sont souvent tendus.",
     icon: "alert-triangle",
     color: "#f87171",
   },
@@ -78,9 +78,9 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     id: "7",
     slug: "plasma-conservation-1-an",
     category: "Plasma",
-    title: "Le plasma se conserve jusqu'a 1 an",
+    title: "Le plasma se conserve jusqu'à 1 an",
     content:
-      "Le plasma peut etre conserve jusqu'a 1 an congele et sert notamment pour les grands brules.",
+      "Le plasma peut être conservé jusqu'à 1 an congelé et sert notamment pour les grands brûlés.",
     icon: "snowflake",
     color: "#60a5fa",
   },
@@ -90,7 +90,7 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     category: "Sécurité",
     title: "Zero risque de maladie en donnant",
     content:
-      "Donner son sang ne presente aucun risque de maladie : tout le matériel est stérile et à usage unique.",
+      "Donner son sang ne présente aucun risque de maladie : tout le matériel est stérile et à usage unique.",
     icon: "shield-check",
     color: "#34d399",
   },
@@ -110,7 +110,7 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     category: "Conditions",
     title: "18-70 ans et 50 kg minimum",
     content:
-      "Il faut etre age de 18 a 70 ans et peser au moins 50 kg pour donner son sang en France.",
+      "Il faut être âgé de 18 à 70 ans et peser au moins 50 kg pour donner son sang en France.",
     icon: "user-check",
     color: "#a78bfa",
   },

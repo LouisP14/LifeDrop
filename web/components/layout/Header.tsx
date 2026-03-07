@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: "/guide-don-du-sang", label: "Guide" },
   { href: "/groupes-sanguins", label: "Groupes sanguins" },
   { href: "/mythes-et-realites", label: "Mythes" },
-  { href: "/eligibilite", label: "Eligibilite" },
+  { href: "/eligibilite", label: "Éligibilité" },
   { href: "/conseils", label: "Conseils" },
 ];
 

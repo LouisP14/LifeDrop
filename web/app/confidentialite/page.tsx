@@ -40,7 +40,7 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-lg font-bold text-(--color-text)">3. Finalites du traitement</h2>
+            <h2 className="mb-3 text-lg font-bold text-(--color-text)">3. Finalités du traitement</h2>
             <p>Vos données sont utilisees pour :</p>
             <ul className="mt-2 list-disc pl-5 space-y-1">
               <li>Gerer votre compte et authentification</li>
@@ -55,7 +55,7 @@ export default function ConfidentialitePage() {
             <h2 className="mb-3 text-lg font-bold text-(--color-text)">4. Base légale</h2>
             <p>
               Le traitement repose sur votre <strong className="text-(--color-text)">consentement</strong> (création
-              de compte, activation des notifications) et notre <strong className="text-(--color-text)">interet legitime</strong> (sécurité
+              de compte, activation des notifications) et notre <strong className="text-(--color-text)">intérêt légitime</strong> (sécurité
               du service, prevention des abus).
             </p>
           </section>
@@ -63,7 +63,7 @@ export default function ConfidentialitePage() {
           <section>
             <h2 className="mb-3 text-lg font-bold text-(--color-text)">5. Partage des données</h2>
             <p>
-              Vos données ne sont <strong className="text-(--color-text)">jamais vendues ni partagees</strong> avec des tiers
+              Vos données ne sont <strong className="text-(--color-text)">jamais vendues ni partagées</strong> avec des tiers
               a des fins commerciales. Elles sont accessibles uniquement :
             </p>
             <ul className="mt-2 list-disc pl-5 space-y-1">
@@ -106,7 +106,7 @@ export default function ConfidentialitePage() {
               <li><strong className="text-(--color-text)">Droit d&apos;acces</strong> : obtenir une copie de vos données</li>
               <li><strong className="text-(--color-text)">Droit de rectification</strong> : corriger vos données inexactes</li>
               <li><strong className="text-(--color-text)">Droit a l&apos;effacement</strong> : demander la suppression de vos données</li>
-              <li><strong className="text-(--color-text)">Droit a la portabilite</strong> : recevoir vos données dans un format lisible</li>
+              <li><strong className="text-(--color-text)">Droit a la portabilité</strong> : recevoir vos données dans un format lisible</li>
               <li><strong className="text-(--color-text)">Droit d&apos;opposition</strong> : vous opposer au traitement de vos données</li>
               <li><strong className="text-(--color-text)">Droit de retrait du consentement</strong> : retirer votre consentement à tout moment</li>
             </ul>

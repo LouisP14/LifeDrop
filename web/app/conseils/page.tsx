@@ -8,11 +8,11 @@ import { TIPS_BEFORE, TIPS_AFTER } from "@shared/content/donation-tips";
 export const metadata: Metadata = {
   title: "Conseils avant et après un don du sang",
   description:
-    "Les 10 conseils essentiels pour bien preparer son don de sang et récupérer après. Hydratation, alimentation, repos : tout ce qu'il faut savoir.",
+    "Les 10 conseils essentiels pour bien préparer son don de sang et récupérer après. Hydratation, alimentation, repos : tout ce qu'il faut savoir.",
   alternates: { canonical: "/conseils" },
   openGraph: {
-    title: "10 conseils pour reussir son don du sang",
-    description: "Bien se preparer et bien récupérer : les conseils indispensables pour les donneurs de sang.",
+    title: "10 conseils pour réussir son don du sang",
+    description: "Bien se préparer et bien récupérer : les conseils indispensables pour les donneurs de sang.",
   },
 };
 
@@ -71,7 +71,7 @@ export default function ConseilsPage() {
         Conseils avant et après un don du sang
       </h1>
       <p className="mb-10 text-lg text-(--color-text-muted)">
-        Les 10 conseils essentiels pour bien preparer votre don et récupérer
+        Les 10 conseils essentiels pour bien préparer votre don et récupérer
         rapidement. Suivez ces recommandations pour une expérience optimale.
       </p>
 

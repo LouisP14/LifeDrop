@@ -54,19 +54,19 @@ export const DONATION_LEVELS: LevelConfig[] = [
 
 // --- Catalogue de badges ---
 export const BADGES_CATALOG: Badge[] = [
-  { id: "first_drop", label: "Premiere Goutte", description: "Ton premier don enregistre -- bienvenue dans l'aventure !", icon: "water", isUnlocked: false },
-  { id: "bronze", label: "Rang Bronze", description: "Tu as effectue 3 dons. Le voyage commence.", icon: "medal", isUnlocked: false },
-  { id: "silver", label: "Rang Argent", description: "4 dons -- tu es un donneur regulier.", icon: "medal", isUnlocked: false },
-  { id: "gold", label: "Rang Or", description: "10 dons -- tu fais partie des heros du quotidien.", icon: "trophy", isUnlocked: false },
+  { id: "first_drop", label: "Première Goutte", description: "Ton premier don enregistré -- bienvenue dans l'aventure !", icon: "water", isUnlocked: false },
+  { id: "bronze", label: "Rang Bronze", description: "Tu as effectué 3 dons. Le voyage commence.", icon: "medal", isUnlocked: false },
+  { id: "silver", label: "Rang Argent", description: "4 dons -- tu es un donneur régulier.", icon: "medal", isUnlocked: false },
+  { id: "gold", label: "Rang Or", description: "10 dons -- tu fais partie des héros du quotidien.", icon: "trophy", isUnlocked: false },
   { id: "platinum", label: "Rang Platine", description: "20 dons -- un engagement exceptionnel.", icon: "diamond-stone", isUnlocked: false },
-  { id: "diversifier", label: "Polyvalent", description: "Tu as donne les 3 types de sang differents.", icon: "shuffle-variant", isUnlocked: false },
-  { id: "streak_3", label: "Regularite x3", description: "3 dons consecutifs respectant le delai legal.", icon: "fire", isUnlocked: false },
-  { id: "streak_6", label: "Regularite x6", description: "6 dons consecutifs reguliers.", icon: "lightning-bolt", isUnlocked: false },
-  { id: "lives_10", label: "10 Vies", description: "Tu as potentiellement sauve 10 vies.", icon: "heart", isUnlocked: false },
-  { id: "lives_30", label: "30 Vies", description: "Tu as potentiellement sauve 30 vies.", icon: "cards-heart", isUnlocked: false },
-  { id: "lives_60", label: "60 Vies", description: "60 vies potentiellement sauvees -- legende.", icon: "star", isUnlocked: false },
-  { id: "veteran", label: "Veteran", description: "Tu donnes depuis plus d'un an. Merci pour ta fidelite !", icon: "calendar", isUnlocked: false },
-  { id: "referrer", label: "Parrain", description: "Un ami que tu as parraine a fait son premier don !", icon: "gift", isUnlocked: false },
+  { id: "diversifier", label: "Polyvalent", description: "Tu as donne les 3 types de sang différents.", icon: "shuffle-variant", isUnlocked: false },
+  { id: "streak_3", label: "Régularité x3", description: "3 dons consécutifs respectant le délai legal.", icon: "fire", isUnlocked: false },
+  { id: "streak_6", label: "Régularité x6", description: "6 dons consécutifs réguliers.", icon: "lightning-bolt", isUnlocked: false },
+  { id: "lives_10", label: "10 Vies", description: "Tu as potentiellement sauvé 10 vies.", icon: "heart", isUnlocked: false },
+  { id: "lives_30", label: "30 Vies", description: "Tu as potentiellement sauvé 30 vies.", icon: "cards-heart", isUnlocked: false },
+  { id: "lives_60", label: "60 Vies", description: "60 vies potentiellement sauvées -- legende.", icon: "star", isUnlocked: false },
+  { id: "veteran", label: "Vétéran", description: "Tu donnes depuis plus d'un an. Merci pour ta fidélité !", icon: "calendar", isUnlocked: false },
+  { id: "referrer", label: "Parrain", description: "Un ami que tu as parrainé a fait son premier don !", icon: "gift", isUnlocked: false },
 ];
 
 // --- Informations par groupe sanguin ---
@@ -75,12 +75,12 @@ export const BLOOD_TYPE_INFO: Record<
   { description: string; canReceiveFrom: string[]; canDonateTo: string[] }
 > = {
   "O-": {
-    description: "Donneur universel -- ton sang peut etre transfuse a n'importe qui en urgence.",
+    description: "Donneur universel -- ton sang peut être transfusé a n'importe qui en urgence.",
     canReceiveFrom: ["O-"],
     canDonateTo: ["O-", "O+", "A-", "A+", "B-", "B+", "AB-", "AB+"],
   },
   "O+": {
-    description: "L'un des groupes les plus demandes. Compatible avec la majorite des receveurs.",
+    description: "L'un des groupes les plus demandés. Compatible avec la majorité des receveurs.",
     canReceiveFrom: ["O-", "O+"],
     canDonateTo: ["O+", "A+", "B+", "AB+"],
   },
@@ -90,7 +90,7 @@ export const BLOOD_TYPE_INFO: Record<
     canDonateTo: ["A-", "A+", "AB-", "AB+"],
   },
   "A+": {
-    description: "Groupe tres repandu -- les dons de plaquettes sont particulierement utiles.",
+    description: "Groupe très répandu -- les dons de plaquettes sont particulierement utiles.",
     canReceiveFrom: ["A-", "A+", "O-", "O+"],
     canDonateTo: ["A+", "AB+"],
   },
@@ -115,7 +115,7 @@ export const BLOOD_TYPE_INFO: Record<
     canDonateTo: ["AB+"],
   },
   unknown: {
-    description: "Groupe sanguin non renseigne. Mets-le a jour dans ton profil.",
+    description: "Groupe sanguin non renseigné. Mets-le à jour dans ton profil.",
     canReceiveFrom: [],
     canDonateTo: [],
   },
@@ -123,24 +123,24 @@ export const BLOOD_TYPE_INFO: Record<
 
 // --- Équipes prédéfinies ---
 export const PREDEFINED_TEAMS: Team[] = [
-  { id: "team-lifedrop2026", code: "LIFEDROP2026", name: "Equipe LifeDrop", members: [] },
-  { id: "team-croixrouge", code: "CROIXROUGE", name: "Croix-Rouge Francaise", members: [] },
-  { id: "team-efs", code: "EFS2026", name: "EFS Ile-de-France", members: [] },
+  { id: "team-lifedrop2026", code: "LIFEDROP2026", name: "Équipe LifeDrop", members: [] },
+  { id: "team-croixrouge", code: "CROIXROUGE", name: "Croix-Rouge Française", members: [] },
+  { id: "team-efs", code: "EFS2026", name: "EFS Île-de-France", members: [] },
   { id: "team-pompiers", code: "POMPIERS", name: "Les Pompiers Donneurs", members: [] },
 ];
 
 // --- Cartes "Le saviez-vous ?" ---
 export const DID_YOU_KNOW_CARDS = [
-  { id: "1", content: "Chaque don de sang peut sauver jusqu'a 3 personnes grace a la separation en composants : globules rouges, plaquettes et plasma." },
+  { id: "1", content: "Chaque don de sang peut sauver jusqu'à 3 personnes grâce à la separation en composants : globules rouges, plaquettes et plasma." },
   { id: "2", content: "En France, seulement 4 % de la population donne son sang chaque annee, alors que 10 000 dons sont necessaires chaque jour." },
-  { id: "3", content: "Le sang se compose a 55 % de plasma et a 45 % de cellules. Il ne peut pas etre fabrique artificiellement." },
-  { id: "4", content: "Apres un don de sang total, ton organisme reconstitue les globules rouges en 4 a 8 semaines." },
-  { id: "5", content: "Le groupe O- est donne en priorite en urgence car compatible avec tous. Les stocks sont souvent tendus." },
+  { id: "3", content: "Le sang se compose à 55 % de plasma et à 45 % de cellules. Il ne peut pas être fabriqué artificiellement." },
+  { id: "4", content: "Apres un don de sang total, ton organisme reconstitue les globules rouges en 4 à 8 semaines." },
+  { id: "5", content: "Le groupe O- est donné en priorité en urgence car compatible avec tous. Les stocks sont souvent tendus." },
   { id: "6", content: "Les plaquettes ne se conservent que 5 jours -- les besoins sont donc constants et reguliers." },
-  { id: "7", content: "Le plasma peut etre conserve jusqu'a 1 an congele et sert notamment pour les grands brules." },
-  { id: "8", content: "Donner son sang ne presente aucun risque de maladie : tout le materiel est sterile et a usage unique." },
+  { id: "7", content: "Le plasma peut être conservé jusqu'à 1 an congelé et sert notamment pour les grands brûlés." },
+  { id: "8", content: "Donner son sang ne présente aucun risque de maladie : tout le materiel est sterile et a usage unique." },
   { id: "9", content: "Boire 500 ml d'eau avant le don reduit les risques de malaise et facilite le prelevement." },
-  { id: "10", content: "Il faut etre age de 18 a 70 ans et peser au moins 50 kg pour donner son sang en France." },
+  { id: "10", content: "Il faut être âgé de 18 à 70 ans et peser au moins 50 kg pour donner son sang en France." },
 ];
 
 // --- Couleurs par type de don ---
@@ -157,13 +157,13 @@ export const DONATION_TYPE_COLORS: Record<
 export const DONATION_TIPS = {
   before: [
     "Dormir suffisamment la nuit precedente.",
-    "Manger un repas leger dans les 3 heures avant le don.",
+    "Manger un repas léger dans les 3 heures avant le don.",
     "Boire au moins 500 ml d'eau avant d'aller donner.",
     "Eviter l'alcool dans les 24h precedentes.",
-    "Apporter une piece d'identite.",
+    "Apporter une pièce d'identite.",
   ],
   after: [
-    "Rester assis 10-15 minutes et boire une boisson sucree proposee sur place.",
+    "Rester assis 10-15 minutes et boire une boisson sucrée proposée sur place.",
     "Eviter les efforts physiques intenses pendant 24h.",
     "Bien s'hydrater dans les heures suivantes.",
     "Eviter de fumer pendant 1h apres le don.",

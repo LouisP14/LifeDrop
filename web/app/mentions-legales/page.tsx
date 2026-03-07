@@ -51,7 +51,7 @@ export default function MentionsLegalesPage() {
             <h2 className="mb-3 text-lg font-bold text-(--color-text)">Données personnelles</h2>
             <p>
               Les informations collectees (nom, groupe sanguin, historique de dons) sont
-              stockees de manière sécurisée et ne sont jamais partagees avec des tiers.
+              stockees de manière sécurisée et ne sont jamais partagées avec des tiers.
               Pour plus d&apos;informations, consultez notre{" "}
               <a href="/confidentialite" className="text-(--color-primary) underline">
                 politique de confidentialité
@@ -63,14 +63,14 @@ export default function MentionsLegalesPage() {
             <h2 className="mb-3 text-lg font-bold text-(--color-text)">Limitation de responsabilite</h2>
             <p>
               LifeDrop est un outil de suivi personnel et ne se substitue en aucun cas
-              a un avis medical. Les délais légaux entre deux dons sont fixes par
+              a un avis médical. Les délais légaux entre deux dons sont fixes par
               l&apos;Établissement Français du Sang (EFS). Consultez un professionnel de
               santé avant chaque don.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-lg font-bold text-(--color-text)">Credits</h2>
+            <h2 className="mb-3 text-lg font-bold text-(--color-text)">Crédits</h2>
             <p>
               Icones : <a href="https://lucide.dev" target="_blank" rel="noopener noreferrer" className="text-(--color-primary) underline">Lucide Icons</a> (licence MIT).<br />
               Polices : Inter via le système de polices Next.js.

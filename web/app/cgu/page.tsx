@@ -63,12 +63,12 @@ export default function CGUPage() {
             <h2 className="mb-3 text-lg font-bold text-(--color-text)">5. Limitation de responsabilite</h2>
             <p>
               LifeDrop est un outil de suivi personnel et ne constitue pas un dispositif
-              medical. Les informations affichees (délais, éligibilité) sont fournies a
+              médical. Les informations affichees (délais, éligibilité) sont fournies a
               titre indicatif et ne remplacent pas l&apos;avis d&apos;un professionnel de santé
               ou les recommandations de l&apos;EFS.
             </p>
             <p className="mt-2">
-              LifeDrop ne saurait etre tenu responsable en cas de dommage résultant de
+              LifeDrop ne saurait être tenu responsable en cas de dommage résultant de
               l&apos;utilisation ou de l&apos;impossibilite d&apos;utiliser le service.
             </p>
           </section>
@@ -78,7 +78,7 @@ export default function CGUPage() {
             <p>
               L&apos;ensemble des elements constituant LifeDrop (code, design, textes, logos)
               sont protégés par le droit de la propriété intellectuelle. Toute reproduction
-              non autorisee est interdite.
+              non autorisée est interdite.
             </p>
           </section>
 

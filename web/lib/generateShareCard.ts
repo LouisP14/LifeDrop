@@ -118,10 +118,10 @@ export async function generateShareCard(data: ShareCardData): Promise<Blob> {
   ctx.textAlign = "center";
   ctx.fillText(String(data.totalLives), W / 2, 600);
 
-  // -- "vies potentiellement sauvees" --
+  // -- "vies potentiellement sauvées" --
   ctx.font = "600 30px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
   ctx.fillStyle = "rgba(255,255,255,0.6)";
-  ctx.fillText("vies potentiellement sauvees", W / 2, 650);
+  ctx.fillText("vies potentiellement sauvées", W / 2, 650);
 
   // -- This donation stat --
   ctx.font = "500 24px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";

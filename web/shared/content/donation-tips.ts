@@ -17,15 +17,15 @@ export const TIPS_BEFORE: DonationTip[] = [
     title: "Bien dormir",
     summary: "Dormir suffisamment la nuit précèdente.",
     detail:
-      "Un bon sommeil (7 a 8 heures) aide ton corps a etre en pleine forme pour le don. La fatigue augmente le risque de malaise.",
+      "Un bon sommeil (7 à 8 heures) aide ton corps a être en pleine forme pour le don. La fatigue augmente le risque de malaise.",
     icon: "moon",
   },
   {
     id: "before-2",
     title: "Manger leger",
-    summary: "Manger un repas leger dans les 3 heures avant le don.",
+    summary: "Manger un repas léger dans les 3 heures avant le don.",
     detail:
-      "Évite de donner à jeun. Un repas leger et équilibré 2 a 3 heures avant le don aide a maintenir ta glycémie stable.",
+      "Évite de donner à jeun. Un repas léger et équilibré 2 à 3 heures avant le don aide a maintenir ta glycémie stable.",
     icon: "utensils",
   },
   {
@@ -33,7 +33,7 @@ export const TIPS_BEFORE: DonationTip[] = [
     title: "Bien s'hydrater",
     summary: "Boire au moins 500 ml d'eau avant d'aller donner.",
     detail:
-      "L'hydratation est cle. Bois au moins un demi-litre d'eau dans l'heure qui précède le don pour faciliter le prélèvement et réduire les risques de malaise.",
+      "L'hydratation est clé. Bois au moins un demi-litre d'eau dans l'heure qui précède le don pour faciliter le prélèvement et réduire les risques de malaise.",
     icon: "glass-water",
   },
   {
@@ -41,15 +41,15 @@ export const TIPS_BEFORE: DonationTip[] = [
     title: "Éviter l'alcool",
     summary: "Éviter l'alcool dans les 24h précèdentes.",
     detail:
-      "L'alcool déshydrate l'organisme et peut alterer la qualite du sang. Abstiens-toi au moins 24 heures avant ton don.",
+      "L'alcool déshydrate l'organisme et peut altérer la qualité du sang. Abstiens-toi au moins 24 heures avant ton don.",
     icon: "ban",
   },
   {
     id: "before-5",
-    title: "Piece d'identité",
-    summary: "Apporter une piece d'identité.",
+    title: "Pièce d'identité",
+    summary: "Apporter une pièce d'identité.",
     detail:
-      "Une piece d'identité avec photo est obligatoire pour chaque don. Carte d'identité, passeport ou permis de conduire sont acceptés.",
+      "Une pièce d'identité avec photo est obligatoire pour chaque don. Carte d'identité, passeport ou permis de conduire sont acceptés.",
     icon: "id-card",
   },
 ];
@@ -60,7 +60,7 @@ export const TIPS_AFTER: DonationTip[] = [
     title: "Se reposer",
     summary: "Rester assis 10-15 minutes et prendre une collation.",
     detail:
-      "Après le prélèvement, reste au moins 10 a 15 minutes en position assise. Profite de la collation proposee (boisson sucree, biscuits) pour remonter ta glycémie.",
+      "Après le prélèvement, reste au moins 10 à 15 minutes en position assise. Profite de la collation proposée (boisson sucrée, biscuits) pour remonter ta glycémie.",
     icon: "armchair",
   },
   {
@@ -68,7 +68,7 @@ export const TIPS_AFTER: DonationTip[] = [
     title: "Éviter les efforts",
     summary: "Éviter les efforts physiques intenses pendant 24h.",
     detail:
-      "Ton corps a besoin de temps pour compenser le volume prélevé. Évite le sport intense, le port de charges lourdes et les activites a risque pendant 24 heures.",
+      "Ton corps a besoin de temps pour compenser le volume prélevé. Évite le sport intense, le port de charges lourdes et les activités à risque pendant 24 heures.",
     icon: "dumbbell",
   },
   {
@@ -92,7 +92,7 @@ export const TIPS_AFTER: DonationTip[] = [
     title: "Écouter son corps",
     summary: "Si tu te sens étourdi, allonge-toi et préviens le personnel.",
     detail:
-      "Un leger étourdissement peut survenir, c'est normal. Allonge-toi avec les jambes surélevées et préviens le personnel medical. Ca passe généralement en quelques minutes.",
+      "Un léger étourdissement peut survenir, c'est normal. Allonge-toi avec les jambes surélevées et préviens le personnel médical. Ca passe généralement en quelques minutes.",
     icon: "heart-pulse",
   },
 ];

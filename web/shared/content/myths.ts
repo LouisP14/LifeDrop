@@ -18,7 +18,7 @@ export const MYTHS_AND_FACTS: MythFact[] = [
     slug: "donner-du-sang-fait-mal",
     myth: "Donner du sang fait mal.",
     reality:
-      "Seule la piqûre de l'aiguille peut etre légèrement ressentie. Le prélèvement lui-meme est indolore. La plupart des donneurs décrivent l'expérience comme tout a fait confortable.",
+      "Seule la piqûre de l'aiguille peut être légèrement ressentie. Le prélèvement lui-meme est indolore. La plupart des donneurs décrivent l'expérience comme tout à fait confortable.",
     verdict: false,
     keywords: ["douleur don de sang", "peur aiguille don"],
   },
@@ -36,7 +36,7 @@ export const MYTHS_AND_FACTS: MythFact[] = [
     slug: "recuperation-longue-apres-don",
     myth: "Le corps met longtemps a récupérer.",
     reality:
-      "Le volume sanguin prélevé (450 ml) est compense en quelques heures. Les globules rouges se régénèrent en 4 a 8 semaines, ce qui reste bien en dessous du délai legal de 56 jours.",
+      "Le volume sanguin prélevé (450 ml) est compense en quelques heures. Les globules rouges se régénèrent en 4 à 8 semaines, ce qui reste bien en dessous du délai legal de 56 jours.",
     verdict: false,
     keywords: ["récupération don de sang", "temps récupération après don"],
   },
@@ -45,7 +45,7 @@ export const MYTHS_AND_FACTS: MythFact[] = [
     slug: "tatouage-et-don-du-sang",
     myth: "Les personnes tatouées ne peuvent pas donner.",
     reality:
-      "Un tatouage recent (moins de 4 mois) impose un délai, mais au-dela, il n'y a aucune contre-indication. Des millions de donneurs tatoués donnent régulièrement.",
+      "Un tatouage recent (moins de 4 mois) impose un délai, mais au-delà, il n'y a aucune contre-indication. Des millions de donneurs tatoués donnent régulièrement.",
     verdict: false,
     keywords: ["tatouage don du sang", "piercing don du sang"],
   },
@@ -70,7 +70,7 @@ export const MYTHS_AND_FACTS: MythFact[] = [
   {
     id: "m7",
     slug: "un-don-sauve-3-vies",
-    myth: "Un seul don peut sauver jusqu'a 3 vies.",
+    myth: "Un seul don peut sauver jusqu'à 3 vies.",
     reality:
       "Vrai ! Chaque don de sang total est séparé en 3 composants : globules rouges, plasma et plaquettes -- chacun pouvant traiter un patient different.",
     verdict: true,
