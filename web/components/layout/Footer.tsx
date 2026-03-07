@@ -90,7 +90,7 @@ export function Footer() {
               href="/app"
               className="inline-block rounded-lg bg-(--color-primary) px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
             >
-              Ouvrir LifeDrop
+              Commencer maintenant
             </Link>
           </div>
         </div>
