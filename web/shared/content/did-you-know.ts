@@ -30,7 +30,7 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     category: "En France",
     title: "4 % de la population donne son sang",
     content:
-      "Seulement 4 % de la population donne son sang chaque annee, alors que 10 000 dons sont necessaires chaque jour.",
+      "Seulement 4 % de la population donne son sang chaque année, alors que 10 000 dons sont nécessaires chaque jour.",
     icon: "users",
     color: "#fb923c",
   },
@@ -47,10 +47,10 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
   {
     id: "4",
     slug: "recuperation-apres-don",
-    category: "Recuperation",
-    title: "4 a 8 semaines pour regenerer les globules rouges",
+    category: "Récupération",
+    title: "4 a 8 semaines pour régénérer les globules rouges",
     content:
-      "Apres un don de sang total, ton organisme reconstitue les globules rouges en 4 a 8 semaines.",
+      "Après un don de sang total, ton organisme reconstitue les globules rouges en 4 a 8 semaines.",
     icon: "timer",
     color: "#34d399",
   },
@@ -70,7 +70,7 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     category: "Conservation",
     title: "Les plaquettes ne se conservent que 5 jours",
     content:
-      "Les plaquettes ne se conservent que 5 jours -- les besoins sont donc constants et reguliers.",
+      "Les plaquettes ne se conservent que 5 jours -- les besoins sont donc constants et réguliers.",
     icon: "hourglass",
     color: "#fb923c",
   },
@@ -87,10 +87,10 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
   {
     id: "8",
     slug: "don-sang-zero-risque",
-    category: "Securite",
+    category: "Sécurité",
     title: "Zero risque de maladie en donnant",
     content:
-      "Donner son sang ne presente aucun risque de maladie : tout le materiel est sterile et a usage unique.",
+      "Donner son sang ne presente aucun risque de maladie : tout le matériel est stérile et à usage unique.",
     icon: "shield-check",
     color: "#34d399",
   },
@@ -100,7 +100,7 @@ export const DID_YOU_KNOW: DidYouKnowCard[] = [
     category: "Conseil",
     title: "500 ml d'eau avant le don",
     content:
-      "Boire 500 ml d'eau avant le don reduit les risques de malaise et facilite le prelevement.",
+      "Boire 500 ml d'eau avant le don réduit les risques de malaise et facilite le prélèvement.",
     icon: "glass-water",
     color: "#60a5fa",
   },

@@ -8,13 +8,13 @@ import { BLOOD_TYPE_INFO } from "@shared/constants";
 import type { BloodType } from "@shared/types";
 
 export const metadata: Metadata = {
-  title: "Compatibilite des groupes sanguins - Tableau complet",
+  title: "Compatibilité des groupes sanguins - Tableau complet",
   description:
-    "Tableau de compatibilite des groupes sanguins : qui peut donner a qui ? O-, O+, A-, A+, B-, B+, AB-, AB+. Guide interactif et complet.",
+    "Tableau de compatibilité des groupes sanguins : qui peut donner à qui ? O-, O+, A-, A+, B-, B+, AB-, AB+. Guide interactif et complet.",
   alternates: { canonical: "/groupes-sanguins" },
   openGraph: {
-    title: "Compatibilite des groupes sanguins - Tableau complet",
-    description: "Qui peut donner a qui ? Tableau interactif de compatibilite des 8 groupes sanguins.",
+    title: "Compatibilité des groupes sanguins - Tableau complet",
+    description: "Qui peut donner à qui ? Tableau interactif de compatibilité des 8 groupes sanguins.",
   },
 };
 
@@ -24,8 +24,8 @@ export default function GroupesSanguinsPage() {
   const medicalSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    name: "Compatibilite des groupes sanguins",
-    description: "Tableau de compatibilite des groupes sanguins pour le don du sang en France.",
+    name: "Compatibilité des groupes sanguins",
+    description: "Tableau de compatibilité des groupes sanguins pour le don du sang en France.",
     inLanguage: "fr",
     audience: { "@type": "PeopleAudience", suggestedMinAge: 18 },
   };
@@ -36,17 +36,17 @@ export default function GroupesSanguinsPage() {
       <Breadcrumbs items={[{ label: "Groupes sanguins" }]} />
 
       <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
-        Compatibilite des groupes sanguins
+        Compatibilité des groupes sanguins
       </h1>
       <p className="mb-10 text-lg text-(--color-text-muted)">
-        Decouvrez qui peut donner a qui. Le tableau ci-dessous montre la
-        compatibilite entre les 8 groupes sanguins pour la transfusion.
+        Découvrez qui peut donner à qui. Le tableau ci-dessous montre la
+        compatibilité entre les 8 groupes sanguins pour la transfusion.
       </p>
 
       {/* Compatibility matrix table (crawlable HTML table for SEO) */}
       <section className="mb-12 overflow-x-auto">
         <h2 className="mb-4 text-xl font-bold">
-          Matrice de compatibilite donneur → receveur
+          Matrice de compatibilité donneur → receveur
         </h2>
         <table className="w-full border-collapse text-sm">
           <thead>
@@ -115,9 +115,9 @@ export default function GroupesSanguinsPage() {
                 {bt.description}
               </p>
               <div className="flex gap-2 text-xs text-(--color-text-muted)">
-                <span>Donne a : <strong className="text-(--color-text)">{bt.canDonateTo.length}</strong> groupes</span>
+                <span>Donne à : <strong className="text-(--color-text)">{bt.canDonateTo.length}</strong> groupes</span>
                 <span>&middot;</span>
-                <span>Recoit de : <strong className="text-(--color-text)">{bt.canReceiveFrom.length}</strong> groupes</span>
+                <span>Reçoit de : <strong className="text-(--color-text)">{bt.canReceiveFrom.length}</strong> groupes</span>
               </div>
               <p className="mt-2 text-xs text-(--color-text-muted)">
                 {bt.frequency}

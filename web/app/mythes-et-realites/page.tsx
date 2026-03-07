@@ -6,13 +6,13 @@ import { JsonLd } from "@web/components/seo/JsonLd";
 import { MYTHS_AND_FACTS } from "@shared/content/myths";
 
 export const metadata: Metadata = {
-  title: "Mythes et realites sur le don du sang - 7 idees recues",
+  title: "Mythes et réalités sur le don du sang - 7 idées reçues",
   description:
-    "Donner du sang fait mal ? On peut attraper une maladie ? Decouvrez la verite sur les 7 mythes les plus repandus sur le don du sang.",
+    "Donner du sang fait mal ? On peut attraper une maladie ? Découvrez la vérité sur les 7 mythes les plus répandus sur le don du sang.",
   alternates: { canonical: "/mythes-et-realites" },
   openGraph: {
     title: "7 mythes sur le don du sang - Vrai ou Faux ?",
-    description: "Decouvrez la verite sur les idees recues les plus repandues sur le don du sang en France.",
+    description: "Découvrez la vérité sur les idées reçues les plus répandues sur le don du sang en France.",
   },
 };
 
@@ -34,13 +34,13 @@ export default function MythesPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <JsonLd data={faqSchema} />
-      <Breadcrumbs items={[{ label: "Mythes et realites" }]} />
+      <Breadcrumbs items={[{ label: "Mythes et réalités" }]} />
 
       <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
-        Mythes et realites sur le don du sang
+        Mythes et réalités sur le don du sang
       </h1>
       <p className="mb-10 text-lg text-(--color-text-muted)">
-        Separons le vrai du faux. Voici les 7 idees recues les plus repandues
+        Séparons le vrai du faux. Voici les 7 idées reçues les plus répandues
         sur le don du sang, avec les faits pour chacune.
       </p>
 
@@ -86,7 +86,7 @@ export default function MythesPage() {
 
       {/* Internal links */}
       <div className="mt-10 rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
-        <h2 className="mb-4 text-lg font-bold">Articles lies</h2>
+        <h2 className="mb-4 text-lg font-bold">Articles liés</h2>
         <div className="flex flex-wrap gap-3">
           <Link
             href="/guide-don-du-sang"
@@ -98,7 +98,7 @@ export default function MythesPage() {
             href="/eligibilite"
             className="inline-flex items-center gap-1 rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
-            Verifier mon eligibilite <ArrowRight className="h-3.5 w-3.5" />
+            Vérifier mon éligibilité <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <Link
             href="/groupes-sanguins"

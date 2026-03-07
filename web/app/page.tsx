@@ -17,7 +17,7 @@ import { JsonLd } from "@web/components/seo/JsonLd";
 export const metadata: Metadata = {
   title: "LifeDrop - Application gratuite de suivi du don du sang en France",
   description:
-    "Suivez vos dons de sang, verifiez votre eligibilite, decouvrez la compatibilite de votre groupe sanguin. Application gratuite pour les donneurs de sang en France.",
+    "Suivez vos dons de sang, vérifiez votre éligibilité, découvrez la compatibilité de votre groupe sanguin. Application gratuite pour les donneurs de sang en France.",
   alternates: { canonical: "/" },
 };
 
@@ -30,26 +30,26 @@ const STAT_ICONS: Record<string, React.ReactNode> = {
 const FEATURES = [
   {
     icon: <CheckCircle className="h-6 w-6 text-(--color-green)" />,
-    title: "Verifiez votre eligibilite",
-    description: "Calculez en temps reel quand vous pouvez donner a nouveau selon le type de don.",
+    title: "Vérifiez votre éligibilité",
+    description: "Calculez en temps réel quand vous pouvez donner à nouveau selon le type de don.",
     href: "/eligibilite",
   },
   {
     icon: <Droplets className="h-6 w-6 text-(--color-primary)" />,
-    title: "Compatibilite des groupes",
-    description: "Decouvrez a qui vous pouvez donner et de qui vous pouvez recevoir.",
+    title: "Compatibilité des groupes",
+    description: "Découvrez à qui vous pouvez donner et de qui vous pouvez recevoir.",
     href: "/groupes-sanguins",
   },
   {
     icon: <ShieldCheck className="h-6 w-6 text-(--color-blue)" />,
-    title: "Mythes et realites",
-    description: "Demystifiez les idees recues sur le don du sang avec des faits verifies.",
+    title: "Mythes et réalités",
+    description: "Démystifiez les idées reçues sur le don du sang avec des faits vérifiés.",
     href: "/mythes-et-realites",
   },
   {
     icon: <BookOpen className="h-6 w-6 text-(--color-purple)" />,
     title: "Guide complet",
-    description: "Tout ce qu'il faut savoir avant, pendant et apres un don de sang.",
+    description: "Tout ce qu'il faut savoir avant, pendant et après un don de sang.",
     href: "/guide-don-du-sang",
   },
 ];
@@ -62,7 +62,7 @@ export default function HomePage() {
     applicationCategory: "HealthApplication",
     operatingSystem: "Web",
     description:
-      "Application gratuite de suivi du don du sang en France. Suivez vos dons, verifiez votre eligibilite et mesurez votre impact.",
+      "Application gratuite de suivi du don du sang en France. Suivez vos dons, vérifiez votre éligibilité et mesurez votre impact.",
     offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
     inLanguage: "fr",
   };
@@ -91,7 +91,7 @@ export default function HomePage() {
           </h1>
 
           <p className="mx-auto mb-8 max-w-2xl text-lg text-(--color-text-muted) md:text-xl">
-            Suivez vos dons de sang, verifiez votre eligibilite et mesurez
+            Suivez vos dons de sang, vérifiez votre éligibilité et mesurez
             votre impact. L&apos;application gratuite pour les donneurs de sang
             en France.
           </p>
@@ -159,7 +159,7 @@ export default function HomePage() {
                   {feature.description}
                 </p>
                 <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-(--color-primary) opacity-0 transition-opacity group-hover:opacity-100">
-                  Decouvrir <ArrowRight className="h-3.5 w-3.5" />
+                  Découvrir <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </Link>
             ))}
@@ -171,7 +171,7 @@ export default function HomePage() {
       <section className="px-4 pb-20">
         <div className="mx-auto max-w-4xl rounded-2xl border border-(--color-primary)/20 bg-gradient-to-br from-[rgba(248,113,113,0.08)] to-transparent p-8 text-center md:p-12">
           <h2 className="mb-3 text-2xl font-extrabold">
-            Pret a sauver des vies ?
+            Prêt à sauver des vies ?
           </h2>
           <p className="mb-6 text-(--color-text-muted)">
             Rejoignez les donneurs qui suivent leur impact avec LifeDrop.

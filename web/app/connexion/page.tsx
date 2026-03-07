@@ -92,7 +92,7 @@ function AuthPageContent() {
           localStorage.setItem("lifedrop-referral", refCode.toUpperCase());
         }
         setSuccessMessage(
-          "Compte cree ! Verifiez votre email pour confirmer votre inscription.",
+          "Compte créé ! Vérifiez votre email pour confirmer votre inscription.",
         );
       }
     } catch (err: unknown) {
@@ -100,7 +100,7 @@ function AuthPageContent() {
       if (message.includes("Invalid login")) {
         setError("Email ou mot de passe incorrect.");
       } else if (message.includes("already registered")) {
-        setError("Cet email est deja utilise.");
+        setError("Cet email est déjà utilisé.");
       } else {
         setError(message);
       }
@@ -124,7 +124,7 @@ function AuthPageContent() {
           <p className="text-sm text-(--color-text-muted)">
             {mode === "login"
               ? "Connecte-toi pour acceder a ton espace"
-              : "Cree ton compte pour commencer"}
+              : "Crée ton compte pour commencer"}
           </p>
         </div>
 
@@ -159,7 +159,7 @@ function AuthPageContent() {
           <div className="mb-4 flex items-center gap-2 rounded-xl border border-(--color-accent)/30 bg-(--color-accent)/5 px-4 py-3">
             <Gift className="h-4 w-4 text-(--color-accent)" />
             <span className="text-sm text-(--color-accent)">
-              Tu as ete invite ! Cree ton compte pour rejoindre LifeDrop.
+              Tu as été invité ! Crée ton compte pour rejoindre LifeDrop.
             </span>
           </div>
         )}
@@ -247,7 +247,7 @@ function AuthPageContent() {
             ) : (
               <>
                 <ArrowRight className="h-5 w-5" />
-                {mode === "login" ? "Se connecter" : "Creer mon compte"}
+                {mode === "login" ? "Se connecter" : "Créer mon compte"}
               </>
             )}
           </button>
@@ -255,7 +255,7 @@ function AuthPageContent() {
 
         {/* Footer */}
         <p className="mt-6 text-center text-xs text-(--color-text-muted)">
-          100% gratuit &middot; Tes donnees restent privees
+          100% gratuit &middot; Tes données restent privees
         </p>
       </div>
     </div>

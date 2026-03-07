@@ -14,7 +14,7 @@ export const CHALLENGES: Challenge[] = [
   {
     id: "2026-03",
     title: "Mars Rouge",
-    description: "La communaute LifeDrop se mobilise : atteignons 200 dons collectifs en mars !",
+    description: "La communauté LifeDrop se mobilise : atteignons 200 dons collectifs en mars !",
     goal: 200,
     unit: "dons",
     month: 3,
@@ -34,7 +34,7 @@ export const CHALLENGES: Challenge[] = [
   {
     id: "2026-05",
     title: "Mai en Force",
-    description: "500 vies sauvees en mai — un defi a la hauteur de notre communaute !",
+    description: "500 vies sauvées en mai — un défi a la hauteur de notre communauté !",
     goal: 500,
     unit: "vies",
     month: 5,
@@ -43,8 +43,8 @@ export const CHALLENGES: Challenge[] = [
   },
   {
     id: "2026-06",
-    title: "Ete du Sang",
-    description: "Les reserves baissent en ete. 250 dons pour sauver des vies !",
+    title: "Été du Sang",
+    description: "Les réserves baissent en été. 250 dons pour sauver des vies !",
     goal: 250,
     unit: "dons",
     month: 6,

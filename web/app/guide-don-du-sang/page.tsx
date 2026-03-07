@@ -10,7 +10,7 @@ import { DONATION_COOLDOWN_DAYS, DONATION_TYPE_LABELS, LIVES_PER_DONATION_TYPE }
 export const metadata: Metadata = {
   title: "Guide complet du don du sang en France",
   description:
-    "Tout ce qu'il faut savoir pour donner son sang en France : conditions, types de dons, deroulement, conseils avant et apres. Guide complet et gratuit.",
+    "Tout ce qu'il faut savoir pour donner son sang en France : conditions, types de dons, déroulement, conseils avant et après. Guide complet et gratuit.",
   alternates: { canonical: "/guide-don-du-sang" },
   openGraph: {
     title: "Guide complet du don du sang en France",
@@ -36,9 +36,49 @@ export default function GuideDonDuSangPage() {
     mainEntityOfPage: { "@type": "WebPage", "@id": "https://lifedrop.fr/guide-don-du-sang" },
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Quels sont les types de dons de sang possibles ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Il existe 3 types de dons : le don de sang total (le plus courant, délai de 56 jours), le don de plaquettes (délai de 28 jours) et le don de plasma (délai de 14 jours). Chaque type répond à des besoins médicaux différents.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Quelles sont les conditions pour donner son sang ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Il faut avoir entre 18 et 70 ans, peser au minimum 50 kg, être en bonne santé générale, respecter le délai légal depuis le dernier don et présenter une pièce d'identité valide.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Comment se préparer avant un don de sang ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Dormez suffisamment la veille, mangez un repas léger 2-3h avant, buvez au moins 500 ml d'eau, évitez l'alcool dans les 24h précédentes et apportez une pièce d'identité.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Que faire après un don de sang ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Restez assis 10-15 minutes, prenez une collation, hydratez-vous bien, évitez les efforts physiques intenses pendant 24h et ne fumez pas pendant au moins 1 heure.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <JsonLd data={articleSchema} />
+      <JsonLd data={faqSchema} />
       <Breadcrumbs items={[{ label: "Guide du don du sang" }]} />
 
       <h1 className="mb-4 text-3xl font-extrabold md:text-4xl">
@@ -46,7 +86,7 @@ export default function GuideDonDuSangPage() {
       </h1>
       <p className="mb-10 text-lg text-(--color-text-muted)">
         Tout ce qu&apos;il faut savoir pour donner son sang : types de dons,
-        conditions d&apos;eligibilite, deroulement et conseils pratiques.
+        conditions d&apos;éligibilité, déroulement et conseils pratiques.
       </p>
 
       {/* Types de dons */}
@@ -70,10 +110,10 @@ export default function GuideDonDuSangPage() {
                 </div>
                 <h3 className="mb-1 text-lg font-bold">{label.label}</h3>
                 <p className="text-sm text-(--color-text-muted)">
-                  Delai entre deux dons : <strong>{cooldown} jours</strong>
+                  Délai entre deux dons : <strong>{cooldown} jours</strong>
                 </p>
                 <p className="text-sm text-(--color-text-muted)">
-                  Vies sauvees : <strong style={{ color }}>{lives}</strong> par don
+                  Vies sauvées : <strong style={{ color }}>{lives}</strong> par don
                 </p>
               </div>
             );
@@ -84,7 +124,7 @@ export default function GuideDonDuSangPage() {
       {/* Conditions */}
       <section className="mb-12">
         <h2 className="mb-6 text-2xl font-bold">
-          Conditions d&apos;eligibilite
+          Conditions d&apos;éligibilité
         </h2>
         <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-6">
           <ul className="space-y-3 text-(--color-text-muted)">
@@ -98,15 +138,15 @@ export default function GuideDonDuSangPage() {
             </li>
             <li className="flex items-start gap-3">
               <span className="mt-0.5 text-(--color-green)">&#10003;</span>
-              Etre en <strong className="text-(--color-text)">bonne sante generale</strong>
+              Etre en <strong className="text-(--color-text)">bonne santé générale</strong>
             </li>
             <li className="flex items-start gap-3">
               <span className="mt-0.5 text-(--color-green)">&#10003;</span>
-              Respecter le <strong className="text-(--color-text)">delai legal</strong> depuis le dernier don
+              Respecter le <strong className="text-(--color-text)">délai legal</strong> depuis le dernier don
             </li>
             <li className="flex items-start gap-3">
               <span className="mt-0.5 text-(--color-green)">&#10003;</span>
-              Presenter une <strong className="text-(--color-text)">piece d&apos;identite</strong> valide
+              Présenter une <strong className="text-(--color-text)">piece d&apos;identité</strong> valide
             </li>
           </ul>
           <div className="mt-4">
@@ -114,7 +154,7 @@ export default function GuideDonDuSangPage() {
               href="/eligibilite"
               className="inline-flex items-center gap-1 text-sm font-medium text-(--color-primary)"
             >
-              Verifier mon eligibilite <ArrowRight className="h-3.5 w-3.5" />
+              Vérifier mon éligibilité <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
@@ -145,7 +185,7 @@ export default function GuideDonDuSangPage() {
 
       {/* Après le don */}
       <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold">Apres le don</h2>
+        <h2 className="mb-6 text-2xl font-bold">Après le don</h2>
         <div className="space-y-3">
           {TIPS_AFTER.map((tip, i) => (
             <div
@@ -199,19 +239,19 @@ export default function GuideDonDuSangPage() {
             href="/groupes-sanguins"
             className="rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
-            Compatibilite des groupes sanguins
+            Compatibilité des groupes sanguins
           </Link>
           <Link
             href="/mythes-et-realites"
             className="rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
-            Mythes et realites
+            Mythes et réalités
           </Link>
           <Link
             href="/conseils"
             className="rounded-lg border border-(--color-border) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-surface-2)"
           >
-            Conseils detailles
+            Conseils détaillés
           </Link>
         </div>
       </section>

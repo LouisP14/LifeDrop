@@ -4,9 +4,9 @@ import { Logo } from "@web/components/ui/Logo";
 const CONTENT_LINKS = [
   { href: "/guide-don-du-sang", label: "Guide du don du sang" },
   { href: "/groupes-sanguins", label: "Groupes sanguins" },
-  { href: "/mythes-et-realites", label: "Mythes et realites" },
-  { href: "/eligibilite", label: "Eligibilite" },
-  { href: "/conseils", label: "Conseils avant/apres" },
+  { href: "/mythes-et-realites", label: "Mythes et réalités" },
+  { href: "/eligibilite", label: "Éligibilité" },
+  { href: "/conseils", label: "Conseils avant/après" },
 ];
 
 const BLOOD_TYPE_LINKS = [
@@ -83,7 +83,7 @@ export function Footer() {
               L&apos;application
             </h3>
             <p className="mb-4 text-sm text-(--color-text-muted)">
-              Suivez vos dons, verifiez votre eligibilite et mesurez votre
+              Suivez vos dons, vérifiez votre éligibilité et mesurez votre
               impact.
             </p>
             <Link
@@ -99,13 +99,13 @@ export function Footer() {
         <div className="mt-10 border-t border-(--color-border) pt-6 text-center text-xs text-(--color-text-muted)">
           <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <Link href="/mentions-legales" className="hover:text-(--color-text) transition-colors">
-              Mentions legales
+              Mentions légales
             </Link>
             <Link href="/cgu" className="hover:text-(--color-text) transition-colors">
               CGU
             </Link>
             <Link href="/confidentialite" className="hover:text-(--color-text) transition-colors">
-              Politique de confidentialite
+              Politique de confidentialité
             </Link>
           </div>
           <p>

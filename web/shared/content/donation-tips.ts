@@ -15,7 +15,7 @@ export const TIPS_BEFORE: DonationTip[] = [
   {
     id: "before-1",
     title: "Bien dormir",
-    summary: "Dormir suffisamment la nuit precedente.",
+    summary: "Dormir suffisamment la nuit précèdente.",
     detail:
       "Un bon sommeil (7 a 8 heures) aide ton corps a etre en pleine forme pour le don. La fatigue augmente le risque de malaise.",
     icon: "moon",
@@ -25,7 +25,7 @@ export const TIPS_BEFORE: DonationTip[] = [
     title: "Manger leger",
     summary: "Manger un repas leger dans les 3 heures avant le don.",
     detail:
-      "Evite de donner a jeun. Un repas leger et equilibre 2 a 3 heures avant le don aide a maintenir ta glycemie stable.",
+      "Évite de donner à jeun. Un repas leger et équilibré 2 a 3 heures avant le don aide a maintenir ta glycémie stable.",
     icon: "utensils",
   },
   {
@@ -33,23 +33,23 @@ export const TIPS_BEFORE: DonationTip[] = [
     title: "Bien s'hydrater",
     summary: "Boire au moins 500 ml d'eau avant d'aller donner.",
     detail:
-      "L'hydratation est cle. Bois au moins un demi-litre d'eau dans l'heure qui precede le don pour faciliter le prelevement et reduire les risques de malaise.",
+      "L'hydratation est cle. Bois au moins un demi-litre d'eau dans l'heure qui précède le don pour faciliter le prélèvement et réduire les risques de malaise.",
     icon: "glass-water",
   },
   {
     id: "before-4",
-    title: "Eviter l'alcool",
-    summary: "Eviter l'alcool dans les 24h precedentes.",
+    title: "Éviter l'alcool",
+    summary: "Éviter l'alcool dans les 24h précèdentes.",
     detail:
-      "L'alcool deshydrate l'organisme et peut alterer la qualite du sang. Abstiens-toi au moins 24 heures avant ton don.",
+      "L'alcool déshydrate l'organisme et peut alterer la qualite du sang. Abstiens-toi au moins 24 heures avant ton don.",
     icon: "ban",
   },
   {
     id: "before-5",
-    title: "Piece d'identite",
-    summary: "Apporter une piece d'identite.",
+    title: "Piece d'identité",
+    summary: "Apporter une piece d'identité.",
     detail:
-      "Une piece d'identite avec photo est obligatoire pour chaque don. Carte d'identite, passeport ou permis de conduire sont acceptes.",
+      "Une piece d'identité avec photo est obligatoire pour chaque don. Carte d'identité, passeport ou permis de conduire sont acceptés.",
     icon: "id-card",
   },
 ];
@@ -60,15 +60,15 @@ export const TIPS_AFTER: DonationTip[] = [
     title: "Se reposer",
     summary: "Rester assis 10-15 minutes et prendre une collation.",
     detail:
-      "Apres le prelevement, reste au moins 10 a 15 minutes en position assise. Profite de la collation proposee (boisson sucree, biscuits) pour remonter ta glycemie.",
+      "Après le prélèvement, reste au moins 10 a 15 minutes en position assise. Profite de la collation proposee (boisson sucree, biscuits) pour remonter ta glycémie.",
     icon: "armchair",
   },
   {
     id: "after-2",
-    title: "Eviter les efforts",
-    summary: "Eviter les efforts physiques intenses pendant 24h.",
+    title: "Éviter les efforts",
+    summary: "Éviter les efforts physiques intenses pendant 24h.",
     detail:
-      "Ton corps a besoin de temps pour compenser le volume preleve. Evite le sport intense, le port de charges lourdes et les activites a risque pendant 24 heures.",
+      "Ton corps a besoin de temps pour compenser le volume prélevé. Évite le sport intense, le port de charges lourdes et les activites a risque pendant 24 heures.",
     icon: "dumbbell",
   },
   {
@@ -82,17 +82,17 @@ export const TIPS_AFTER: DonationTip[] = [
   {
     id: "after-4",
     title: "Ne pas fumer",
-    summary: "Eviter de fumer pendant 1h apres le don.",
+    summary: "Éviter de fumer pendant 1h après le don.",
     detail:
       "La nicotine provoque une vasoconstriction qui peut favoriser les malaises. Attends au moins 1 heure avant de fumer.",
     icon: "cigarette-off",
   },
   {
     id: "after-5",
-    title: "Ecouter son corps",
-    summary: "Si tu te sens etourdi, allonge-toi et previens le personnel.",
+    title: "Écouter son corps",
+    summary: "Si tu te sens étourdi, allonge-toi et préviens le personnel.",
     detail:
-      "Un leger etourdissement peut survenir, c'est normal. Allonge-toi avec les jambes surelevees et previens le personnel medical. Ca passe generalement en quelques minutes.",
+      "Un leger étourdissement peut survenir, c'est normal. Allonge-toi avec les jambes surélevées et préviens le personnel medical. Ca passe généralement en quelques minutes.",
     icon: "heart-pulse",
   },
 ];
