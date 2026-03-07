@@ -70,6 +70,14 @@ create policy "Users can insert own donations"
   on public.donations for insert
   with check (auth.uid() = user_id);
 
+create policy "Users can update own donations"
+  on public.donations for update
+  using (auth.uid() = user_id);
+
+create policy "Users can delete own donations"
+  on public.donations for delete
+  using (auth.uid() = user_id);
+
 -- User Badges
 create policy "Users can view own badges"
   on public.user_badges for select
@@ -78,6 +86,10 @@ create policy "Users can view own badges"
 create policy "Users can insert own badges"
   on public.user_badges for insert
   with check (auth.uid() = user_id);
+
+create policy "Users can upsert own badges"
+  on public.user_badges for update
+  using (auth.uid() = user_id);
 
 -- 7. Auto-update updated_at on profiles
 create or replace function public.handle_updated_at()

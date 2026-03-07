@@ -32,21 +32,23 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "DB error" }, { status: 500 });
   }
 
-  // Fetch profiles for names
+  // Fetch profiles for names + blood type
   const { data: profiles } = await supabase
     .from("profiles")
-    .select("id, name");
+    .select("id, name, blood_type");
 
   const profileMap = new Map(
-    (profiles ?? []).map((p) => [p.id, p.name ?? "Donneur anonyme"]),
+    (profiles ?? []).map((p) => [p.id, { name: p.name ?? "Donneur anonyme", bloodType: p.blood_type ?? "unknown" }]),
   );
 
   // Aggregate per user
-  const userStats = new Map<string, { name: string; donations: number; lives: number }>();
+  const userStats = new Map<string, { name: string; bloodType: string; donations: number; lives: number }>();
 
   for (const d of donations ?? []) {
+    const info = profileMap.get(d.user_id) ?? { name: "Donneur anonyme", bloodType: "unknown" };
     const existing = userStats.get(d.user_id) ?? {
-      name: profileMap.get(d.user_id) ?? "Donneur anonyme",
+      name: info.name,
+      bloodType: info.bloodType,
       donations: 0,
       lives: 0,
     };
@@ -60,11 +62,12 @@ export async function GET(req: NextRequest) {
     .map(([id, stats]) => ({
       id,
       name: stats.name,
+      bloodType: stats.bloodType,
       donations: stats.donations,
       lives: stats.lives,
     }))
     .sort((a, b) => b.lives - a.lives || b.donations - a.donations)
-    .slice(0, 50);
+    .slice(0, 100);
 
   return NextResponse.json({ leaderboard });
 }

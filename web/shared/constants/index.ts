@@ -5,6 +5,11 @@
 
 import type { Badge, BloodType, DonationLevel, DonationType, Team } from "../types";
 
+// --- Liste des groupes sanguins ---
+export const BLOOD_TYPES: BloodType[] = [
+  "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-",
+];
+
 // --- Délais légaux entre deux dons (en jours) ---
 export const DONATION_COOLDOWN_DAYS: Record<DonationType, number> = {
   whole_blood: 56,
