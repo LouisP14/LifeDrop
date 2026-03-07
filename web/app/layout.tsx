@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   authors: [{ name: "LifeDrop" }],
   creator: "LifeDrop",
   robots: { index: true, follow: true },
+  verification: {
+    google: "VNGFW76wNG5XWZWtlOVMypw3XNv70ATRf-Hg8sqiEbs",
+  },
   alternates: {
     canonical: SEO_CONFIG.siteUrl,
     languages: { "fr-FR": SEO_CONFIG.siteUrl },
