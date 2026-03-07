@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Droplets, Mail, Lock, Eye, EyeOff, ArrowRight, UserPlus, LogIn } from "lucide-react";
 import { Logo } from "@web/components/ui/Logo";
@@ -22,9 +22,18 @@ export default function AuthPage() {
   const [successMessage, setSuccessMessage] = useState("");
 
   // Redirect if already logged in
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.replace("/app");
+    }
+  }, [isAuthenticated, router]);
+
   if (isAuthenticated) {
-    router.push("/app");
-    return null;
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <Droplets className="h-8 w-8 animate-pulse text-(--color-primary)" />
+      </div>
+    );
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -51,7 +60,7 @@ export default function AuthPage() {
     try {
       if (mode === "login") {
         await signIn(email, password);
-        router.push("/app");
+        router.replace("/app");
       } else {
         await signUp(email, password);
         setSuccessMessage(
