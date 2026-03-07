@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { isRateLimited } from "@web/lib/rate-limit";
 
 function getServiceSupabase() {
   return createClient(
@@ -10,6 +11,11 @@ function getServiceSupabase() {
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    if (isRateLimited(`push-sub:${ip}`, { maxRequests: 10, windowMs: 60_000 })) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const body = await req.json();
     const { endpoint, keys } = body;
 
@@ -72,6 +78,11 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
+    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    if (isRateLimited(`push-unsub:${ip}`, { maxRequests: 10, windowMs: 60_000 })) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const body = await req.json();
     const { endpoint } = body;
 

@@ -285,7 +285,7 @@ export function ProfileTab() {
       </div>
 
       {/* Notifications */}
-      <div className="mb-5">
+      <div className="mt-5 mb-5">
         <NotificationToggle />
       </div>
 

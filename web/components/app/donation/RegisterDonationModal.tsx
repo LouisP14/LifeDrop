@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { format } from "date-fns";
-import { fr } from "date-fns/locale";
 import {
   Heart, Droplet, Microscope, GlassWater, CheckCircle, AlertTriangle, MapPin,
 } from "lucide-react";
@@ -36,19 +35,39 @@ export function RegisterDonationModal({
   const perType = usePerTypeEligibility();
 
   const [selectedType, setSelectedType] = useState<DonationType>("whole_blood");
+  const [donationDate, setDonationDate] = useState(format(new Date(), "yyyy-MM-dd"));
+  const [dateError, setDateError] = useState("");
   const [location, setLocation] = useState("");
 
   const eligibility = perType[selectedType];
   const isBlocked = !eligibility.canDonate;
   const livesCount = LIVES_PER_DONATION_TYPE[selectedType];
 
+  const validateDate = (dateStr: string): string | null => {
+    const date = new Date(dateStr);
+    const today = new Date();
+    today.setHours(23, 59, 59, 999);
+    if (date > today) return "La date ne peut pas etre dans le futur.";
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    if (date < oneYearAgo) return "La date ne peut pas depasser 1 an.";
+    return null;
+  };
+
   const handleSubmit = () => {
     if (isBlocked) return;
+
+    const error = validateDate(donationDate);
+    if (error) {
+      setDateError(error);
+      return;
+    }
+    setDateError("");
 
     const prevBadges = [...badges];
     const newDonation = {
       id: crypto.randomUUID?.() ?? Math.random().toString(36),
-      date: new Date().toISOString(),
+      date: new Date(donationDate).toISOString(),
       type: selectedType,
       location: location.trim() || undefined,
     };
@@ -91,10 +110,22 @@ export function RegisterDonationModal({
           </div>
         )}
 
-        {/* Date */}
-        <p className="mb-4 text-xs text-(--color-text-muted)">
-          {format(new Date(), "EEEE d MMMM yyyy", { locale: fr })}
-        </p>
+        {/* Date picker */}
+        <div className="mb-4">
+          <label className="mb-1 flex items-center gap-1 text-xs text-(--color-text-muted)">
+            Date du don
+          </label>
+          <input
+            type="date"
+            value={donationDate}
+            max={format(new Date(), "yyyy-MM-dd")}
+            onChange={(e) => { setDonationDate(e.target.value); setDateError(""); }}
+            className="w-full rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-3 text-sm text-(--color-text) outline-none focus:border-(--color-primary)"
+          />
+          {dateError && (
+            <p className="mt-1 text-xs text-red-400">{dateError}</p>
+          )}
+        </div>
 
         {/* Type selector */}
         <div className="mb-4 space-y-2">
