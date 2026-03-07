@@ -22,17 +22,20 @@ const ICON_MAP: Record<string, React.ReactNode> = {
 
 function Card({ card }: { card: (typeof DID_YOU_KNOW)[number] }) {
   return (
-    <div className="rounded-xl border border-(--color-border) bg-(--color-surface) p-5">
-      <div className="mb-3 flex items-center gap-2">
-        <span style={{ color: card.color }}>
+    <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-5 md:p-6 transition-all hover:shadow-sm">
+      <div className="mb-3 flex items-center gap-2.5">
+        <div
+          className="flex h-9 w-9 items-center justify-center rounded-xl"
+          style={{ backgroundColor: `${card.color}15`, color: card.color }}
+        >
           {ICON_MAP[card.icon] ?? <Droplets className="h-5 w-5" />}
-        </span>
-        <span className="text-[10px] font-bold uppercase tracking-wider text-(--color-text-muted)">
+        </div>
+        <span className="text-[11px] font-bold uppercase tracking-wider text-(--color-text-muted)">
           {card.category}
         </span>
       </div>
-      <h3 className="mb-2 text-sm font-bold">{card.title}</h3>
-      <p className="text-xs leading-relaxed text-(--color-text-muted)">
+      <h3 className="mb-2 text-sm md:text-base font-bold">{card.title}</h3>
+      <p className="text-sm leading-relaxed text-(--color-text-muted)">
         {card.content}
       </p>
     </div>

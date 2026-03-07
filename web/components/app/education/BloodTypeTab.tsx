@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, XCircle, Dna } from "lucide-react";
 import { useAppStore } from "@web/lib/store";
 import { BLOOD_TYPE_INFO } from "@shared/constants";
 
@@ -10,9 +10,12 @@ export function BloodTypeTab() {
 
   if (!bloodType || bloodType === "unknown" || !info) {
     return (
-      <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 text-center">
-        <p className="text-5xl font-extrabold text-[var(--color-text-muted)]">?</p>
-        <p className="mt-3 text-sm text-[var(--color-text-muted)]">
+      <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-8 text-center">
+        <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-(--color-text-muted)/5">
+          <Dna className="h-7 w-7 text-(--color-text-muted)/30" />
+        </div>
+        <p className="text-3xl font-extrabold text-(--color-text-muted)">?</p>
+        <p className="mt-3 text-sm text-(--color-text-muted)">
           Groupe non renseigne. Mets-le a jour dans ton profil.
         </p>
       </div>
@@ -22,32 +25,32 @@ export function BloodTypeTab() {
   return (
     <div>
       {/* Hero */}
-      <div className="mb-5 rounded-xl border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/5 p-6 text-center">
-        <p className="text-5xl font-extrabold text-[var(--color-primary)]">{bloodType}</p>
-        <p className="mt-2 text-sm text-[var(--color-text-muted)]">{info.description}</p>
+      <div className="mb-5 rounded-2xl border border-(--color-primary)/20 bg-linear-to-br from-[rgba(248,113,113,0.08)] to-transparent p-6 md:p-8 text-center">
+        <p className="text-6xl md:text-7xl font-extrabold text-(--color-primary) leading-none">{bloodType}</p>
+        <p className="mt-3 text-sm md:text-base text-(--color-text-muted)">{info.description}</p>
       </div>
 
       {/* Compatibility */}
-      <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
-          <p className="mb-2 flex items-center gap-1 text-xs font-bold text-[var(--color-green)]">
-            <CheckCircle className="h-3.5 w-3.5" /> Peut recevoir de
+      <div className="grid grid-cols-2 gap-3 md:gap-4">
+        <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-4 md:p-5">
+          <p className="mb-2.5 flex items-center gap-1.5 text-sm font-bold text-(--color-green)">
+            <CheckCircle className="h-4 w-4" /> Peut recevoir de
           </p>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-2">
             {info.canReceiveFrom.map((bt) => (
-              <span key={bt} className="rounded-lg bg-[var(--color-green)]/10 px-2 py-1 text-xs font-bold text-[var(--color-green)]">
+              <span key={bt} className="rounded-lg bg-(--color-green)/10 px-2.5 py-1 text-sm font-bold text-(--color-green)">
                 {bt}
               </span>
             ))}
           </div>
         </div>
-        <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
-          <p className="mb-2 flex items-center gap-1 text-xs font-bold text-[var(--color-primary)]">
-            <XCircle className="h-3.5 w-3.5" /> Peut donner a
+        <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-4 md:p-5">
+          <p className="mb-2.5 flex items-center gap-1.5 text-sm font-bold text-(--color-primary)">
+            <XCircle className="h-4 w-4" /> Peut donner a
           </p>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-2">
             {info.canDonateTo.map((bt) => (
-              <span key={bt} className="rounded-lg bg-[var(--color-primary)]/10 px-2 py-1 text-xs font-bold text-[var(--color-primary)]">
+              <span key={bt} className="rounded-lg bg-(--color-primary)/10 px-2.5 py-1 text-sm font-bold text-(--color-primary)">
                 {bt}
               </span>
             ))}
