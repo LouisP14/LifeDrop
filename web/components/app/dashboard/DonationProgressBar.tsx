@@ -4,9 +4,9 @@ import { Award, Trophy, Diamond } from "lucide-react";
 import type { LevelConfig } from "@shared/constants";
 
 const LEVEL_ICONS: Record<string, React.ReactNode> = {
-  medal: <Award className="h-4 w-4" />,
-  trophy: <Trophy className="h-4 w-4" />,
-  "diamond-stone": <Diamond className="h-4 w-4" />,
+  medal: <Award className="h-5 w-5" />,
+  trophy: <Trophy className="h-5 w-5" />,
+  "diamond-stone": <Diamond className="h-5 w-5" />,
 };
 
 export function DonationProgressBar({
@@ -19,29 +19,37 @@ export function DonationProgressBar({
   nextLevel: LevelConfig | null;
 }) {
   return (
-    <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
-      <div className="mb-2 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span style={{ color: levelConfig.color }}>
-            {LEVEL_ICONS[levelConfig.icon] ?? <Award className="h-4 w-4" />}
-          </span>
-          <span className="text-sm font-bold">{levelConfig.label}</span>
+    <div className="rounded-2xl border border-(--color-border) bg-(--color-surface) p-4 md:p-5">
+      <div className="mb-3 flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div
+            className="flex h-9 w-9 items-center justify-center rounded-lg"
+            style={{ backgroundColor: `${levelConfig.color}20`, color: levelConfig.color }}
+          >
+            {LEVEL_ICONS[levelConfig.icon] ?? <Award className="h-5 w-5" />}
+          </div>
+          <div>
+            <span className="text-sm md:text-base font-bold">{levelConfig.label}</span>
+            {nextLevel && (
+              <p className="text-[11px] text-(--color-text-muted)">
+                Prochain : {nextLevel.label} ({nextLevel.minDonations} dons)
+              </p>
+            )}
+          </div>
         </div>
-        <span className="text-xs text-[var(--color-text-muted)]">
+        <span
+          className="text-sm font-bold"
+          style={{ color: levelConfig.color }}
+        >
           {Math.round(progress)}%
         </span>
       </div>
-      <div className="h-2 overflow-hidden rounded-full bg-[var(--color-border)]">
+      <div className="h-2.5 overflow-hidden rounded-full bg-(--color-border)">
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{ width: `${progress}%`, backgroundColor: levelConfig.color }}
         />
       </div>
-      {nextLevel && (
-        <p className="mt-1.5 text-xs text-[var(--color-text-muted)]">
-          Prochain : {nextLevel.label} ({nextLevel.minDonations} dons)
-        </p>
-      )}
     </div>
   );
 }

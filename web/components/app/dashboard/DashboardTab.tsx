@@ -6,9 +6,11 @@ import {
   Plus,
   CheckCircle,
   Microscope,
-  GlassWater,
+  FlaskConical,
   Lightbulb,
   Heart,
+  Droplets,
+  TrendingUp,
 } from "lucide-react";
 import { useAppStore } from "@web/lib/store";
 import { useDonationStats } from "@web/hooks/useDonationStats";
@@ -20,9 +22,15 @@ import { DonationProgressBar } from "./DonationProgressBar";
 import type { DonationType } from "@shared/types";
 
 const TYPE_ICONS: Record<DonationType, React.ReactNode> = {
-  whole_blood: <Droplet className="h-4 w-4" />,
-  platelets: <Microscope className="h-4 w-4" />,
-  plasma: <GlassWater className="h-4 w-4" />,
+  whole_blood: <Droplet className="h-6 w-6" />,
+  platelets: <Microscope className="h-6 w-6" />,
+  plasma: <FlaskConical className="h-6 w-6" />,
+};
+
+const TYPE_ICONS_LG: Record<DonationType, React.ReactNode> = {
+  whole_blood: <Droplet className="h-8 w-8" />,
+  platelets: <Microscope className="h-8 w-8" />,
+  plasma: <FlaskConical className="h-8 w-8" />,
 };
 
 export function DashboardTab({
@@ -46,7 +54,7 @@ export function DashboardTab({
   return (
     <div className="px-4 pt-4 md:px-8 md:pt-8 animate-[fadeInUp_400ms_ease-out]">
       {/* Header — mobile only */}
-      <div className="mb-6 flex items-center justify-between md:hidden">
+      <div className="mb-5 flex items-center justify-between md:hidden">
         <div className="flex items-center gap-2">
           <Logo size={28} />
           <span className="text-xl font-extrabold tracking-tight">
@@ -70,58 +78,62 @@ export function DashboardTab({
         <p className="mt-1 text-sm text-(--color-text-muted)">Voici ton tableau de bord</p>
       </div>
 
-      {/* Top row: Hero impact + CTA + Stats — desktop 3-col */}
-      <div className="md:grid md:grid-cols-3 md:gap-5">
-        {/* Hero impact */}
-        <div className="mb-6 md:mb-0 overflow-hidden rounded-2xl border border-(--color-primary)/20 bg-linear-to-br from-[rgba(248,113,113,0.08)] to-transparent p-6 text-center flex flex-col justify-center">
-          <p className="mb-1 text-xs font-medium uppercase tracking-widest text-(--color-text-muted)">
-            Ton impact total
-          </p>
-          <div className="text-5xl font-extrabold text-(--color-primary)">
-            {livesSaved}
-          </div>
-          <p className="mt-1 text-sm text-(--color-text-muted)">
-            vies potentiellement sauvees
-          </p>
-        </div>
-
-        {/* Stats + CTA column */}
-        <div className="mb-6 md:mb-0 flex flex-col gap-4">
-          <div className="grid grid-cols-2 gap-3 flex-1">
-            <div className="rounded-xl border border-(--color-border) bg-(--color-surface) p-4 text-center flex flex-col justify-center">
-              <div className="flex items-center justify-center gap-1.5">
-                <Heart className="h-4 w-4 text-(--color-primary)" />
-                <span className="text-2xl font-extrabold">{count}</span>
-              </div>
-              <div className="text-xs text-(--color-text-muted) mt-1">don{count !== 1 ? "s" : ""}</div>
+      {/* Hero — Impact + CTA */}
+      <div className="mb-5 overflow-hidden rounded-2xl border border-(--color-primary)/20 bg-linear-to-br from-[rgba(248,113,113,0.06)] via-transparent to-[rgba(248,113,113,0.03)] p-6 md:p-8">
+        <div className="md:flex md:items-center md:justify-between md:gap-8">
+          {/* Left: Impact */}
+          <div className="text-center md:text-left">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-(--color-text-muted)">
+              Ton impact total
+            </p>
+            <div className="flex items-baseline justify-center gap-2 md:justify-start">
+              <span className="text-6xl md:text-7xl font-extrabold text-(--color-primary) leading-none">
+                {livesSaved}
+              </span>
+              <span className="text-lg font-bold text-(--color-text-muted)">
+                {livesSaved === 1 ? "vie" : "vies"}
+              </span>
             </div>
-            <div className="rounded-xl border border-(--color-border) bg-(--color-surface) p-4 text-center flex flex-col justify-center">
-              <div className="flex items-center justify-center gap-1.5">
-                <Flame className="h-4 w-4 text-(--color-accent)" />
-                <span className="text-2xl font-extrabold">{streak}</span>
-              </div>
-              <div className="text-xs text-(--color-text-muted) mt-1">streak</div>
-            </div>
+            <p className="mt-2 text-sm text-(--color-text-muted)">
+              potentiellement sauvees
+            </p>
           </div>
-          {/* CTA */}
-          <button
-            onClick={onRegisterDonation}
-            disabled={!canDonate}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-(--color-primary) py-3.5 text-base font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-40"
-          >
-            <Plus className="h-5 w-5" />
-            Enregistrer un don
-          </button>
-        </div>
 
-        {/* Level progress */}
-        <div className="mb-6 md:mb-0 flex flex-col justify-center">
-          <DonationProgressBar levelConfig={levelConfig} progress={progress} nextLevel={nextLevel} />
+          {/* Right: Stats row + CTA */}
+          <div className="mt-6 md:mt-0 flex flex-col items-center md:items-end gap-5">
+            <div className="flex items-center gap-6">
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-1.5">
+                  <Droplets className="h-5 w-5 text-(--color-primary)" />
+                  <span className="text-3xl font-extrabold">{count}</span>
+                </div>
+                <p className="mt-0.5 text-xs font-medium text-(--color-text-muted)">
+                  don{count !== 1 ? "s" : ""}
+                </p>
+              </div>
+              <div className="h-8 w-px bg-(--color-border)" />
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-1.5">
+                  <Flame className="h-5 w-5 text-(--color-accent)" />
+                  <span className="text-3xl font-extrabold">{streak}</span>
+                </div>
+                <p className="mt-0.5 text-xs font-medium text-(--color-text-muted)">streak</p>
+              </div>
+            </div>
+            <button
+              onClick={onRegisterDonation}
+              disabled={!canDonate}
+              className="flex w-full md:w-auto items-center justify-center gap-2.5 rounded-xl bg-(--color-primary) px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-(--color-primary)/20 transition-all hover:opacity-90 hover:shadow-xl hover:shadow-(--color-primary)/30 active:scale-[0.97] disabled:opacity-40 disabled:shadow-none"
+            >
+              <Plus className="h-5 w-5" />
+              Enregistrer un don
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Eligibility per type */}
-      <div className="mt-6 grid grid-cols-3 gap-3 md:gap-5">
+      {/* Eligibility per type — bigger cards with icons */}
+      <div className="mb-5 grid grid-cols-3 gap-3 md:gap-5">
         {(["whole_blood", "platelets", "plasma"] as DonationType[]).map((type) => {
           const e = perType[type];
           const colors = DONATION_TYPE_COLORS[type];
@@ -132,43 +144,71 @@ export function DashboardTab({
           return (
             <div
               key={type}
-              className="flex flex-col items-center justify-center gap-2 rounded-xl border p-4 md:flex-row md:justify-start md:gap-4"
+              className="relative overflow-hidden rounded-2xl border p-4 md:p-5 transition-all hover:shadow-md"
               style={{ borderColor: colors.border, backgroundColor: colors.bg }}
             >
-              <CountdownRing progress={ringProgress} color={colors.main} size={44} strokeWidth={3}>
-                {e.canDonate ? (
-                  <CheckCircle className="h-4 w-4" style={{ color: colors.main }} />
-                ) : (
-                  <span className="text-[10px]" style={{ color: colors.main }}>
-                    {e.daysRemaining}j
-                  </span>
-                )}
-              </CountdownRing>
-              <div className="text-center md:text-left">
-                <span className="text-[11px] font-medium text-(--color-text-muted) block">
-                  {DONATION_TYPE_LABELS[type].label}
-                </span>
-                <span className="hidden md:block text-xs font-bold mt-0.5" style={{ color: colors.main }}>
+              {/* Icon */}
+              <div
+                className="mb-3 flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-xl"
+                style={{ backgroundColor: `${colors.main}15`, color: colors.main }}
+              >
+                <span className="hidden md:block">{TYPE_ICONS_LG[type]}</span>
+                <span className="md:hidden">{TYPE_ICONS[type]}</span>
+              </div>
+
+              {/* Label */}
+              <p className="text-sm md:text-base font-bold mb-2">
+                {DONATION_TYPE_LABELS[type].label}
+              </p>
+
+              {/* Status */}
+              <div className="flex items-center gap-2">
+                <CountdownRing progress={ringProgress} color={colors.main} size={32} strokeWidth={2.5}>
+                  {e.canDonate ? (
+                    <CheckCircle className="h-3.5 w-3.5" style={{ color: colors.main }} />
+                  ) : (
+                    <span className="text-[9px] font-bold" style={{ color: colors.main }}>
+                      {e.daysRemaining}j
+                    </span>
+                  )}
+                </CountdownRing>
+                <span
+                  className="text-xs md:text-sm font-semibold"
+                  style={{ color: e.canDonate ? colors.main : "var(--color-text-muted)" }}
+                >
                   {e.canDonate ? "Eligible" : `${e.daysRemaining}j restants`}
                 </span>
               </div>
+
+              {/* Delay info — desktop */}
+              <p className="hidden md:block mt-2 text-xs text-(--color-text-muted)">
+                Delai : {DONATION_TYPE_LABELS[type].delay}
+              </p>
             </div>
           );
         })}
       </div>
 
+      {/* Level progress */}
+      <div className="mb-5">
+        <DonationProgressBar levelConfig={levelConfig} progress={progress} nextLevel={nextLevel} />
+      </div>
+
       {/* Education teaser */}
       <button
         onClick={() => onTabChange("education")}
-        className="mb-4 mt-6 flex w-full items-center gap-3 rounded-xl border border-(--color-border) bg-(--color-surface) p-4 text-left transition-colors hover:bg-(--color-surface-2)"
+        className="mb-4 flex w-full items-center gap-4 rounded-2xl border border-(--color-border) bg-(--color-surface) p-4 md:p-5 text-left transition-all hover:border-(--color-accent)/40 hover:shadow-sm"
       >
-        <Lightbulb className="h-5 w-5 shrink-0 text-(--color-accent)" />
+        <div className="flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-xl bg-(--color-accent)/10">
+          <Lightbulb className="h-5 w-5 md:h-6 md:w-6 text-(--color-accent)" />
+        </div>
         <div>
-          <p className="text-sm font-bold">Le saviez-vous ?</p>
-          <p className="text-xs text-(--color-text-muted)">
+          <p className="text-sm md:text-base font-bold">Le saviez-vous ?</p>
+          <p className="text-xs md:text-sm text-(--color-text-muted)">
             Decouvre des faits sur le don du sang
           </p>
         </div>
+        <TrendingUp className="ml-auto h-4 w-4 shrink-0 text-(--color-text-muted)" />
       </button>
     </div>
   );
