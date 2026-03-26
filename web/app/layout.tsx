@@ -37,8 +37,14 @@ export const metadata: Metadata = {
   },
   // manifest added manually in <head> to avoid crossOrigin="undefined" bug
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/icons/icon-192x192.png",
   },
 };
 
@@ -66,6 +72,9 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png" />
+        <link rel="shortcut icon" href="/icons/icon-192x192.png" />
         <link rel="alternate" hrefLang="fr" href={SEO_CONFIG.siteUrl} />
         <link rel="alternate" hrefLang="x-default" href={SEO_CONFIG.siteUrl} />
         <script
